@@ -1,0 +1,87 @@
+/********************/
+/* Custom LESS File */
+/********************/
+/* Color declaration */
+/* Theme CSS */
+/* Theme Button */
+.btn-theme {
+  background: #f75353;
+  color: #fff !important;
+}
+/* alternate navigation menu */
+.wrapper-alt .navbar-default {
+  background-color: #f75353;
+}
+.wrapper-alt .navbar-default .navbar-toggle .icon-bar {
+  background-color: #f75353;
+}
+.sidebar {
+  background-color: #f75353;
+}
+.sidebar .navi-btn a i {
+  background: #f75353;
+}
+.sidebar .sidebar-widget ul li a .badge {
+  background: #f75353;
+}
+.sidebar .subs-form .input-group-btn > .btn {
+  color: #f75353;
+}
+.default-heading hr {
+  border-top: 3px solid #f75353;
+}
+.slider {
+  background: #f75353;
+}
+/* Testimonial */
+.testimonial {
+  background: #f75353;
+}
+/* CTA */
+.cta {
+  background: #f75353;
+}
+/* Portfolio */
+.portfolio #filters li .btn {
+  border: 1px solid #f75353 !important;
+}
+.portfolio #filters li .btn:hover {
+  background: #f75353;
+  color: #fff !important;
+}
+/* Service */
+.service {
+  background: #f75353;
+}
+/* Pricing Area */
+.pricing .pricing-item.highlight {
+  background: #f75353;
+  color: #fff;
+}
+/* Blog */
+.blog .blog-post .entry .meta i {
+  color: #f75353;
+}
+/* Subscribe form */
+.subscribe {
+  background: #f75353;
+}
+/* Social Hub */
+.social-hub .hub-item i {
+  background: #f75353;
+}
+/* Contact */
+.contact .contact-info .address i {
+  color: #f75353;
+}
+/* About Us */
+.about .skill-item .skill-outer {
+  border: 3px solid #f75353;
+}
+.about .skill-item:hover .skill-outer .skill-num {
+  background: #f75353;
+}
+/* Footer */
+.footer {
+  background: #f75353;
+}
