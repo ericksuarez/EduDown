@@ -78,7 +78,6 @@ function MatchGame (canvas, images) {
         this.ctx.fillStyle = "white";
         this.ctx.fillRect(0, 0, this.cWidth, this.cHeight);
         this.ctx.strokeStyle = "#000000";
-        this.ctx.lineWidth = 0;
         this.ctx.strokeRect(0, 0, this.cWidth, this.cHeight);
         this.ctx.restore();
 

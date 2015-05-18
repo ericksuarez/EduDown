@@ -16,7 +16,8 @@
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <!-- Script -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="js/juegos/GameObject.js"></script>
 <script src="js/juegos/MatchGame.js"></script>
 <script src="js/juegos/game.js"></script>
@@ -27,17 +28,12 @@
 	<!-- Wrapper required for sidebar transitions -->
 	<div class="st-container">
 		<!-- Fixed navbar -->
-		<div class="navbar navbar-main navbar-primary navbar-fixed-top"
-			role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a href="#st-effect-11" data-toggle="sidebar-menu"
-						data-effect="st-effect-11" class="btn btn-default">
-						<p style="color: white">
-							<i class="fa fa-list fa-4x "></i>
-						</p>
-					</a>
-				</div>
+		<div class="navbar navbar-main navbar-fixed-top" role="navigation">
+			<div class="navbar-header">
+				<a href="#st-effect-11" data-toggle="sidebar-menu"
+					data-effect="st-effect-11" class="btn btn-primary"> 
+						<i class="fa fa-pause fa-4x"></i>
+				</a>
 			</div>
 		</div>
 
@@ -46,42 +42,41 @@
 			class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-skin-dark"
 			data-type=dropdown id=st-effect-11>
 			<div class="split-vertical">
-				<div class="sidebar-block">
-					<h4 class="category"></h4>
-				</div>
 				<div class="split-vertical-body">
 					<div class="split-vertical-cell">
 						<div data-scrollable>
-							<p class="text-center" style="color: white">
-								<br>
-								<br> <i class="fa fa-align-justify fa-4x"></i> <br>
-								<br> <i class="fa fa-repeat fa-4x"></i> <br>
-								<br> <i class="fa fa-pause fa-4x"></i> <br>
-								<br> <i class="fa fa-play fa-4x"></i> <br>
-								<br> <a href="index.html"><i class="fa fa-home fa-4x"></i> </a><br>
+							<p class="text-center">
+								<br> <br>
+								<button class="btn btn-link" style="color: #fff">
+									<i class="fa fa-align-justify fa-4x"></i>
+								</button>
+								<br> <br>
+								<button class="btn btn-link" style="color: #fff">
+									<i class="fa fa-repeat fa-4x"></i>
+								</button>
+								<br> <br>
+								<button class="btn btn-link" style="color: #fff">
+									<i class="fa fa-play fa-4x"></i>
+								</button>
+								<br> <br> <a href="index.html" style="color: #fff">
+								<i class="fa fa-home fa-4x"></i> </a><br>
 							</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<br><br>
-<!-- Seccion del juego -->	
-		<div class="row">
-		<div class="col-xs-1 col-md-1"></div>
-		<div class="col-xs-10 col-md-10">
-		<canvas id="canvas"> </canvas>
-		</div>
-		<div class="col-xs-1 col-md-1"></div>
-		</div>
-<!-- Fin Seccion del juego -->	
-		<!-- Footer -->
-		<div class="footer navbar-primary">
-			<p style="color: white">Instituto Politecnico Nacional Unidad
-				Culhuacan. &copy; Copyright 2015</p>
-		</div>
 
-		<!-- // Footer -->
+		<!-- Seccion del juego -->
+		<div class="row">
+			<div class="col-xs-1 col-md-1"></div>
+			<div class="col-xs-10 col-md-10">
+				<canvas id="canvas"> </canvas>
+			</div>
+			<div class="col-xs-1 col-md-1"></div>
+		</div>
+		<!-- Fin Seccion del juego -->
+
 	</div>
 
 	<!-- /st-container -->
@@ -100,9 +95,6 @@
 	</script>
 	<script src="js/vendor-bundle-all.min.js"></script>
 	<script src="js/module-bundle-main.min.js"></script>
-	<script src="js/module-essentials.min.js"></script>
-	<script src="js/module-layout.min.js"></script>
-	<script src="js/module-sidebar.min.js"></script>
 
 </body>
 </html>
