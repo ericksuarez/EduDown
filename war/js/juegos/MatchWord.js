@@ -51,7 +51,7 @@ function MatchGame (canvas, images) {
         this.cWidth = this.escenario.width;
         this.cHeight = this.escenario.height;
         this.rectW = this.cWidth * 0.25;
-        this.rectH = this.cWidth * 0.25;
+        this.rectH = this.cWidth * 0.15;
         this.espacio = this.cWidth * 0.0625;
         
     };
