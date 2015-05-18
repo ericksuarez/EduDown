@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html
 	class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l2"
@@ -69,5 +71,33 @@
 				style="overflow-y: hidden; outline: none;">
 				<div class="container-fluid">
 					<div class="st-pusher" id="content">
+					
+					<!-- validation_error -->
+					<c:if test="${not empty error}">
+						<div class="alert alert-danger alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							${error}
+						</div>
+					</c:if>
+					<c:if test="${not empty acierto}">
+						<div class="alert alert-success alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<i class="fa fa-check"></i> ${acierto}
+						</div>
+					</c:if>
+					<!-- fin validation_error -->
+					
 						<div class="panel panel-default">
 							<div class="panel-heading">
+							
+							
+							
+							
+							
+							
