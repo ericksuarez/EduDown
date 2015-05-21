@@ -42,10 +42,9 @@
 					<div class="split-vertical-cell">
 						<div data-scrollable>
 							<p class="text-center">
-								<br> <br>
-								<button class="btn btn-link" style="color: #fff">
+									<br> <br> <a href="menuJuegos.jsp" style="color: #fff">
 									<i class="fa fa-align-justify fa-4x"></i>
-								</button>
+								</a>
 								<br> <br>
 								<button class="btn btn-link" style="color: #fff">
 									<i class="fa fa-repeat fa-4x"></i>
