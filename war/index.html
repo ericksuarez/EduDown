@@ -43,10 +43,7 @@
 					<!-- User -->
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-xs">
-							<!-- <a href="#sidebar-chat"
-							data-toggle="sidebar-menu" data-effect="st-effect-1"> <i
-								class="fa fa-users fa-2x"></i>
-						</a> --> <a href="login"> <i class="fa fa-users fa-2x"></i></a>
+						 <a href="login"> <i class="fa fa-users fa-2x"></i></a>
 						</li>
 					</ul>
 				</div>
@@ -59,13 +56,14 @@
 
 			<div class="row">
 				<div class="col-md-2"></div>
-				<div class="colxs-12 col-md-8">
+				<div class="col-xs-12 col-md-8">
 
 					<div class="timeline-block">
 						<div class="panel panel-default profile-card">
 							<div class="panel-body">
 								<div class="profile-card-icon">
-									<a href="http://www.fjldown.org.mx/"> <img
+									<a href="http://www.fjldown.org.mx/" style="text-align: -moz-center;">
+									 <img
 										src="img/logo_JLDown.png" alt="JLDown" class="img-responsive">
 									</a>
 								</div>
@@ -74,8 +72,14 @@
 										SINDROME DE DOWN</strong>
 								</h5>
 								<ul class="profile-card-items">
-									<li><a href="juego.jsp"><img src="img/inicio.jpg"
-											alt="Inicio Niños" class="img-responsive"></a></li>
+									<li>
+											<!-- Button trigger modal -->
+										<button type="button" class="btn btn-primary img-responsive" 
+										data-toggle="modal" data-target="#myModal" style="text-align: -moz-center;">
+										  <img src="img/inicio.jpg"
+											alt="Inicio Niños" class="img-responsive">
+										</button>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -104,7 +108,27 @@
 	</div>
 
 	<!-- /st-container -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+         <div class="row">
+         
+         <div class="col-xs-12 col-md-12">
+         <button style="font-size: 71px ! important; color: rgb(255, 255, 255) ! important; opacity: 2 ! important; padding-right: 8%;" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+         <img src="images/loginAlumno.png" alt="Inicio Niños" class="img-responsive">
+         <form style="position: fixed; top: 36%; right: 0px; bottom: 0px; outline: 0px none; width: 50%; left: 17.6%; z-index: 1050;" action="campoSemantico.jsp" method="post">
+							<input style="margin-bottom: 13%; font-size: 35px ! important; height: 40px ! important;" class="form-control" name="loginaluno" type="text">
+							<button class="btn btn-primary" style="width: 68%; margin-top: 11.5%; margin-left: 16%;" type="submit">Jugar</button>
+						</form>
+						</div>
 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 	<!-- Inline Script for colors and config objects; used by various external scripts; -->
 	<script>
 		var colors = {
