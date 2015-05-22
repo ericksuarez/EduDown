@@ -35,11 +35,17 @@ function MatchGame (canvas, images) {
             self.objetos[2].unclick (event);
             
             if (self.jugador.collide (self.objetos[0])){
-                alert("0");
+            	$('#acierto').modal({
+                    keyboard: true,
+                    show: true,
+                    backdrop: 'static'
+                });
             } else if (self.jugador.collide (self.objetos[1])){
-                alert("1");
+            	$('#error').modal('show');
+                self.initObjects();
             } else if (self.jugador.collide (self.objetos[2])){
-                alert("2");
+            	$('#error').modal('show');
+                self.initObjects();
             }
         };   
     }
