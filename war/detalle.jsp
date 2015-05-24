@@ -3,7 +3,7 @@
 
 <jsp:include page="common/header.jsp" />
 
-<h4 class="panel-title">Detalle del ${alumno}</h4>
+<h4 class="panel-title">Detalle del <strong>${alumno.nombre} ${alumno.apaterno} ${alumno.amaterno}</strong></h4>
 </div>
 <div class="panel-body">
 
