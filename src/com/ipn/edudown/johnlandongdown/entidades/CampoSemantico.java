@@ -11,14 +11,44 @@ import com.google.appengine.api.datastore.Key;
 public class CampoSemantico {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	private Key idCampo;
+	Key idCampo;
 	@Persistent
-	private String semantico;
+	String semantico;
 	@Persistent
-	private String imagenIcono;
+	String imagenIcono;
 	@Persistent
-	private String sonido;
-	
-	
-	
+	String sonido;
+
+	public Key getIdCampo() {
+		return idCampo;
+	}
+
+	public void setIdCampo(Key idCampo) {
+		this.idCampo = idCampo;
+	}
+
+	public String getSemantico() {
+		return semantico;
+	}
+
+	public void setSemantico(String semantico) {
+		this.semantico = semantico;
+	}
+
+	public String getImagenIcono() {
+		return imagenIcono;
+	}
+
+	public void setImagenIcono(String imagenIcono) {
+		this.imagenIcono = imagenIcono;
+	}
+
+	public String getSonido() {
+		return sonido;
+	}
+
+	public void setSonido(String sonido) {
+		this.sonido = sonido;
+	}
+
 }

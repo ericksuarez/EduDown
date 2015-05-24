@@ -1,5 +1,6 @@
 package com.ipn.edudown.johnlandongdown.entidades;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -8,11 +9,14 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.datanucleus.annotations.Unowned;
+
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
-public class Alumno {
+public class Alumno implements Serializable{
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	Long idAlumno;
+	Key idAlumno;
 	@Persistent
 	String nombre;
 	@Persistent
@@ -20,34 +24,35 @@ public class Alumno {
 	@Persistent
 	String amaterno;
 	@Persistent
+	String usuario;
+	@Persistent
 	Date fecha_alta;
 	@Persistent 
-	int Grado_idGrado;
-	@Persistent 
-	String Grupo_idGrupo;
+	@Unowned
+	Grado Grado_idGrado;
 	 
 
-	public int getGrado_idGrado() {
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public Grado getGrado_idGrado() {
 		return Grado_idGrado;
 	}
 
-	public void setGrado_idGrado(int grado_idGrado) {
+	public void setGrado_idGrado(Grado grado_idGrado) {
 		Grado_idGrado = grado_idGrado;
 	}
 
-	public String getGrupo_idGrupo() {
-		return Grupo_idGrupo;
-	}
-
-	public void setGrupo_idGrupo(String grupo_idGrupo) {
-		Grupo_idGrupo = grupo_idGrupo;
-	}
-
-	public Long getIdAlumno() {
+	public Key getIdAlumno() {
 		return idAlumno;
 	}
 
-	public void setIdAlumno(Long idAlumno) {
+	public void setIdAlumno(Key idAlumno) {
 		this.idAlumno = idAlumno;
 	}
 

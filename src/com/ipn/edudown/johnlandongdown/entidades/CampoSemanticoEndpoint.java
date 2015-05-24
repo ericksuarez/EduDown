@@ -20,8 +20,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-@Api(name = "profesorendpoint", namespace = @ApiNamespace(ownerDomain = "ipn.com", ownerName = "ipn.com", packagePath = "edudown.johnlandongdown.entidades"))
-public class ProfesorEndpoint {
+@Api(name = "camposemanticoendpoint", namespace = @ApiNamespace(ownerDomain = "ipn.com", ownerName = "ipn.com", packagePath = "edudown.johnlandongdown.entidades"))
+public class CampoSemanticoEndpoint {
 
 	/**
 	 * This method lists all the entities inserted in datastore. It uses HTTP
@@ -31,22 +31,23 @@ public class ProfesorEndpoint {
 	 *         persisted and a cursor to the next page.
 	 */
 	@SuppressWarnings({ "unchecked", "unused" })
-	@ApiMethod(name = "listProfesor")
-	public List<Profesor> listProfesor(@Nullable @Named("limit") Integer limit) {
+	@ApiMethod(name = "listCampoSemantico")
+	public List<CampoSemantico> listCampoSemantico(
+			@Nullable @Named("limit") Integer limit) {
 
 		PersistenceManager mgr = null;
-		List<Profesor> execute = null;
+		List<CampoSemantico> execute = null;
 
 		try {
 			mgr = getPersistenceManager();
-			Query query = mgr.newQuery(Profesor.class);
+			Query query = mgr.newQuery(CampoSemantico.class);
 
 			if (limit != null) {
 				query.setRange(0, limit);
 			}
 
-			execute = (List<Profesor>) query.execute();
-
+			execute = (List<CampoSemantico>) query.execute();
+			;
 		} finally {
 			mgr.close();
 		}
@@ -62,16 +63,16 @@ public class ProfesorEndpoint {
 	 *            the primary key of the java bean.
 	 * @return The entity with primary key id.
 	 */
-	@ApiMethod(name = "getProfesor")
-	public Profesor getProfesor(@Named("id") Long id) {
+	@ApiMethod(name = "getCampoSemantico")
+	public CampoSemantico getCampoSemantico(@Named("id") Long id) {
 		PersistenceManager mgr = getPersistenceManager();
-		Profesor profesor = null;
+		CampoSemantico camposemantico = null;
 		try {
-			profesor = mgr.getObjectById(Profesor.class, id);
+			camposemantico = mgr.getObjectById(CampoSemantico.class, id);
 		} finally {
 			mgr.close();
 		}
-		return profesor;
+		return camposemantico;
 	}
 
 	/**
@@ -79,27 +80,30 @@ public class ProfesorEndpoint {
 	 * already exists in the datastore, an exception is thrown. It uses HTTP
 	 * POST method.
 	 * 
-	 * @param profesor
+	 * @param camposemantico
 	 *            the entity to be inserted.
 	 * @return The inserted entity.
 	 */
-	@ApiMethod(name = "insertProfesor")
-	public Profesor insertProfesor(Profesor profesor) {
+	@ApiMethod(name = "insertCampoSemantico")
+	public CampoSemantico insertCampoSemantico(CampoSemantico camposemantico) {
 
-		Key k = KeyFactory.createKey(Profesor.class.getSimpleName(),
-				profesor.hashCode());
-		profesor.setIdProfesor(k);
+		Key k = KeyFactory.createKey(CampoSemantico.class.getSimpleName(),
+				camposemantico.hashCode());
+		camposemantico.setIdCampo(k);
 
 		PersistenceManager mgr = getPersistenceManager();
 		try {
-			if (containsProfesor(profesor)) {
-				throw new EntityExistsException("El profesor ya existe.");
+			if (camposemantico.getIdCampo() != null) {
+				if (containsCampoSemantico(camposemantico)) {
+					throw new EntityExistsException(
+							"El campo semantico ya existe");
+				}
 			}
-			mgr.makePersistent(profesor);
+			mgr.makePersistent(camposemantico);
 		} finally {
 			mgr.close();
 		}
-		return profesor;
+		return camposemantico;
 	}
 
 	/**
@@ -107,22 +111,23 @@ public class ProfesorEndpoint {
 	 * not exist in the datastore, an exception is thrown. It uses HTTP PUT
 	 * method.
 	 * 
-	 * @param profesor
+	 * @param camposemantico
 	 *            the entity to be updated.
 	 * @return The updated entity.
 	 */
-	@ApiMethod(name = "updateProfesor")
-	public Profesor updateProfesor(Profesor profesor) {
+	@ApiMethod(name = "updateCampoSemantico")
+	public CampoSemantico updateCampoSemantico(CampoSemantico camposemantico) {
 		PersistenceManager mgr = getPersistenceManager();
 		try {
-			if (!containsProfesor(profesor)) {
-				throw new EntityNotFoundException("El profesor no existe.");
+			if (!containsCampoSemantico(camposemantico)) {
+				throw new EntityNotFoundException(
+						"El campo semantico no existe.");
 			}
-			mgr.makePersistent(profesor);
+			mgr.makePersistent(camposemantico);
 		} finally {
 			mgr.close();
 		}
-		return profesor;
+		return camposemantico;
 	}
 
 	/**
@@ -132,22 +137,26 @@ public class ProfesorEndpoint {
 	 * @param id
 	 *            the primary key of the entity to be deleted.
 	 */
-	@ApiMethod(name = "removeProfesor")
-	public void removeProfesor(@Named("id") Long id) {
+	@ApiMethod(name = "removeCampoSemantico")
+	public void removeCampoSemantico(@Named("id") Long id) {
 		PersistenceManager mgr = getPersistenceManager();
 		try {
-			Profesor profesor = mgr.getObjectById(Profesor.class, id);
-			mgr.deletePersistent(profesor);
+			CampoSemantico camposemantico = mgr.getObjectById(
+					CampoSemantico.class, id);
+			mgr.deletePersistent(camposemantico);
 		} finally {
 			mgr.close();
 		}
 	}
 
-	private boolean containsProfesor(Profesor profesor) {
+	private boolean containsCampoSemantico(CampoSemantico camposemantico) {
 		PersistenceManager mgr = getPersistenceManager();
 		boolean contains = true;
 		try {
-			mgr.getObjectById(Profesor.class, profesor.getIdProfesor());
+			if (camposemantico.getIdCampo() == null) {
+				return false;
+			}
+			mgr.getObjectById(CampoSemantico.class, camposemantico.getIdCampo());
 		} catch (javax.jdo.JDOObjectNotFoundException ex) {
 			contains = false;
 		} finally {
