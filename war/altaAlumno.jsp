@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+ <%@ page isELIgnored="false"%>
 
 <jsp:include page="common/header.jsp" />
 
@@ -10,14 +11,14 @@
 
 <!-- Alta alumnos -->
 
-	<form class="form-horizontal" role="form" action="perfiles"
+	<form class="form-horizontal" role="form" action="perfiles?alta=alumno"
 		method="post">
 		<div class="form-group">
 			<label class="col-sm-3 control-label">Nombre</label>
 			<div class="col-sm-9">
 				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-user"></i></span> <input
-						type="hidden" name="tipousuario" value="alumno"> <input
+					<span class="input-group-addon"><i class="fa fa-user"></i></span>
+					 <input
 						type="text" name="nombre" class="form-control"
 						placeholder="Nombre(s)">
 				</div>
@@ -40,26 +41,21 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-3 control-label">Usuario</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" name="usuario"
+					placeholder="Usuario para ingresar a los juegos">
+			</div>
+		</div>
+		<div class="form-group">
 			<label class="col-sm-3 control-label">Grado</label>
 			<div class="col-sm-9">
 				<select name="grado" class="selectpicker" data-style="btn-white"
 					title="Seleccione una opción..." data-live-search="true"
 					data-size="5" style="display: none;">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-				</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-3 control-label">Grupo</label>
-			<div class="col-sm-9">
-				<select name="grupo" class="selectpicker" data-style="btn-white"
-					title="Seleccione una opción..." data-live-search="true"
-					data-size="5" style="display: none;">
-					<option>A</option>
-					<option>B</option>
-					<option>C</option>
+					<c:forEach items="${grados}" var="element">
+    					<option value="${element.idGrado}">${element.grado} - ${element.grupo}</option>
+					</c:forEach>
 				</select>
 			</div>
 		</div>
