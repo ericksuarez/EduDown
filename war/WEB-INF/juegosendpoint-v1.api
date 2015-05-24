@@ -1,0 +1,414 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://landong-down.appspot.com/_ah/api",
+  "name" : "juegosendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://landong-down.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "ipn.com",
+  "ownerName" : "ipn.com",
+  "packagePath" : "edudown.johnlandongdown.entidades",
+  "methods" : {
+    "juegosendpoint.updateJuegos" : {
+      "path" : "juegos",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.updateJuegos",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "juegosendpoint.insertJuegos" : {
+      "path" : "juegos",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.insertJuegos",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "juegosendpoint.removeJuegos" : {
+      "path" : "juegos/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.removeJuegos",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "juegosendpoint.listJuegos" : {
+      "path" : "juegos",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.listJuegos",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "juegosendpoint.getJuegos" : {
+      "path" : "juegos/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.getJuegos",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Juegos" : {
+        "id" : "Juegos",
+        "type" : "object",
+        "properties" : {
+          "idJuegos" : {
+            "$ref" : "Key"
+          },
+          "nombre" : {
+            "type" : "string"
+          },
+          "tiempo" : {
+            "type" : "string"
+          },
+          "iconJuego" : {
+            "type" : "string"
+          },
+          "materia_idMateria" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Materia"
+            }
+          },
+          "campoSemantico_idCampoSemantico" : {
+            "$ref" : "CampoSemantico"
+          },
+          "palabras_idPalabras" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Palabras"
+            }
+          },
+          "imagenes_idImagenes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Imagenes"
+            }
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          }
+        }
+      },
+      "Materia" : {
+        "id" : "Materia",
+        "type" : "object",
+        "properties" : {
+          "idMateria" : {
+            "$ref" : "Key"
+          },
+          "nombreMateria" : {
+            "type" : "string"
+          },
+          "descripcion" : {
+            "type" : "string"
+          },
+          "profesor_idProfesor" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Profesor"
+            }
+          }
+        }
+      },
+      "Profesor" : {
+        "id" : "Profesor",
+        "type" : "object",
+        "properties" : {
+          "idProfesor" : {
+            "$ref" : "Key"
+          },
+          "nombre" : {
+            "type" : "string"
+          },
+          "apaterno" : {
+            "type" : "string"
+          },
+          "amaterno" : {
+            "type" : "string"
+          },
+          "especialidad" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "fecha_alta" : {
+            "$ref" : "Date"
+          },
+          "grado_idGrado" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Grado"
+            }
+          },
+          "materia_idMateria" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Materia"
+            }
+          }
+        }
+      },
+      "Date" : {
+        "id" : "Date",
+        "type" : "object",
+        "properties" : {
+          "hours" : {
+            "type" : "integer"
+          },
+          "minutes" : {
+            "type" : "integer"
+          },
+          "seconds" : {
+            "type" : "integer"
+          },
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "month" : {
+            "type" : "integer"
+          },
+          "year" : {
+            "type" : "integer"
+          },
+          "day" : {
+            "type" : "integer"
+          },
+          "timezoneOffset" : {
+            "type" : "integer"
+          },
+          "date" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "Grado" : {
+        "id" : "Grado",
+        "type" : "object",
+        "properties" : {
+          "idGrado" : {
+            "$ref" : "Key"
+          },
+          "grado" : {
+            "type" : "string"
+          },
+          "grupo" : {
+            "type" : "string"
+          },
+          "materia_idMateria" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Materia"
+            }
+          },
+          "profesor_idProfesor" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Profesor"
+            }
+          }
+        }
+      },
+      "CampoSemantico" : {
+        "id" : "CampoSemantico",
+        "type" : "object",
+        "properties" : {
+          "idCampo" : {
+            "$ref" : "Key"
+          },
+          "semantico" : {
+            "type" : "string"
+          },
+          "imagenIcono" : {
+            "type" : "string"
+          },
+          "sonido" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Palabras" : {
+        "id" : "Palabras",
+        "type" : "object",
+        "properties" : {
+          "idPalabras" : {
+            "$ref" : "Key"
+          },
+          "esSilabas" : {
+            "type" : "boolean"
+          },
+          "principal" : {
+            "type" : "string"
+          },
+          "correcta" : {
+            "type" : "string"
+          },
+          "erronea" : {
+            "type" : "string"
+          },
+          "erronea_2" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Imagenes" : {
+        "id" : "Imagenes",
+        "type" : "object",
+        "properties" : {
+          "idImagenes" : {
+            "$ref" : "Key"
+          },
+          "nombre" : {
+            "type" : "string"
+          }
+        }
+      },
+      "JuegosCollection" : {
+        "id" : "JuegosCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Juegos"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.updateJuegos" : {
+        "request" : {
+          "$ref" : "Juegos"
+        },
+        "response" : {
+          "$ref" : "Juegos"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.insertJuegos" : {
+        "request" : {
+          "$ref" : "Juegos"
+        },
+        "response" : {
+          "$ref" : "Juegos"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.removeJuegos" : {
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.listJuegos" : {
+        "response" : {
+          "$ref" : "JuegosCollection"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.getJuegos" : {
+        "response" : {
+          "$ref" : "Juegos"
+        }
+      }
+    }
+  }
+}

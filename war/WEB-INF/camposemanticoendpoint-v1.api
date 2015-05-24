@@ -1,0 +1,218 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://landong-down.appspot.com/_ah/api",
+  "name" : "camposemanticoendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://landong-down.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "ipn.com",
+  "ownerName" : "ipn.com",
+  "packagePath" : "edudown.johnlandongdown.entidades",
+  "methods" : {
+    "camposemanticoendpoint.listCampoSemantico" : {
+      "path" : "camposemantico",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.listCampoSemantico",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "camposemanticoendpoint.updateCampoSemantico" : {
+      "path" : "camposemantico",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.updateCampoSemantico",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "camposemanticoendpoint.removeCampoSemantico" : {
+      "path" : "camposemantico/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.removeCampoSemantico",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "camposemanticoendpoint.getCampoSemantico" : {
+      "path" : "camposemantico/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.getCampoSemantico",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "camposemanticoendpoint.insertCampoSemantico" : {
+      "path" : "camposemantico",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.insertCampoSemantico",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CampoSemantico" : {
+        "id" : "CampoSemantico",
+        "type" : "object",
+        "properties" : {
+          "idCampo" : {
+            "$ref" : "Key"
+          },
+          "semantico" : {
+            "type" : "string"
+          },
+          "imagenIcono" : {
+            "type" : "string"
+          },
+          "sonido" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          }
+        }
+      },
+      "CampoSemanticoCollection" : {
+        "id" : "CampoSemanticoCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "CampoSemantico"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.listCampoSemantico" : {
+        "response" : {
+          "$ref" : "CampoSemanticoCollection"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.updateCampoSemantico" : {
+        "request" : {
+          "$ref" : "CampoSemantico"
+        },
+        "response" : {
+          "$ref" : "CampoSemantico"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.removeCampoSemantico" : {
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.getCampoSemantico" : {
+        "response" : {
+          "$ref" : "CampoSemantico"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.insertCampoSemantico" : {
+        "request" : {
+          "$ref" : "CampoSemantico"
+        },
+        "response" : {
+          "$ref" : "CampoSemantico"
+        }
+      }
+    }
+  }
+}

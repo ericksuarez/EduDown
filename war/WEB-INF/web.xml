@@ -25,6 +25,30 @@
 		<servlet-name>Perfiles</servlet-name>
 		<url-pattern>/perfiles</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>Supervisar</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.SupervisarServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Supervisar</servlet-name>
+		<url-pattern>/supervisar</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Evaluar</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.EvaluarServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Evaluar</servlet-name>
+		<url-pattern>/evaluar</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Juego</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.JuegoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Juego</servlet-name>
+		<url-pattern>/juego</url-pattern>
+	</servlet-mapping>
 		
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -34,7 +58,7 @@
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value/>
+   <param-value>com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint,com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint,com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint,com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint,com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint,com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint,com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint,com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>
