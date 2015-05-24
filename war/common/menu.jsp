@@ -25,9 +25,9 @@
 			<li class="hasSubmenu"><a href="#submenu3"><i
 					class="fa fa-chevron-circle-down"></i> <span>Altas</span></a>
 				<ul id="submenu3">
-					<li><a href="altaAlumno.jsp"><i class="fa fa-circle-o"></i>
+					<li><a href="perfiles?alta=alumno"><i class="fa fa-circle-o"></i>
 							Alta de Alumnos</a></li>
-					<li><a href="altaProfesor.jsp"><i class="fa fa-circle-o"></i>
+					<li><a href="perfiles?alta=profesor"><i class="fa fa-circle-o"></i>
 							Alta de Profesores</a></li>
 				</ul></li>
 		</ul>
