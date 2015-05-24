@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html
 	class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l2"
@@ -38,30 +39,37 @@
 		<!-- Fixed navbar -->
 		<div class="navbar navbar-main navbar-fixed-top" role="navigation">
 			<div class="navbar-header">
-				<a href="campoSemantico.jsp" data-effect="st-effect-11"
+				<a href="juego?seccion=semanticos" data-effect="st-effect-11"
 					class="btn btn-primary"> <i class="fa fa-reply-all fa-4x"></i>
 				</a>
 			</div>
 		</div>
 
+
 		<div class="container" style="margin-top: 6%;">
 			<div class="row">
+			<c:forEach items="${juegos}" var="element">
 				<div class="col-xs-4 col-md-3">
 					<a href="juego.jsp">
 						<div class="cover overlay cover-image-full img-circle"
 							style="height: 293px; text-align: center;">
-							<img src="images/leon.jpg" alt="cover">
+							<img src="images/${element.iconJuego}" alt="cover">
 							<div class="overlay overlay-full"
 								style="height: 293px; text-align: center;">
+								<i class="fa fa-star-o fa-4x estrella"></i> <i
+									class="fa fa-star-o fa-4x estrella"></i> <i
+									class="fa fa-star-o fa-4x estrella"></i>
+								<!--<c:if test="${not empty error}">
 								<i class="fa fa-star fa-4x estrella"></i> <i
 									class="fa fa-star fa-4x estrella"></i> <i
 									class="fa fa-star fa-4x estrella"></i>
+								</c:if>	-->
 							</div>
 						</div>
 					</a>
 				</div>
-
-				<div class="col-xs-4 col-md-3">
+			</c:forEach>
+				<!--<div class="col-xs-4 col-md-3">
 					<a href="matchWord.jsp">
 						<div class="cover overlay cover-image-full img-circle"
 							style="height: 293px; text-align: center;">
@@ -74,7 +82,7 @@
 							</div>
 						</div>
 					</a>
-				</div>
+				</div>  -->
 
 
 			</div>
