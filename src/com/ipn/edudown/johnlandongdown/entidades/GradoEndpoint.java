@@ -4,7 +4,6 @@ import com.ipn.edudown.johnlandongdown.entidades.PMF;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-import com.google.appengine.api.datastore.Cursor;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 
@@ -37,7 +36,7 @@ public class GradoEndpoint {
 		mgr = getPersistenceManager();
 		Query query = mgr.newQuery(Grado.class);
 		query.setOrdering("grupo asc");
-		
+
 		if (limit != null)
 			query.setRange(0, limit);
 
@@ -75,21 +74,14 @@ public class GradoEndpoint {
 	 */
 	@ApiMethod(name = "insertGrado")
 	public Grado insertGrado(Grado grado) {
-		
+
 		Key k = KeyFactory.createKey(Grado.class.getSimpleName(),
 				grado.hashCode());
 		grado.setIdGrado(k);
-		
+
 		PersistenceManager mgr = getPersistenceManager();
+		mgr.makePersistent(grado);
 		
-		try {
-			if (containsGrado(grado)) {
-				throw new EntityExistsException("La materia ya existe.");
-			}
-			mgr.makePersistent(grado);
-		} finally {
-			mgr.close();
-		}
 		return grado;
 	}
 
