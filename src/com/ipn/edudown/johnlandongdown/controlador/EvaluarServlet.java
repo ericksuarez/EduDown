@@ -19,8 +19,7 @@ public class EvaluarServlet extends HttpServlet {
 
 		String alu = req.getParameter("alumno");
 		
-		Alumno alumno = new AlumnoEndpoint().getAlumno(Long
-					.parseLong(new Helper().limpiaID("Alumno", alu)));
+		Alumno alumno = new AlumnoEndpoint().getAlumno(new Helper().limpiaID("Alumno", alu));
 		
 		req.setAttribute("alumno", alumno);
 		req.getRequestDispatcher("detalle.jsp").forward(req, resp);

@@ -38,7 +38,8 @@ public class PerfilesServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String tipoAlta = req.getParameter("alta");
-
+		req.setAttribute("alta","alta");
+		
 		List<Grado> grados = gep.listGrado(null);
 		req.setAttribute("grados", grados);
 
@@ -58,6 +59,7 @@ public class PerfilesServlet extends HttpServlet {
 
 		List<Grado> grados = gep.listGrado(null);
 		req.setAttribute("grados", grados);
+		req.setAttribute("alta","alta");
 
 		Form_validation validarDatos = new Form_validation();
 
@@ -67,8 +69,7 @@ public class PerfilesServlet extends HttpServlet {
 		if ("alumno".equals(tipoAlta)) {
 
 			Alumno alumno = beanAlumno(req);
-			Grado grado_idGrado = new GradoEndpoint().getGrado(Long
-					.parseLong(new Helper().limpiaID("Grado", grado)));
+			Grado grado_idGrado = new GradoEndpoint().getGrado(new Helper().limpiaID("Grado", grado));
 			alumno.setGrado_idGrado(grado_idGrado);
 
 			if (existeUsuario(alumno) == false
@@ -92,15 +93,13 @@ public class PerfilesServlet extends HttpServlet {
 			List<Grado> grado_idGrado = new ArrayList<Grado>();
 			for (int i = 0; i < idsgrado.length; i++) {
 				grado_idGrado
-						.add(new GradoEndpoint().getGrado(Long
-								.parseLong(new Helper().limpiaID("Grado",
-										idsgrado[i]))));
+						.add(new GradoEndpoint().getGrado(new Helper().limpiaID("Grado",
+										idsgrado[i])));
 			}
 			List<Materia> materia_idMateria = new ArrayList<Materia>();
 			for (int i = 0; i < idsmateria.length; i++) {
-				materia_idMateria.add(new MateriaEndpoint().getMateria(Long
-						.parseLong(new Helper().limpiaID("Materia",
-								idsmateria[i]))));
+				materia_idMateria.add(new MateriaEndpoint().getMateria(new Helper().limpiaID("Materia",
+								idsmateria[i])));
 			}
 
 			Profesor profesor = beanProfesor(req);
