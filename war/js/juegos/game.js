@@ -9,31 +9,31 @@ $(document).ready(function() {
     imagenes=[
     	{
     		id:1,
-    		url:"img/VACA.png"
+    		url:"/images/vaca.png"
     	}, 
     	{	
     		id:2,
-    		url:"img/GALLINA.png"
+    		url:"/images/gallina.png"
     	},
     	{
     		id:3,
-    		url:"img/BORREGO.png"
+    		url:"/images/borrego.png"
     	},
     	{
     		id:4,
-    		url:"img/BORREGO.png"
+    		url:"/images/borrego.png"
     	},
     	{
     		id:5,
-    		url:"img/BORREGO.png"
+    		url:"/images/borrego.png"
     	},
     	{
     		id:6,
-    		url:"img/BORREGO.png"
+    		url:"/images/borrego.png"
     	},
     	{
     		id:7,
-    		url:"img/BORREGO.png"
+    		url:"/images/borrego.png"
     	}    	
     	];
     

@@ -49,6 +49,23 @@
 		<servlet-name>Juego</servlet-name>
 		<url-pattern>/juego</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>Reportes</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.ReportesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Reportes</servlet-name>
+		<url-pattern>/reportes</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Actualizar</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.ActualizarServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Actualizar</servlet-name>
+		<url-pattern>/actualizar</url-pattern>
+	</servlet-mapping>
+
 		
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

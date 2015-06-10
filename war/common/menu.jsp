@@ -13,22 +13,32 @@
 		</div>
 
 		<ul class="sidebar-menu">
-			<li class="active"><a href="home.jsp"><i
+			<li class="active"><a href="supervisar"><i
 					class="fa fa-columns"></i> <span>Supervisar</span></a></li>
 			<!-- Sample 2 Level Collapse -->
 			<li class="hasSubmenu"><a href="#submenu2"><i
 					class="fa fa-chevron-circle-down"></i> <span>Estadistica</span></a>
 				<ul id="submenu2">
-					<li><a href="estadisticaGeneral.jsp"><i class="fa fa-circle-o"></i>
-							General Alumnos</a></li>
+					<li><a href="estadisticaGeneral.jsp"><i
+							class="fa fa-circle-o"></i> General Alumnos</a></li>
 				</ul></li>
 			<li class="hasSubmenu"><a href="#submenu3"><i
-					class="fa fa-chevron-circle-down"></i> <span>Altas</span></a>
+					class="fa fa-chevron-circle-down"></i> <span>Perfiles</span></a>
 				<ul id="submenu3">
-					<li><a href="perfiles?alta=alumno"><i class="fa fa-circle-o"></i>
-							Alta de Alumnos</a></li>
-					<li><a href="perfiles?alta=profesor"><i class="fa fa-circle-o"></i>
-							Alta de Profesores</a></li>
+					<li><a href="perfiles?alta=alumno"><i
+							class="fa fa-circle-o"></i> Alta de Alumnos</a></li>
+					<li><a href="perfiles?alta=profesor"><i
+							class="fa fa-circle-o"></i> Alta de Profesores</a></li>
+				</ul></li>
+			<li class="hasSubmenu"><a href="#submenu4"><i
+					class="fa fa-chevron-circle-down"></i> <span>Actualizar</span></a>
+				<ul id="submenu4">
+					<li><a href="actualizar?editar=alumno&detalle=&eliminar="><i
+							class="fa fa-circle-o"></i> Alumnos</a></li>
+							<li><a href="actualizar?editar=profesor&detalle=&eliminar="><i
+							class="fa fa-circle-o"></i> Profesores</a></li>
+					<li><a href="actualizar?editar=juegos&detalle=&eliminar="><i
+							class="fa fa-circle-o"></i> Palabras de los Juegos</a></li>
 				</ul></li>
 		</ul>
 	</div>

@@ -27,40 +27,19 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "alumnoendpoint.removeAlumno" : {
-      "path" : "alumno/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.removeAlumno",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
-    "alumnoendpoint.getAlumno" : {
-      "path" : "alumno/{id}",
+    "alumnoendpoint.listAlumno" : {
+      "path" : "alumno",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.listAlumno",
       "request" : {
         "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
+          "limit" : {
+            "type" : "int32",
+            "required" : false
           }
         },
         "body" : "empty"
@@ -85,25 +64,25 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "alumnoendpoint.listAlumno" : {
-      "path" : "alumno",
-      "httpMethod" : "GET",
+    "alumnoendpoint.removeAlumno" : {
+      "path" : "alumno/{id}",
+      "httpMethod" : "DELETE",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.listAlumno",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.removeAlumno",
       "request" : {
         "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
+          "id" : {
+            "type" : "int64",
+            "required" : true
           }
         },
         "body" : "empty"
       },
       "response" : {
-        "body" : "autoTemplate(backendResponse)"
+        "body" : "empty"
       }
     },
     "alumnoendpoint.insertAlumno" : {
@@ -117,6 +96,27 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "alumnoendpoint.getAlumno" : {
+      "path" : "alumno/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -184,6 +184,10 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
           "hours" : {
             "type" : "integer"
           },
@@ -193,23 +197,19 @@
           "seconds" : {
             "type" : "integer"
           },
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "month" : {
+          "date" : {
             "type" : "integer"
           },
           "year" : {
+            "type" : "integer"
+          },
+          "month" : {
             "type" : "integer"
           },
           "day" : {
             "type" : "integer"
           },
           "timezoneOffset" : {
-            "type" : "integer"
-          },
-          "date" : {
             "type" : "integer"
           }
         }
@@ -227,37 +227,16 @@
           "grupo" : {
             "type" : "string"
           },
+          "profesor_idProfesor" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Profesor"
+            }
+          },
           "materia_idMateria" : {
             "type" : "array",
             "items" : {
               "$ref" : "Materia"
-            }
-          },
-          "profesor_idProfesor" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Profesor"
-            }
-          }
-        }
-      },
-      "Materia" : {
-        "id" : "Materia",
-        "type" : "object",
-        "properties" : {
-          "idMateria" : {
-            "$ref" : "Key"
-          },
-          "nombreMateria" : {
-            "type" : "string"
-          },
-          "descripcion" : {
-            "type" : "string"
-          },
-          "profesor_idProfesor" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Profesor"
             }
           }
         }
@@ -301,6 +280,27 @@
           }
         }
       },
+      "Materia" : {
+        "id" : "Materia",
+        "type" : "object",
+        "properties" : {
+          "idMateria" : {
+            "$ref" : "Key"
+          },
+          "nombreMateria" : {
+            "type" : "string"
+          },
+          "descripcion" : {
+            "type" : "string"
+          },
+          "profesor_idProfesor" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Profesor"
+            }
+          }
+        }
+      },
       "AlumnoCollection" : {
         "id" : "AlumnoCollection",
         "type" : "object",
@@ -315,11 +315,9 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.removeAlumno" : {
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.listAlumno" : {
         "response" : {
-          "$ref" : "Alumno"
+          "$ref" : "AlumnoCollection"
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.updateAlumno" : {
@@ -330,15 +328,17 @@
           "$ref" : "Alumno"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.listAlumno" : {
-        "response" : {
-          "$ref" : "AlumnoCollection"
-        }
+      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.removeAlumno" : {
       },
       "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.insertAlumno" : {
         "request" : {
           "$ref" : "Alumno"
         },
+        "response" : {
+          "$ref" : "Alumno"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno" : {
         "response" : {
           "$ref" : "Alumno"
         }

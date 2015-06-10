@@ -27,6 +27,27 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
+    "imagenesendpoint.listImagenes" : {
+      "path" : "imagenes",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.listImagenes",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "imagenesendpoint.getImagenes" : {
       "path" : "imagenes/{id}",
       "httpMethod" : "GET",
@@ -100,27 +121,6 @@
       "response" : {
         "body" : "empty"
       }
-    },
-    "imagenesendpoint.listImagenes" : {
-      "path" : "imagenes",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.listImagenes",
-      "request" : {
-        "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
     }
   },
   "descriptor" : {
@@ -179,6 +179,11 @@
       }
     },
     "methods" : {
+      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.listImagenes" : {
+        "response" : {
+          "$ref" : "ImagenesCollection"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.getImagenes" : {
         "response" : {
           "$ref" : "Imagenes"
@@ -201,11 +206,6 @@
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.removeImagenes" : {
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.listImagenes" : {
-        "response" : {
-          "$ref" : "ImagenesCollection"
-        }
       }
     }
   }

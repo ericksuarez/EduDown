@@ -48,6 +48,27 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "gradoendpoint.getGrado" : {
+      "path" : "grado/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.getGrado",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "gradoendpoint.insertGrado" : {
       "path" : "grado",
       "httpMethod" : "POST",
@@ -100,27 +121,6 @@
       "response" : {
         "body" : "empty"
       }
-    },
-    "gradoendpoint.getGrado" : {
-      "path" : "grado/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.getGrado",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
     }
   },
   "descriptor" : {
@@ -138,16 +138,16 @@
           "grupo" : {
             "type" : "string"
           },
-          "materia_idMateria" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Materia"
-            }
-          },
           "profesor_idProfesor" : {
             "type" : "array",
             "items" : {
               "$ref" : "Profesor"
+            }
+          },
+          "materia_idMateria" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Materia"
             }
           }
         }
@@ -177,27 +177,6 @@
           },
           "parent" : {
             "$ref" : "Key"
-          }
-        }
-      },
-      "Materia" : {
-        "id" : "Materia",
-        "type" : "object",
-        "properties" : {
-          "idMateria" : {
-            "$ref" : "Key"
-          },
-          "nombreMateria" : {
-            "type" : "string"
-          },
-          "descripcion" : {
-            "type" : "string"
-          },
-          "profesor_idProfesor" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Profesor"
-            }
           }
         }
       },
@@ -244,6 +223,10 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
           "hours" : {
             "type" : "integer"
           },
@@ -253,14 +236,13 @@
           "seconds" : {
             "type" : "integer"
           },
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "month" : {
+          "date" : {
             "type" : "integer"
           },
           "year" : {
+            "type" : "integer"
+          },
+          "month" : {
             "type" : "integer"
           },
           "day" : {
@@ -268,9 +250,27 @@
           },
           "timezoneOffset" : {
             "type" : "integer"
+          }
+        }
+      },
+      "Materia" : {
+        "id" : "Materia",
+        "type" : "object",
+        "properties" : {
+          "idMateria" : {
+            "$ref" : "Key"
           },
-          "date" : {
-            "type" : "integer"
+          "nombreMateria" : {
+            "type" : "string"
+          },
+          "descripcion" : {
+            "type" : "string"
+          },
+          "profesor_idProfesor" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Profesor"
+            }
           }
         }
       },
@@ -293,6 +293,11 @@
           "$ref" : "GradoCollection"
         }
       },
+      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.getGrado" : {
+        "response" : {
+          "$ref" : "Grado"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.insertGrado" : {
         "request" : {
           "$ref" : "Grado"
@@ -310,11 +315,6 @@
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado" : {
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.getGrado" : {
-        "response" : {
-          "$ref" : "Grado"
-        }
       }
     }
   }
