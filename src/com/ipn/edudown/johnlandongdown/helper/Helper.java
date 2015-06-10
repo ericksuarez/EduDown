@@ -2,7 +2,7 @@ package com.ipn.edudown.johnlandongdown.helper;
 
 public class Helper {
 	
-	public String limpiaID(String clase, String classID) {
+	public Long limpiaID(String clase, String classID) {
 		
 		String ID = null;
 		char letras[] = clase.toCharArray();
@@ -15,6 +15,6 @@ public class Helper {
 		
 		ID = classID.trim();
 		
-		return ID;
+		return Long	.parseLong(ID);
 	}
 }
