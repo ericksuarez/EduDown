@@ -66,11 +66,9 @@ public class ProfesorEndpoint {
 	public Profesor getProfesor(@Named("id") Long id) {
 		PersistenceManager mgr = getPersistenceManager();
 		Profesor profesor = null;
-		try {
-			profesor = mgr.getObjectById(Profesor.class, id);
-		} finally {
-			mgr.close();
-		}
+
+		profesor = mgr.getObjectById(Profesor.class, id);
+
 		return profesor;
 	}
 

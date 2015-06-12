@@ -62,11 +62,9 @@ public class AlumnoEndpoint {
 	public Alumno getAlumno(@Named("id") Long id) {
 		PersistenceManager mgr = getPersistenceManager();
 		Alumno alumno = null;
-		try {
-			alumno = mgr.getObjectById(Alumno.class, id);
-		} finally {
-			mgr.close();
-		}
+
+		alumno = mgr.getObjectById(Alumno.class, id);
+
 		return alumno;
 	}
 

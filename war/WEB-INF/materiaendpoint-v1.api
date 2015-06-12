@@ -27,6 +27,27 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
+    "materiaendpoint.listMateria" : {
+      "path" : "materia",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "materiaendpoint.getMateria" : {
       "path" : "materia/{id}",
       "httpMethod" : "GET",
@@ -99,27 +120,6 @@
       },
       "response" : {
         "body" : "empty"
-      }
-    },
-    "materiaendpoint.listMateria" : {
-      "path" : "materia",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria",
-      "request" : {
-        "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
       }
     }
   },
@@ -288,6 +288,11 @@
       }
     },
     "methods" : {
+      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria" : {
+        "response" : {
+          "$ref" : "MateriaCollection"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.getMateria" : {
         "response" : {
           "$ref" : "Materia"
@@ -310,11 +315,6 @@
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.removeMateria" : {
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria" : {
-        "response" : {
-          "$ref" : "MateriaCollection"
-        }
       }
     }
   }

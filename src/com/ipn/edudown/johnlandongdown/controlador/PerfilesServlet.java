@@ -73,19 +73,21 @@ public class PerfilesServlet extends HttpServlet {
 			alumno.setGrado_idGrado(grado_idGrado);
 
 			if (existeUsuario(alumno) == false
-					&& validarDatos.alumno(alumno) == null) {
+					&& validarDatos.alumno(alumno) == "null") {
 
 				new AlumnoEndpoint().insertAlumno(alumno);
 				req.setAttribute("acierto", "El alumno se ingreso con èxito.");
 			} else {
 				req.setAttribute(
 						"error",
-						(validarDatos.alumno(alumno) == null) ? "El alumno ya esta registrado."
-								: validarDatos.alumno(alumno));
+						(validarDatos.alumno(alumno) == "null") ? "El alumno ya esta registrado."
+								: "Se han presentado los siguientes errores. <br>" + validarDatos.alumno(alumno));
 			}
 			req.getRequestDispatcher("altaAlumno.jsp").forward(req, resp);
 
-		} else {
+		} 
+		
+		if ("profesor".equals(tipoAlta)) {
 
 			String[] idsmateria = req.getParameterValues("materias[]");
 			String[] idsgrado = req.getParameterValues("grados[]");
@@ -107,15 +109,15 @@ public class PerfilesServlet extends HttpServlet {
 			profesor.setMateria_idMateria(materia_idMateria);
 
 			if (existeUsuario(profesor) == false
-					&& validarDatos.profesor(profesor) == null) {
+					&& validarDatos.profesor(profesor) == "null") {
 
 				new ProfesorEndpoint().insertProfesor(profesor);
 				req.setAttribute("acierto", "El profesor se ingreso con èxito.");
 			} else {
 				req.setAttribute(
 						"error",
-						(validarDatos.profesor(profesor) == null) ? "El profesor ya esta registrado."
-								: validarDatos.profesor(profesor));
+						(validarDatos.profesor(profesor) == "null") ? "El profesor ya esta registrado."
+								: "Se han presentado los siguientes errores. <br>" + validarDatos.profesor(profesor));
 			}
 
 			List<Materia> materias = mep.listMateria(null);

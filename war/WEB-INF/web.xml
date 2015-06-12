@@ -65,6 +65,14 @@
 		<servlet-name>Actualizar</servlet-name>
 		<url-pattern>/actualizar</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>UpdateJuego</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.UpdateJuegoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateJuego</servlet-name>
+		<url-pattern>/updatejuego</url-pattern>
+	</servlet-mapping>
 
 		
 	<welcome-file-list>

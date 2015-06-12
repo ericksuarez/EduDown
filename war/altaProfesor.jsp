@@ -11,7 +11,7 @@
 	</div>
 	<div class="panel-body">
 		<form class="form-horizontal" role="form"
-			action="actualizar?editar=profesor&detalle=&eliminar=" method="post">
+			action="actualizar" method="post">
 </c:if>
 <c:if test="${not empty alta}">
 
@@ -23,7 +23,10 @@
 		<form class="form-horizontal" role="form"
 			action="perfiles?alta=profesor" method="post">
 </c:if>
-
+<!-- Parametros para hacer Updates -->
+<input type="hidden" name="alta" value="profesor">
+<input type="hidden" name="idLong" value="${profesor.idProfesor}">
+<input type="hidden" name="detalle" value="${profesor.idProfesor}">
 
 <div class="form-group">
 	<label class="col-sm-3 control-label">Nombre</label>
@@ -76,6 +79,22 @@
 <div class="form-group">
 	<label class="col-sm-3 control-label">Grado</label>
 	<div class="col-sm-9" id="contenido-grado">
+	
+	<c:if test="${not empty actualizar}">
+	<c:forEach items="${profesor.grado_idGrado}" var="elements">
+	<div id="contenido-grado-html">
+			<select name="grados[]" class="form-control">
+			<option value="${elements.idGrado}">${elements.grado}-${elements.grupo}</option>
+				<c:forEach items="${grados}" var="element">
+					<option value="${element.idGrado}">${element.grado}-
+						${element.grupo}</option>
+				</c:forEach>
+			</select>
+		</div>
+		</c:forEach>
+	</c:if>
+	
+	<c:if test="${not empty alta}">
 		<div id="contenido-grado-html">
 			<select name="grados[]" class="form-control">
 				<c:forEach items="${grados}" var="element">
@@ -84,6 +103,7 @@
 				</c:forEach>
 			</select>
 		</div>
+	</c:if>
 	</div>
 </div>
 <div class="form-group">
@@ -96,6 +116,21 @@
 <div class="form-group">
 	<label class="col-sm-3 control-label">Materias</label>
 	<div class="col-sm-9" id="contenido-materia">
+	
+	<c:if test="${not empty actualizar}">
+	<c:forEach items="${profesor.materia_idMateria}" var="elements">
+	<div id="contenido-materia-html">
+			<select name="materias[]" class="form-control">
+			<option value="${elements.idMateria}">${elements.nombreMateria}</option>
+				<c:forEach items="${materias}" var="element">
+					<option value="${element.idMateria}">${element.nombreMateria}</option>
+				</c:forEach>
+			</select>
+		</div>
+		</c:forEach>
+	</c:if>
+	
+	<c:if test="${not empty alta}">
 		<div id="contenido-materia-html">
 			<select name="materias[]" class="form-control">
 				<c:forEach items="${materias}" var="element">
@@ -103,6 +138,7 @@
 				</c:forEach>
 			</select>
 		</div>
+	</c:if>
 	</div>
 </div>
 <div class="form-group">

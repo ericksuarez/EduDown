@@ -30,15 +30,17 @@
 					<li><a href="perfiles?alta=profesor"><i
 							class="fa fa-circle-o"></i> Alta de Profesores</a></li>
 				</ul></li>
+				<li class="active"><a href="updatejuego?accion=alta"><i
+					class="fa fa-columns"></i> <span>Alta Palabras Juegos</span></a></li>
 			<li class="hasSubmenu"><a href="#submenu4"><i
 					class="fa fa-chevron-circle-down"></i> <span>Actualizar</span></a>
 				<ul id="submenu4">
 					<li><a href="actualizar?editar=alumno&detalle=&eliminar="><i
 							class="fa fa-circle-o"></i> Alumnos</a></li>
-							<li><a href="actualizar?editar=profesor&detalle=&eliminar="><i
+					<li><a href="actualizar?editar=profesor&detalle=&eliminar="><i
 							class="fa fa-circle-o"></i> Profesores</a></li>
-					<li><a href="actualizar?editar=juegos&detalle=&eliminar="><i
-							class="fa fa-circle-o"></i> Palabras de los Juegos</a></li>
+					<li><a href="updatejuego"><i class="fa fa-circle-o"></i>
+							Palabras Juegos</a></li>
 				</ul></li>
 		</ul>
 	</div>

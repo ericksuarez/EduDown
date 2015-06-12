@@ -8,20 +8,24 @@
 <!-- Alta alumnos -->
 <c:if test="${not empty actualizar}">
 
-		<h4 class="panel-title">Editar Infomación </h4>
-		</div>
-		<div class="panel-body">
-			<form class="form-horizontal" role="form"
-				action="actualizar?editar=alumno&detalle=&eliminar=" method="post">
+	<h4 class="panel-title">Editar Infomación</h4>
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" role="form" action="actualizar"
+			method="post">
 </c:if>
 <c:if test="${not empty alta}">
 
-		<h4 class="panel-title">Alta de alumnos</h4>
-		</div>
-		<div class="panel-body">
-			<form class="form-horizontal" role="form"
-				action="perfiles?alta=alumno" method="post">
+	<h4 class="panel-title">Alta de alumnos</h4>
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" role="form"
+			action="perfiles?alta=alumno" method="post">
 </c:if>
+<!-- Parametros para hacer Updates -->
+<input type="hidden" name="alta" value="alumno">
+<input type="hidden" name="idLong" value="${alumno.idAlumno}">
+<input type="hidden" name="detalle" value="${alumno.idAlumno}">
 
 <div class="form-group">
 	<label class="col-sm-3 control-label">Nombre</label>
@@ -57,12 +61,17 @@
 			value="${alumno.usuario}">
 	</div>
 </div>
+
 <div class="form-group">
 	<label class="col-sm-3 control-label">Grado</label>
 	<div class="col-sm-9">
 		<select name="grado" class="selectpicker" data-style="btn-white"
 			title="Seleccione una opción..." data-live-search="true"
 			data-size="5" style="display: none;">
+			<c:if test="${not empty actualizar}">
+				<option value="${alumno.grado_idGrado.idGrado}">${alumno.grado_idGrado.grado}
+					- ${alumno.grado_idGrado.grupo}</option>
+			</c:if>
 			<c:forEach items="${grados}" var="element">
 				<option value="${element.idGrado}">${element.grado}-
 					${element.grupo}</option>

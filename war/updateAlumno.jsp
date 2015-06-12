@@ -32,7 +32,7 @@
 						class="btn btn-info btn-stroke btn-circle"> <i
 							class="fa fa-pencil-square-o"></i>
 					</a></td>
-					<td><a href="actualizar?detalle=${element.idAlumno}&eliminar=si"
+					<td><a href="actualizar?editar=alumno&detalle=${element.idAlumno}&eliminar=si" 
 						class="btn btn-danger btn-stroke btn-circle"> <i
 							class="fa fa-trash"></i>
 					</a></td>
