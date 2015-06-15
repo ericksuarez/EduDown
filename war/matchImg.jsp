@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="common/header_Juego.jsp" />
+
+<!-- Parametros -->
 
 <!-- Seccion del Juego Area del canvas -->
 <div class="row">
@@ -14,10 +17,16 @@
 
 <!-- Fin Seccion del Juego Area del canvas -->
 
+<input type="hidden" value="${juego.idJuegos}" id="idJuego">
+
 <!-- Script necesarios para el Juego -->
+<script src="js/cloud-endpoints/AvanceEndpoint.js"></script>
+<script src="js/cloud-endpoints/JuegosEndpoint.js"></script>
+
 <script src="js/juegos/GameObject.js"></script>
 <script src="js/juegos/MatchGame.js"></script>
 <script src="js/juegos/game.js"></script>
+
 <!-- Script necesarios para el Juego -->
 
 <jsp:include page="common/footer_Juego.jsp" />

@@ -16,6 +16,11 @@ function MatchGame (canvas, images) {//se declaran las variables
     this.time = 0;
     this.min = 0;
     this.hours = 0;
+    //variable para insert o update de la informaciòn
+    this.status = 0;
+    this.avance;
+    this.terminado = false;
+    this.error = 0;
     
     this.registerEvents = function (){//aqui van los eventos que se van a utilizar
         this.canvas.onmousedown = function(event) {
@@ -29,8 +34,6 @@ function MatchGame (canvas, images) {//se declaran las variables
         this.canvas.onmouseup = function(event) {    
             self.jugador.unclick (event);
             if (self.objetos[0].collide (self.jugador)){//se detectan las colisiones con el jugador
-                //console.log("el id es: " + self.objetos[0].id);
-                //console.log("el id del jugador es: " + self.jugador.id);
                 if(self.objetos[0].id === self.jugador.id){
                     self.score += 10;
                     console.log(self.score);
@@ -40,6 +43,9 @@ function MatchGame (canvas, images) {//se declaran las variables
                         show: true,
                         backdrop: 'static'
                     });
+                    
+                    self.guardar();
+                    
                 }
 
             } else if (self.objetos[1].collide (self.jugador)){
@@ -48,6 +54,9 @@ function MatchGame (canvas, images) {//se declaran las variables
                     //alert("Vuelve a intentarlo!");
                     $('#error').modal('show');
                     self.initObjects();
+                    
+                    self.guardar();
+                    
                 }                
             } else if (self.objetos[2].collide (self.jugador)){
                 if(self.objetos[2].id != self.jugador.id){
@@ -55,6 +64,9 @@ function MatchGame (canvas, images) {//se declaran las variables
                     //alert("Vuelve a intentarlo!");
                     $('#error').modal('show');
                     self.initObjects();
+                    
+                    self.guardar();
+                    
                 }
             }
         };   
@@ -120,10 +132,6 @@ function MatchGame (canvas, images) {//se declaran las variables
 
         var text = "Puntos: " + self.score;
         var time = "Tiempo: " + self.hours + " : " + self.min + " : " + self.time;
-        //var time = "Tiempo: " + self.hours " : " + self.min + " : " + self.time;
-        //this.ctx.font = "20px Arial";
-        //this.ctx.fillStyle = "black";
-        //this.ctx.fillText(text,10,100);
 
         self.ctx.font = "20px Arial";
         self.ctx.fillStyle = "black";
@@ -162,6 +170,19 @@ function MatchGame (canvas, images) {//se declaran las variables
             this.objetos[i].draw (this.ctx);    
         }
         this.jugador.draw(this.ctx);
+    };
+    
+    this.guardar = function(){
+
+        if(self.status == 0){
+            insertAvance(self.hours + " : " + self.min + " : " + self.time
+            			,self.terminado,self.error,self.score);
+            self.status = 1;
+        }else{
+            updateAvance(self.hours + " : " + self.min + " : " + self.time,
+            		     self.terminado,self.error,self.score);
+        }
+        
     };
 }
 

@@ -1,11 +1,9 @@
 $(document).ready(function() {
 
-	//alert("Bienvenido al Juego");
-
-	console.log ((3>5) || (6<10));
-
     var canvas = $("#canvas")[0];
     
+   // img = getJuegos();
+    	
     imagenes=[
     	{
     		id:1,
@@ -39,7 +37,7 @@ $(document).ready(function() {
     
     juego = new MatchGame (canvas, imagenes);
     juego.init ();
-
+    
 });
 
 	

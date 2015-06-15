@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
+
+<c:set var="relImg" scope="session" value="iconRI.png"/> <!-- URL a matchImg.jsp -->
+<c:set var="relPal" scope="session" value="iconRP.png"/> <!-- URL a matchImg.jsp -->
+<c:set var="compPal" scope="session" value="iconCP.png"/> <!-- URL a matchWord.jsp -->
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html
 	class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l2"
@@ -16,7 +22,7 @@
 
 <link href="css/default.min.css" rel="stylesheet">
 <link rel="stylesheet"
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	href="/font-awesome/css/font-awesome.min.css">
 <style type="text/css">
 .cover {
 	margin: 0px;
@@ -50,7 +56,14 @@
 			<div class="row">
 			<c:forEach items="${juegos}" var="element">
 				<div class="col-xs-4 col-md-3">
-					<a href="juego.jsp">
+				
+					<c:if test="${element.iconJuego == relImg || element.iconJuego == relPal}">
+					<a href="matchimagen?juego=${element.idJuegos}&next=">
+					</c:if>
+					<c:if test="${element.iconJuego == compPal}">
+					<a href="matchpalabra?juego=${element.idJuegos}&next=">
+					</c:if>
+					
 						<div class="cover overlay cover-image-full img-circle"
 							style="height: 293px; text-align: center;">
 							<img src="images/${element.iconJuego}" alt="cover">

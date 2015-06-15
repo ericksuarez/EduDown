@@ -17,7 +17,7 @@
 
 <link href="css/default.min.css" rel="stylesheet">
 <link rel="stylesheet"
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	href="/font-awesome/css/font-awesome.min.css">
 <style type="text/css">
 .cover {
 	margin: 0px;

@@ -1,6 +1,9 @@
 </div>
 <!-- /st-container -->
 
+<!-- Script necesario para los Cloud Endpoints-->
+<script src="https://apis.google.com/js/client.js?onload=init"></script>
+
 <!-- Modal Acierto -->
 <div class="modal fade" id="acierto" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
@@ -19,9 +22,12 @@
 							</div>
 							<div class="col-xs-1 col-md-1"></div>
 						</div>
-						<button type="button" class="btn btn-primary btn-lg btn-block">
+						<form action="javascript:void(0);">
+						<button
+						type="submit" class="btn btn-primary btn-lg btn-block" id="insertAvance">
 							<i class="fa fa-arrow-right fa-4x"></i>
 						</button>
+						 </form>
 					</div>
 					<div class="col-xs-2 col-md-2"></div>
 				</div>

@@ -16,8 +16,8 @@
 <link rel="stylesheet"
 	href="font-awesome/css/font-awesome.min.css">
 <!-- Script Jquery necesario-->
-<script
-	src="js/jquery.min.js"></script>
+<script	src="js/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -42,7 +42,7 @@
 					<div class="split-vertical-cell">
 						<div data-scrollable>
 							<p class="text-center">
-									<br> <br> <a href="menuJuegos.jsp" style="color: #fff">
+									<br> <br> <a href="juego?seccion=semanticos" style="color: #fff">
 									<i class="fa fa-align-justify fa-4x"></i>
 								</a>
 								<br> <br>
