@@ -27,27 +27,6 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "materiaendpoint.listMateria" : {
-      "path" : "materia",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria",
-      "request" : {
-        "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "materiaendpoint.getMateria" : {
       "path" : "materia/{id}",
       "httpMethod" : "GET",
@@ -67,6 +46,27 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "materiaendpoint.removeMateria" : {
+      "path" : "materia/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.removeMateria",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
       }
     },
     "materiaendpoint.insertMateria" : {
@@ -101,25 +101,25 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "materiaendpoint.removeMateria" : {
-      "path" : "materia/{id}",
-      "httpMethod" : "DELETE",
+    "materiaendpoint.listMateria" : {
+      "path" : "materia",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.removeMateria",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria",
       "request" : {
         "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
+          "limit" : {
+            "type" : "int32",
+            "required" : false
           }
         },
         "body" : "empty"
       },
       "response" : {
-        "body" : "empty"
+        "body" : "autoTemplate(backendResponse)"
       }
     }
   },
@@ -137,12 +137,6 @@
           },
           "descripcion" : {
             "type" : "string"
-          },
-          "profesor_idProfesor" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Profesor"
-            }
           }
         }
       },
@@ -174,106 +168,6 @@
           }
         }
       },
-      "Profesor" : {
-        "id" : "Profesor",
-        "type" : "object",
-        "properties" : {
-          "idProfesor" : {
-            "$ref" : "Key"
-          },
-          "nombre" : {
-            "type" : "string"
-          },
-          "apaterno" : {
-            "type" : "string"
-          },
-          "amaterno" : {
-            "type" : "string"
-          },
-          "especialidad" : {
-            "type" : "string"
-          },
-          "email" : {
-            "type" : "string"
-          },
-          "fecha_alta" : {
-            "$ref" : "Date"
-          },
-          "grado_idGrado" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Grado"
-            }
-          },
-          "materia_idMateria" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Materia"
-            }
-          }
-        }
-      },
-      "Date" : {
-        "id" : "Date",
-        "type" : "object",
-        "properties" : {
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "hours" : {
-            "type" : "integer"
-          },
-          "minutes" : {
-            "type" : "integer"
-          },
-          "seconds" : {
-            "type" : "integer"
-          },
-          "date" : {
-            "type" : "integer"
-          },
-          "year" : {
-            "type" : "integer"
-          },
-          "month" : {
-            "type" : "integer"
-          },
-          "day" : {
-            "type" : "integer"
-          },
-          "timezoneOffset" : {
-            "type" : "integer"
-          }
-        }
-      },
-      "Grado" : {
-        "id" : "Grado",
-        "type" : "object",
-        "properties" : {
-          "idGrado" : {
-            "$ref" : "Key"
-          },
-          "grado" : {
-            "type" : "string"
-          },
-          "grupo" : {
-            "type" : "string"
-          },
-          "profesor_idProfesor" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Profesor"
-            }
-          },
-          "materia_idMateria" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Materia"
-            }
-          }
-        }
-      },
       "MateriaCollection" : {
         "id" : "MateriaCollection",
         "type" : "object",
@@ -288,15 +182,12 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria" : {
-        "response" : {
-          "$ref" : "MateriaCollection"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.getMateria" : {
         "response" : {
           "$ref" : "Materia"
         }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.removeMateria" : {
       },
       "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.insertMateria" : {
         "request" : {
@@ -314,7 +205,10 @@
           "$ref" : "Materia"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.removeMateria" : {
+      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria" : {
+        "response" : {
+          "$ref" : "MateriaCollection"
+        }
       }
     }
   }

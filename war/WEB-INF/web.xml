@@ -66,15 +66,38 @@
 		<url-pattern>/actualizar</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>UpdateJuego</servlet-name>
-		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.UpdateJuegoServlet</servlet-class>
+		<servlet-name>AltaJuego</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.AltaJuegoServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>UpdateJuego</servlet-name>
-		<url-pattern>/updatejuego</url-pattern>
+		<servlet-name>AltaJuego</servlet-name>
+		<url-pattern>/altajuego</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ActualizarJuego</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.ActualizarJuegoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ActualizarJuego</servlet-name>
+		<url-pattern>/actualizarjuego</url-pattern>
+	</servlet-mapping>
+//Paquete Controlador Juegos
+<servlet>
+		<servlet-name>MatchImagen</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.juegos.MatchImagenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MatchImagen</servlet-name>
+		<url-pattern>/matchimagen</url-pattern>
 	</servlet-mapping>
 
-		
+<security-constraint>
+   <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+   </user-data-constraint>
+</security-constraint>
+
+			
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
@@ -83,7 +106,7 @@
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value>com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint,com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint,com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint,com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint,com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint,com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint,com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint,com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint</param-value>
+   <param-value>com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint,com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint,com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint,com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint,com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint,com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint,com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint,com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint,com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint,com.ipn.edudown.johnlandongdown.entidades.QuoteEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>

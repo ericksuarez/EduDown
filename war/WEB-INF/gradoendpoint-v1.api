@@ -27,25 +27,41 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "gradoendpoint.listGrado" : {
+    "gradoendpoint.updateGrado" : {
       "path" : "grado",
-      "httpMethod" : "GET",
+      "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.updateGrado",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "gradoendpoint.removeGrado" : {
+      "path" : "grado/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado",
       "request" : {
         "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
+          "id" : {
+            "type" : "int64",
+            "required" : true
           }
         },
         "body" : "empty"
       },
       "response" : {
-        "body" : "autoTemplate(backendResponse)"
+        "body" : "empty"
       }
     },
     "gradoendpoint.getGrado" : {
@@ -85,41 +101,25 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "gradoendpoint.updateGrado" : {
+    "gradoendpoint.listGrado" : {
       "path" : "grado",
-      "httpMethod" : "PUT",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.updateGrado",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "gradoendpoint.removeGrado" : {
-      "path" : "grado/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado",
       "request" : {
         "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
+          "limit" : {
+            "type" : "int32",
+            "required" : false
           }
         },
         "body" : "empty"
       },
       "response" : {
-        "body" : "empty"
+        "body" : "autoTemplate(backendResponse)"
       }
     }
   },
@@ -137,18 +137,6 @@
           },
           "grupo" : {
             "type" : "string"
-          },
-          "profesor_idProfesor" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Profesor"
-            }
-          },
-          "materia_idMateria" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Materia"
-            }
           }
         }
       },
@@ -180,100 +168,6 @@
           }
         }
       },
-      "Profesor" : {
-        "id" : "Profesor",
-        "type" : "object",
-        "properties" : {
-          "idProfesor" : {
-            "$ref" : "Key"
-          },
-          "nombre" : {
-            "type" : "string"
-          },
-          "apaterno" : {
-            "type" : "string"
-          },
-          "amaterno" : {
-            "type" : "string"
-          },
-          "especialidad" : {
-            "type" : "string"
-          },
-          "email" : {
-            "type" : "string"
-          },
-          "fecha_alta" : {
-            "$ref" : "Date"
-          },
-          "grado_idGrado" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Grado"
-            }
-          },
-          "materia_idMateria" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Materia"
-            }
-          }
-        }
-      },
-      "Date" : {
-        "id" : "Date",
-        "type" : "object",
-        "properties" : {
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "hours" : {
-            "type" : "integer"
-          },
-          "minutes" : {
-            "type" : "integer"
-          },
-          "seconds" : {
-            "type" : "integer"
-          },
-          "date" : {
-            "type" : "integer"
-          },
-          "year" : {
-            "type" : "integer"
-          },
-          "month" : {
-            "type" : "integer"
-          },
-          "day" : {
-            "type" : "integer"
-          },
-          "timezoneOffset" : {
-            "type" : "integer"
-          }
-        }
-      },
-      "Materia" : {
-        "id" : "Materia",
-        "type" : "object",
-        "properties" : {
-          "idMateria" : {
-            "$ref" : "Key"
-          },
-          "nombreMateria" : {
-            "type" : "string"
-          },
-          "descripcion" : {
-            "type" : "string"
-          },
-          "profesor_idProfesor" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Profesor"
-            }
-          }
-        }
-      },
       "GradoCollection" : {
         "id" : "GradoCollection",
         "type" : "object",
@@ -288,10 +182,15 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado" : {
+      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.updateGrado" : {
+        "request" : {
+          "$ref" : "Grado"
+        },
         "response" : {
-          "$ref" : "GradoCollection"
+          "$ref" : "Grado"
         }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado" : {
       },
       "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.getGrado" : {
         "response" : {
@@ -306,15 +205,10 @@
           "$ref" : "Grado"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.updateGrado" : {
-        "request" : {
-          "$ref" : "Grado"
-        },
+      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado" : {
         "response" : {
-          "$ref" : "Grado"
+          "$ref" : "GradoCollection"
         }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado" : {
       }
     }
   }

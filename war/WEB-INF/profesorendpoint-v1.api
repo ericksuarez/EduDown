@@ -27,27 +27,6 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "profesorendpoint.listProfesor" : {
-      "path" : "profesor",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.listProfesor",
-      "request" : {
-        "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "profesorendpoint.getProfesor" : {
       "path" : "profesor/{id}",
       "httpMethod" : "GET",
@@ -64,38 +43,6 @@
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "profesorendpoint.insertProfesor" : {
-      "path" : "profesor",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "profesorendpoint.updateProfesor" : {
-      "path" : "profesor",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.updateProfesor",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -120,6 +67,59 @@
       },
       "response" : {
         "body" : "empty"
+      }
+    },
+    "profesorendpoint.updateProfesor" : {
+      "path" : "profesor",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.updateProfesor",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "profesorendpoint.listProfesor" : {
+      "path" : "profesor",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.listProfesor",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "profesorendpoint.insertProfesor" : {
+      "path" : "profesor",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
       }
     }
   },
@@ -196,10 +196,6 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
           "hours" : {
             "type" : "integer"
           },
@@ -209,19 +205,23 @@
           "seconds" : {
             "type" : "integer"
           },
-          "date" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "month" : {
             "type" : "integer"
           },
           "year" : {
-            "type" : "integer"
-          },
-          "month" : {
             "type" : "integer"
           },
           "day" : {
             "type" : "integer"
           },
           "timezoneOffset" : {
+            "type" : "integer"
+          },
+          "date" : {
             "type" : "integer"
           }
         }
@@ -238,18 +238,6 @@
           },
           "grupo" : {
             "type" : "string"
-          },
-          "profesor_idProfesor" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Profesor"
-            }
-          },
-          "materia_idMateria" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Materia"
-            }
           }
         }
       },
@@ -265,12 +253,6 @@
           },
           "descripcion" : {
             "type" : "string"
-          },
-          "profesor_idProfesor" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Profesor"
-            }
           }
         }
       },
@@ -288,23 +270,12 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.listProfesor" : {
-        "response" : {
-          "$ref" : "ProfesorCollection"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.getProfesor" : {
         "response" : {
           "$ref" : "Profesor"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor" : {
-        "request" : {
-          "$ref" : "Profesor"
-        },
-        "response" : {
-          "$ref" : "Profesor"
-        }
+      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.removeProfesor" : {
       },
       "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.updateProfesor" : {
         "request" : {
@@ -314,7 +285,18 @@
           "$ref" : "Profesor"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.removeProfesor" : {
+      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.listProfesor" : {
+        "response" : {
+          "$ref" : "ProfesorCollection"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor" : {
+        "request" : {
+          "$ref" : "Profesor"
+        },
+        "response" : {
+          "$ref" : "Profesor"
+        }
       }
     }
   }

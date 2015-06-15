@@ -69,22 +69,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "imagenesendpoint.insertImagenes" : {
-      "path" : "imagenes",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.insertImagenes",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "imagenesendpoint.updateImagenes" : {
       "path" : "imagenes",
       "httpMethod" : "PUT",
@@ -93,6 +77,22 @@
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
       "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "imagenesendpoint.insertImagenes" : {
+      "path" : "imagenes",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.insertImagenes",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -189,7 +189,7 @@
           "$ref" : "Imagenes"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.insertImagenes" : {
+      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes" : {
         "request" : {
           "$ref" : "Imagenes"
         },
@@ -197,7 +197,7 @@
           "$ref" : "Imagenes"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes" : {
+      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.insertImagenes" : {
         "request" : {
           "$ref" : "Imagenes"
         },
