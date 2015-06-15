@@ -22,9 +22,11 @@ public class Avance {
 	@Persistent
 	String tiempoTerminado;
 	@Persistent
-	Boolean termiando;
+	boolean terminado;
 	@Persistent
 	Integer errores;
+	@Persistent
+	Integer puntuacion;
 	@Persistent
 	@Unowned
 	Juegos Juegos_idJuegos;
@@ -56,12 +58,12 @@ public class Avance {
 		this.tiempoTerminado = tiempoTerminado;
 	}
 
-	public Boolean getTermiando() {
-		return termiando;
+	public boolean getTermiando() {
+		return terminado;
 	}
 
-	public void setTermiando(Boolean termiando) {
-		this.termiando = termiando;
+	public void setTermiando(boolean termiando) {
+		this.terminado = termiando;
 	}
 
 	public Integer getErrores() {
@@ -86,6 +88,14 @@ public class Avance {
 
 	public void setAlumno_idAlumno(Alumno alumno_idAlumno) {
 		Alumno_idAlumno = alumno_idAlumno;
+	}
+
+	public Integer getPuntuacion() {
+		return puntuacion;
+	}
+
+	public void setPuntuacion(Integer puntuacion) {
+		this.puntuacion = puntuacion;
 	}
 
 	

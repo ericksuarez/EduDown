@@ -1,6 +1,7 @@
 package com.ipn.edudown.johnlandongdown.config;
 
 import com.ipn.edudown.johnlandongdown.entidades.Alumno;
+import com.ipn.edudown.johnlandongdown.entidades.Juegos;
 import com.ipn.edudown.johnlandongdown.entidades.Profesor;
 
 public class Form_validation {
@@ -11,10 +12,10 @@ public class Form_validation {
 		int cnt = 0;
 		int campos = 4; //numero de campos que se van a validar
 		String resp = "";
-		resp += req(al.getNombre()) ? iconError + " El campo Nombre es requerido <br>" : cnt++;
-		resp += req(al.getApaterno()) ?  iconError + " El campo Apellido Paterno es requerido <br>" : cnt++;
-		resp += req(al.getAmaterno()) ?  iconError + " El campo Apellido Materno es requerido <br>" : cnt++;
-		resp += req(al.getUsuario()) ? iconError + " El campo Usuario es requerido <br>" : cnt++;
+		resp += req(al.getNombre()) ? requerido("Nombre") : cnt++;
+		resp += req(al.getApaterno()) ? requerido("Apellido Paterno") : cnt++;
+		resp += req(al.getAmaterno()) ? requerido("Apellido Materno") : cnt++;
+		resp += req(al.getUsuario()) ? requerido("Apellido Usuario") : cnt++;
 		
 		return (cnt == campos) ? "null" : resp;
 	}
@@ -24,11 +25,24 @@ public class Form_validation {
 		int cnt = 0;
 		int campos = 5; //numero de campos que se van a validar
 		String resp = "";
-		resp += req(prof.getNombre()) ?  iconError + " El campo Nombre es requerido <br>" : cnt++ ;
-		resp += req(prof.getApaterno()) ?  iconError	+ " El campo Apellido Paterno es requerido <br>" : cnt++;
-		resp += req(prof.getAmaterno()) ? iconError	+ " El campo Apellido Materno es requerido <br>" : cnt++;
-		resp += req(prof.getEspecialidad()) ? iconError	+ " El campo Especialidad es requerido <br>" : cnt++;
-		resp += req(prof.getEmail()) ?  iconError + " El campo Email es requerido <br>" : cnt++;
+		resp += req(prof.getNombre()) ? requerido("Nombre") : cnt++ ;
+		resp += req(prof.getApaterno()) ? requerido("Apellido Paterno") : cnt++;
+		resp += req(prof.getAmaterno()) ? requerido("Apellido Materno") : cnt++;
+		resp += req(prof.getEspecialidad()) ? requerido("Especialidad"): cnt++;
+		resp += req(prof.getEmail()) ? requerido("Email") : cnt++;
+
+		return (cnt == campos) ? "null" : resp;
+	}
+	
+	public String juegos(Juegos juego) {
+
+		int cnt = 0;
+		int campos = 4; //numero de campos que se van a validar
+		String resp = "";
+		resp += req(juego.getNombre()) ? requerido("Nombre") : cnt++ ;
+		resp += req(juego.getTiempo()) ? requerido("Tiempo") : cnt++;
+		resp += req(juego.getIconJuego()) ? requerido("Tipo de juego") : cnt++;
+		resp += req(juego.getCampoSemantico_idCampoSemantico().getSemantico()) ? requerido("Campo Semantico") : cnt++;
 
 		return (cnt == campos) ? "null" : resp;
 	}
@@ -40,6 +54,10 @@ public class Form_validation {
 		}else{
 			return false;
 		}
+	}
+	
+	public String requerido(String campo){
+		return  iconError + "El campo " + campo + " es requerido. <br>";
 	}
 
 }

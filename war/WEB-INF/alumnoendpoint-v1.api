@@ -27,6 +27,22 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
+    "alumnoendpoint.insertAlumno" : {
+      "path" : "alumno",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.insertAlumno",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "alumnoendpoint.listAlumno" : {
       "path" : "alumno",
       "httpMethod" : "GET",
@@ -40,6 +56,27 @@
           "limit" : {
             "type" : "int32",
             "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "alumnoendpoint.getAlumno" : {
+      "path" : "alumno/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
           }
         },
         "body" : "empty"
@@ -83,43 +120,6 @@
       },
       "response" : {
         "body" : "empty"
-      }
-    },
-    "alumnoendpoint.getAlumno" : {
-      "path" : "alumno/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "alumnoendpoint.insertAlumno" : {
-      "path" : "alumno",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.insertAlumno",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
       }
     }
   },
@@ -184,10 +184,6 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
           "hours" : {
             "type" : "integer"
           },
@@ -197,19 +193,23 @@
           "seconds" : {
             "type" : "integer"
           },
-          "date" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "month" : {
             "type" : "integer"
           },
           "year" : {
-            "type" : "integer"
-          },
-          "month" : {
             "type" : "integer"
           },
           "day" : {
             "type" : "integer"
           },
           "timezoneOffset" : {
+            "type" : "integer"
+          },
+          "date" : {
             "type" : "integer"
           }
         }
@@ -226,78 +226,6 @@
           },
           "grupo" : {
             "type" : "string"
-          },
-          "profesor_idProfesor" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Profesor"
-            }
-          },
-          "materia_idMateria" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Materia"
-            }
-          }
-        }
-      },
-      "Profesor" : {
-        "id" : "Profesor",
-        "type" : "object",
-        "properties" : {
-          "idProfesor" : {
-            "$ref" : "Key"
-          },
-          "nombre" : {
-            "type" : "string"
-          },
-          "apaterno" : {
-            "type" : "string"
-          },
-          "amaterno" : {
-            "type" : "string"
-          },
-          "especialidad" : {
-            "type" : "string"
-          },
-          "email" : {
-            "type" : "string"
-          },
-          "fecha_alta" : {
-            "$ref" : "Date"
-          },
-          "grado_idGrado" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Grado"
-            }
-          },
-          "materia_idMateria" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Materia"
-            }
-          }
-        }
-      },
-      "Materia" : {
-        "id" : "Materia",
-        "type" : "object",
-        "properties" : {
-          "idMateria" : {
-            "$ref" : "Key"
-          },
-          "nombreMateria" : {
-            "type" : "string"
-          },
-          "descripcion" : {
-            "type" : "string"
-          },
-          "profesor_idProfesor" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Profesor"
-            }
           }
         }
       },
@@ -315,9 +243,22 @@
       }
     },
     "methods" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.insertAlumno" : {
+        "request" : {
+          "$ref" : "Alumno"
+        },
+        "response" : {
+          "$ref" : "Alumno"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.listAlumno" : {
         "response" : {
           "$ref" : "AlumnoCollection"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno" : {
+        "response" : {
+          "$ref" : "Alumno"
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.updateAlumno" : {
@@ -329,19 +270,6 @@
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.removeAlumno" : {
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno" : {
-        "response" : {
-          "$ref" : "Alumno"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.insertAlumno" : {
-        "request" : {
-          "$ref" : "Alumno"
-        },
-        "response" : {
-          "$ref" : "Alumno"
-        }
       }
     }
   }

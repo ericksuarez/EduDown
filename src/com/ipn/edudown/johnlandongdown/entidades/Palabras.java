@@ -19,6 +19,8 @@ public class Palabras {
 	@Persistent
 	Boolean esSilabas;
 	@Persistent
+	Boolean esRelacion;
+	@Persistent
 	String principal;
 	@Persistent
 	String correcta;
@@ -33,6 +35,14 @@ public class Palabras {
 
 	public void setIdPalabras(Key idPalabras) {
 		this.idPalabras = idPalabras;
+	}
+
+	public Boolean getEsRelacion() {
+		return esRelacion;
+	}
+
+	public void setEsRelacion(Boolean esRelacion) {
+		this.esRelacion = esRelacion;
 	}
 
 	public Boolean getEsSilabas() {

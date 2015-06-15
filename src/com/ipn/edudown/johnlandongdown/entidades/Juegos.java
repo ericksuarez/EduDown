@@ -23,14 +23,13 @@ public class Juegos {
 	@Persistent
 	String iconJuego;
 	@Persistent
-	@Unowned
-	Set<Materia> Materia_idMateria;
+	String tipoJuego;
 	@Persistent
 	@Unowned
 	CampoSemantico CampoSemantico_idCampoSemantico;
 	@Persistent
 	@Unowned
-	Set<Palabras> Palabras_idPalabras;
+	Palabras Palabras_idPalabras;
 	@Persistent
 	@Unowned
 	Set<Imagenes> Imagenes_idImagenes;
@@ -59,10 +58,6 @@ public class Juegos {
 		this.tiempo = tiempo;
 	}
 
-	public Set<Materia> getMateria_idMateria() {
-		return Materia_idMateria;
-	}
-	
 	public String getIconJuego() {
 		return iconJuego;
 	}
@@ -71,8 +66,12 @@ public class Juegos {
 		this.iconJuego = iconJuego;
 	}
 
-	public void setMateria_idMateria(Set<Materia> materia_idMateria) {
-		Materia_idMateria = materia_idMateria;
+	public String getTipoJuego() {
+		return tipoJuego;
+	}
+
+	public void setTipoJuego(String tipoJuego) {
+		this.tipoJuego = tipoJuego;
 	}
 
 	public CampoSemantico getCampoSemantico_idCampoSemantico() {
@@ -84,11 +83,11 @@ public class Juegos {
 		CampoSemantico_idCampoSemantico = campoSemantico_idCampoSemantico;
 	}
 
-	public Set<Palabras> getPalabras_idPalabras() {
+	public Palabras getPalabras_idPalabras() {
 		return Palabras_idPalabras;
 	}
 
-	public void setPalabras_idPalabras(Set<Palabras> palabras_idPalabras) {
+	public void setPalabras_idPalabras(Palabras palabras_idPalabras) {
 		Palabras_idPalabras = palabras_idPalabras;
 	}
 
