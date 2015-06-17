@@ -17,7 +17,7 @@ function MatchGame (canvas, images) {//se declaran las variables
     this.min = 0;
     this.hours = 0;
     //variable para insert o update de la informaciòn
-    this.terminado = false;
+    this.terminado = true;
     this.error = 0;
     
     this.registerEvents = function (){//aqui van los eventos que se van a utilizar

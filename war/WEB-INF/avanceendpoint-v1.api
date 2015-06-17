@@ -27,6 +27,27 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
+    "avanceendpoint.listAvance" : {
+      "path" : "avance",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "avanceendpoint.insertAvance" : {
       "path" : "avance",
       "httpMethod" : "POST",
@@ -43,22 +64,17 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "avanceendpoint.getAvance" : {
-      "path" : "avance/{id}",
-      "httpMethod" : "GET",
+    "avanceendpoint.updateAvance" : {
+      "path" : "avance",
+      "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance",
       "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -85,35 +101,19 @@
         "body" : "empty"
       }
     },
-    "avanceendpoint.updateAvance" : {
-      "path" : "avance",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "avanceendpoint.listAvance" : {
-      "path" : "avance",
+    "avanceendpoint.getAvance" : {
+      "path" : "avance/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance",
       "request" : {
         "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
+          "id" : {
+            "type" : "int64",
+            "required" : true
           }
         },
         "body" : "empty"
@@ -187,6 +187,10 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
           "hours" : {
             "type" : "integer"
           },
@@ -196,17 +200,13 @@
           "seconds" : {
             "type" : "integer"
           },
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
           "date" : {
             "type" : "integer"
           },
-          "month" : {
+          "year" : {
             "type" : "integer"
           },
-          "year" : {
+          "month" : {
             "type" : "integer"
           },
           "day" : {
@@ -236,6 +236,9 @@
           "tipoJuego" : {
             "type" : "string"
           },
+          "campoSemantico_idCampoSemantico" : {
+            "$ref" : "CampoSemantico"
+          },
           "palabras_idPalabras" : {
             "$ref" : "Palabras"
           },
@@ -244,9 +247,24 @@
             "items" : {
               "$ref" : "Imagenes"
             }
+          }
+        }
+      },
+      "CampoSemantico" : {
+        "id" : "CampoSemantico",
+        "type" : "object",
+        "properties" : {
+          "idCampo" : {
+            "$ref" : "Key"
           },
-          "campoSemantico_idCampoSemantico" : {
-            "$ref" : "CampoSemantico"
+          "semantico" : {
+            "type" : "string"
+          },
+          "imagenIcono" : {
+            "type" : "string"
+          },
+          "sonido" : {
+            "type" : "string"
           }
         }
       },
@@ -285,24 +303,6 @@
             "$ref" : "Key"
           },
           "nombre" : {
-            "type" : "string"
-          }
-        }
-      },
-      "CampoSemantico" : {
-        "id" : "CampoSemantico",
-        "type" : "object",
-        "properties" : {
-          "idCampo" : {
-            "$ref" : "Key"
-          },
-          "semantico" : {
-            "type" : "string"
-          },
-          "imagenIcono" : {
-            "type" : "string"
-          },
-          "sonido" : {
             "type" : "string"
           }
         }
@@ -363,6 +363,11 @@
       }
     },
     "methods" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance" : {
+        "response" : {
+          "$ref" : "AvanceCollection"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance" : {
         "request" : {
           "$ref" : "Avance"
@@ -370,13 +375,6 @@
         "response" : {
           "$ref" : "Avance"
         }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance" : {
-        "response" : {
-          "$ref" : "Avance"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.removeAvance" : {
       },
       "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance" : {
         "request" : {
@@ -386,9 +384,11 @@
           "$ref" : "Avance"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.removeAvance" : {
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance" : {
         "response" : {
-          "$ref" : "AvanceCollection"
+          "$ref" : "Avance"
         }
       }
     }

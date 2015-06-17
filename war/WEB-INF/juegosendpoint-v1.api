@@ -27,59 +27,6 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "juegosendpoint.updateJuegos" : {
-      "path" : "juegos",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.updateJuegos",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "juegosendpoint.removeJuegos" : {
-      "path" : "juegos/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.removeJuegos",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
-    "juegosendpoint.insertJuegos" : {
-      "path" : "juegos",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.insertJuegos",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "juegosendpoint.listJuegos" : {
       "path" : "juegos",
       "httpMethod" : "GET",
@@ -121,6 +68,59 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "juegosendpoint.insertJuegos" : {
+      "path" : "juegos",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.insertJuegos",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "juegosendpoint.updateJuegos" : {
+      "path" : "juegos",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.updateJuegos",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "juegosendpoint.removeJuegos" : {
+      "path" : "juegos/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.removeJuegos",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
     }
   },
   "descriptor" : {
@@ -144,6 +144,9 @@
           "tipoJuego" : {
             "type" : "string"
           },
+          "campoSemantico_idCampoSemantico" : {
+            "$ref" : "CampoSemantico"
+          },
           "palabras_idPalabras" : {
             "$ref" : "Palabras"
           },
@@ -152,9 +155,6 @@
             "items" : {
               "$ref" : "Imagenes"
             }
-          },
-          "campoSemantico_idCampoSemantico" : {
-            "$ref" : "CampoSemantico"
           }
         }
       },
@@ -183,6 +183,24 @@
           },
           "parent" : {
             "$ref" : "Key"
+          }
+        }
+      },
+      "CampoSemantico" : {
+        "id" : "CampoSemantico",
+        "type" : "object",
+        "properties" : {
+          "idCampo" : {
+            "$ref" : "Key"
+          },
+          "semantico" : {
+            "type" : "string"
+          },
+          "imagenIcono" : {
+            "type" : "string"
+          },
+          "sonido" : {
+            "type" : "string"
           }
         }
       },
@@ -225,24 +243,6 @@
           }
         }
       },
-      "CampoSemantico" : {
-        "id" : "CampoSemantico",
-        "type" : "object",
-        "properties" : {
-          "idCampo" : {
-            "$ref" : "Key"
-          },
-          "semantico" : {
-            "type" : "string"
-          },
-          "imagenIcono" : {
-            "type" : "string"
-          },
-          "sonido" : {
-            "type" : "string"
-          }
-        }
-      },
       "JuegosCollection" : {
         "id" : "JuegosCollection",
         "type" : "object",
@@ -257,24 +257,6 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.updateJuegos" : {
-        "request" : {
-          "$ref" : "Juegos"
-        },
-        "response" : {
-          "$ref" : "Juegos"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.removeJuegos" : {
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.insertJuegos" : {
-        "request" : {
-          "$ref" : "Juegos"
-        },
-        "response" : {
-          "$ref" : "Juegos"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.listJuegos" : {
         "response" : {
           "$ref" : "JuegosCollection"
@@ -284,6 +266,24 @@
         "response" : {
           "$ref" : "Juegos"
         }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.insertJuegos" : {
+        "request" : {
+          "$ref" : "Juegos"
+        },
+        "response" : {
+          "$ref" : "Juegos"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.updateJuegos" : {
+        "request" : {
+          "$ref" : "Juegos"
+        },
+        "response" : {
+          "$ref" : "Juegos"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.removeJuegos" : {
       }
     }
   }

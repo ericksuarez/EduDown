@@ -24,7 +24,7 @@
 						</div>
 						<form action="javascript:void(0);">
 						<button
-						type="submit" class="btn btn-primary btn-lg btn-block" id="insertAvance">
+						type="submit" class="btn btn-primary btn-lg btn-block" id="siguiente">
 							<i class="fa fa-arrow-right fa-4x"></i>
 						</button>
 						 </form>

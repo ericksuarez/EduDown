@@ -24,8 +24,7 @@ function insertAvance(timer, term, error, score) {
 							+ resp.terminado);
 				}
 			});
-	
-	window.location = $('#siguiente').val();
+
 }
 
 

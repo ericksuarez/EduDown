@@ -3,8 +3,10 @@ package com.ipn.edudown.johnlandongdown.helper;
 import java.util.Set;
 
 import org.json.*;
+
 import com.ipn.edudown.johnlandongdown.entidades.Imagenes;
 import com.ipn.edudown.johnlandongdown.entidades.Juegos;
+import com.ipn.edudown.johnlandongdown.entidades.Palabras;
 
 public class Helper {
 
@@ -39,25 +41,33 @@ public class Helper {
 		return id.trim();
 	}
 
-	public JSONObject jsonWord(JSONObject json, String s, int i)
+	public JSONObject jsonWord(String s, int i)
 			throws JSONException {
+		JSONObject json = new JSONObject();
+		
 		json.put("id", i);
-		json.put("silaba",  s);
+		json.put("silaba", s);
 		json.put("url", "images/" + "fondo-letra.png");
+		
 		return json;
 	}
 
-	public JSONObject jsonImg(JSONObject json, Juegos j) throws JSONException {
+	public String jsonImg(Juegos j) throws JSONException {
 
 		Set<Imagenes> imgs = j.getImagenes_idImagenes();
 		int cnt = 1;
+		String jsons = "";
 		
 		for (Imagenes img : imgs) {
+			
+			JSONObject json = new JSONObject();
 			json.put("id", cnt++);
 			json.put("silaba", "");
 			json.put("url", "images/" + img.getNombre());
+			
+			jsons += json.toString();
 		}
 
-		return json;
+		return jsons;
 	}
 }

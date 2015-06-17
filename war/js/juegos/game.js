@@ -1,30 +1,31 @@
 $(document).ready(function() {
-
 	
     var canvas = $("#canvas")[0];
     
-    //imagenes = {"id":3,"silaba":"mano","url":"images/fondo-letra.png"};
-    	
-    imagenes=[
-    	{
-    		id:1,
-    		silaba: "vaca",
-    		url:"/images/vaca.png"
-    	}, 
-    	{	
-    		id:2,
-    		silaba: "gallina",
-    		url:"/images/gallina.png"
-    	},
-    	{
-    		id:3,
-    		silaba: "borrego",
-    		url:"/images/borrego.png"
-    	}   	
-    	];
+    var text = $('#media').val();
+    var textAl = $('#alumno').val();
+    var textJu = $('#juego').val();
+    
+    var alumno = jQuery.parseJSON(textAl);
+    var juego = jQuery.parseJSON(textJu);
+    
+    $('#idjuego').val(juego.idJuegos.id);
+    
+    var list = text.split(';');
+    var imagenes = [];
+
+    $.each( list, function( key, value ) {
+      imagenes[key] = jQuery.parseJSON(value);
+    });
     
     juego = new MatchGame (canvas, imagenes);
     juego.init ();
+    
+    $('#siguiente').click(function(){
+    	var semantico = $('#semantico').val();
+    	var idjuego = $('#idjuego').val();
+    	window.location ="/matchimagen?juego=" + idjuego + "&semantico=" + semantico + "&inicio=siguiente";
+    });
     
 });
 

@@ -74,58 +74,50 @@ public class MatchImagenServlet extends HttpServlet {
 			
 			Palabras p = j.getPalabras_idPalabras();
 
-			JSONObject palabrajson = new JSONObject();
-			palabrajson = helper.jsonWord(palabrajson, p.getPrincipal(), 1);
-			palabrajson = helper.jsonWord(palabrajson, p.getCorrecta(), 2);
-			palabrajson = helper.jsonWord(palabrajson, p.getErronea(), 3);
-
-			req.setAttribute("jsonMedia", palabrajson);
+			req.setAttribute("jsonMedia", helper.jsonWord(p.getPrincipal(),1).toString() + ";" +
+										  helper.jsonWord(p.getCorrecta(),2).toString() + ";" +
+										  helper.jsonWord(p.getErronea(),3).toString());
 
 		} else if (j.getImagenes_idImagenes().size() > 0) {
 
-			JSONObject imgjson = new JSONObject();
-			imgjson = helper.jsonImg(imgjson, j);
-
-			req.setAttribute("jsonMedia", imgjson);
+			req.setAttribute("jsonMedia", helper.jsonImg(j));
 		}
 
 		JSONObject jsonAlumno = new JSONObject(al);
-		req.setAttribute("alumno", jsonAlumno);
+		req.setAttribute("alumno", jsonAlumno.toString());
 		
 		JSONObject juego = new JSONObject(j);
-		req.setAttribute("juego", juego);
+		req.setAttribute("juego", juego.toString());
 
 	}
 
-	public void continuaJuego(HttpServletRequest req, HttpServletResponse resp) throws JSONException {
+	public void continuaJuego(HttpServletRequest req, HttpServletResponse resp) throws JSONException, IOException {
 
 		String semantico = req.getParameter("semantico");
 		req.setAttribute("semantico", semantico);
+		Juegos j = null;
 		
 		List<Juegos> lista = (List) req.getSession().getAttribute("listajuegos");
-
-		Juegos j = lista.get(0);
+		
+		if(lista.size() > 0){
+		 j = lista.get(0);
+		}else{
+			resp.sendRedirect("juego?seccion=semanticos");
+		}
 
 		Alumno al = (Alumno) req.getSession().getAttribute("sesionAlumno");
 
 		if (j.getPalabras_idPalabras() == null) {
-			String principal = j.getPalabras_idPalabras().getPrincipal();
-			String correcta = j.getPalabras_idPalabras().getCorrecta();
-			String erronea = j.getPalabras_idPalabras().getErronea();
+			
+			Palabras p = j.getPalabras_idPalabras();
 
-			JSONObject palabrajson = new JSONObject();
-			palabrajson = helper.jsonWord(palabrajson, principal, 1);
-			palabrajson = helper.jsonWord(palabrajson, correcta, 2);
-			palabrajson = helper.jsonWord(palabrajson, erronea, 3);
-
-			req.setAttribute("jsonMedia", palabrajson);
+			req.setAttribute("jsonMedia", helper.jsonWord(p.getPrincipal(),1).toString() + ";" +
+										  helper.jsonWord(p.getCorrecta(),2).toString() + ";" +
+										  helper.jsonWord(p.getErronea(),3).toString());
 
 		} else if (j.getImagenes_idImagenes().size() > 0) {
 
-			JSONObject imgjson = new JSONObject();
-			imgjson = helper.jsonImg(imgjson, j);
-
-			req.setAttribute("jsonMedia", imgjson);
+			req.setAttribute("jsonMedia", helper.jsonImg(j));
 		}
 
 		JSONObject jsonAlumno = new JSONObject(al);

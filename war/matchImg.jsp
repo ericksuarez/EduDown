@@ -5,7 +5,11 @@
 <jsp:include page="common/header_Juego.jsp" />
 
 <!-- Parametros -->
-
+<input type="hidden" id="media" value='${jsonMedia}'> 
+<input type="text" id="alumno" value='${alumno}'> 
+<input type="text" id="juego" value='${juego}'> 
+<input type="text" id="semantico" value="${semantico}"> 
+<input type="text" id="idjuego" value=""> 
 
 <!-- Seccion del Juego Area del canvas -->
 <div class="row">
