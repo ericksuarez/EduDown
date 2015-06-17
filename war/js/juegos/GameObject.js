@@ -3,6 +3,7 @@ function GameObject (object, x, y, width, height) {
     this.image = new Image ();
     this.image.src = object.url;
     this.id = object.id;
+    this.silaba = object.silaba;
     this.x = x;
     this.y = y;
     this.width = width;
@@ -16,6 +17,12 @@ function GameObject (object, x, y, width, height) {
     var yoffset;
     this.draw = function(ctx) {
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        
+        if(this.silaba != "undefined"){ //Para verificar si es un juego con imagenes o palabras
+        	ctx.font = "40px Arial";
+            ctx.fillStyle = "black";
+            ctx.fillText(this.silaba, (this.x+this.width*1/3), (this.y+this.height/2) );
+        }
     };
 
     this.click = function(evento) {

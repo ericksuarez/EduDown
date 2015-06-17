@@ -1,5 +1,6 @@
 package com.ipn.edudown.johnlandongdown.entidades;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -12,7 +13,7 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.datanucleus.annotations.Unowned;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
-public class Palabras {
+public class Palabras implements Serializable{
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	Key idPalabras;

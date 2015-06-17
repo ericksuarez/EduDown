@@ -1,5 +1,6 @@
 package com.ipn.edudown.johnlandongdown.entidades;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 import java.util.Set;
@@ -15,7 +16,7 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.datanucleus.annotations.Unowned;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
-public class Profesor {
+public class Profesor implements Serializable{
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	Key idProfesor;

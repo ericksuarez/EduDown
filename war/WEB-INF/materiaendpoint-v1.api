@@ -27,27 +27,6 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "materiaendpoint.getMateria" : {
-      "path" : "materia/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.getMateria",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "materiaendpoint.removeMateria" : {
       "path" : "materia/{id}",
       "httpMethod" : "DELETE",
@@ -67,6 +46,27 @@
       },
       "response" : {
         "body" : "empty"
+      }
+    },
+    "materiaendpoint.listMateria" : {
+      "path" : "materia",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
       }
     },
     "materiaendpoint.insertMateria" : {
@@ -101,19 +101,19 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "materiaendpoint.listMateria" : {
-      "path" : "materia",
+    "materiaendpoint.getMateria" : {
+      "path" : "materia/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.getMateria",
       "request" : {
         "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
+          "id" : {
+            "type" : "int64",
+            "required" : true
           }
         },
         "body" : "empty"
@@ -182,12 +182,12 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.getMateria" : {
-        "response" : {
-          "$ref" : "Materia"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.removeMateria" : {
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria" : {
+        "response" : {
+          "$ref" : "MateriaCollection"
+        }
       },
       "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.insertMateria" : {
         "request" : {
@@ -205,9 +205,9 @@
           "$ref" : "Materia"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria" : {
+      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.getMateria" : {
         "response" : {
-          "$ref" : "MateriaCollection"
+          "$ref" : "Materia"
         }
       }
     }

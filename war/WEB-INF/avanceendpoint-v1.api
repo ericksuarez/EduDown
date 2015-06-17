@@ -2,7 +2,7 @@
   "extends" : "thirdParty.api",
   "abstract" : false,
   "root" : "https://landong-down.appspot.com/_ah/api",
-  "name" : "juegosendpoint",
+  "name" : "avanceendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
@@ -27,14 +27,14 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "juegosendpoint.updateJuegos" : {
-      "path" : "juegos",
-      "httpMethod" : "PUT",
+    "avanceendpoint.insertAvance" : {
+      "path" : "avance",
+      "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.updateJuegos",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -43,14 +43,35 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "juegosendpoint.removeJuegos" : {
-      "path" : "juegos/{id}",
+    "avanceendpoint.getAvance" : {
+      "path" : "avance/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "avanceendpoint.removeAvance" : {
+      "path" : "avance/{id}",
       "httpMethod" : "DELETE",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.removeJuegos",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.removeAvance",
       "request" : {
         "parameters" : {
           "id" : {
@@ -64,14 +85,14 @@
         "body" : "empty"
       }
     },
-    "juegosendpoint.insertJuegos" : {
-      "path" : "juegos",
-      "httpMethod" : "POST",
+    "avanceendpoint.updateAvance" : {
+      "path" : "avance",
+      "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.insertJuegos",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -80,14 +101,14 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "juegosendpoint.listJuegos" : {
-      "path" : "juegos",
+    "avanceendpoint.listAvance" : {
+      "path" : "avance",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.listJuegos",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance",
       "request" : {
         "parameters" : {
           "limit" : {
@@ -100,31 +121,102 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
-    },
-    "juegosendpoint.getJuegos" : {
-      "path" : "juegos/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.getJuegos",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
     }
   },
   "descriptor" : {
     "schemas" : {
+      "Avance" : {
+        "id" : "Avance",
+        "type" : "object",
+        "properties" : {
+          "idAvance" : {
+            "$ref" : "Key"
+          },
+          "fecha" : {
+            "$ref" : "Date"
+          },
+          "tiempoTerminado" : {
+            "type" : "string"
+          },
+          "errores" : {
+            "type" : "integer"
+          },
+          "puntuacion" : {
+            "type" : "integer"
+          },
+          "termiando" : {
+            "type" : "boolean"
+          },
+          "juegos_idJuegos" : {
+            "$ref" : "Juegos"
+          },
+          "alumno_idAlumno" : {
+            "$ref" : "Alumno"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          }
+        }
+      },
+      "Date" : {
+        "id" : "Date",
+        "type" : "object",
+        "properties" : {
+          "hours" : {
+            "type" : "integer"
+          },
+          "minutes" : {
+            "type" : "integer"
+          },
+          "seconds" : {
+            "type" : "integer"
+          },
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "date" : {
+            "type" : "integer"
+          },
+          "month" : {
+            "type" : "integer"
+          },
+          "year" : {
+            "type" : "integer"
+          },
+          "day" : {
+            "type" : "integer"
+          },
+          "timezoneOffset" : {
+            "type" : "integer"
+          }
+        }
+      },
       "Juegos" : {
         "id" : "Juegos",
         "type" : "object",
@@ -155,34 +247,6 @@
           },
           "campoSemantico_idCampoSemantico" : {
             "$ref" : "CampoSemantico"
-          }
-        }
-      },
-      "Key" : {
-        "id" : "Key",
-        "type" : "object",
-        "properties" : {
-          "kind" : {
-            "type" : "string"
-          },
-          "appId" : {
-            "type" : "string"
-          },
-          "id" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "name" : {
-            "type" : "string"
-          },
-          "complete" : {
-            "type" : "boolean"
-          },
-          "namespace" : {
-            "type" : "string"
-          },
-          "parent" : {
-            "$ref" : "Key"
           }
         }
       },
@@ -243,46 +307,88 @@
           }
         }
       },
-      "JuegosCollection" : {
-        "id" : "JuegosCollection",
+      "Alumno" : {
+        "id" : "Alumno",
+        "type" : "object",
+        "properties" : {
+          "idAlumno" : {
+            "$ref" : "Key"
+          },
+          "nombre" : {
+            "type" : "string"
+          },
+          "apaterno" : {
+            "type" : "string"
+          },
+          "amaterno" : {
+            "type" : "string"
+          },
+          "usuario" : {
+            "type" : "string"
+          },
+          "fecha_alta" : {
+            "$ref" : "Date"
+          },
+          "grado_idGrado" : {
+            "$ref" : "Grado"
+          }
+        }
+      },
+      "Grado" : {
+        "id" : "Grado",
+        "type" : "object",
+        "properties" : {
+          "idGrado" : {
+            "$ref" : "Key"
+          },
+          "grado" : {
+            "type" : "string"
+          },
+          "grupo" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AvanceCollection" : {
+        "id" : "AvanceCollection",
         "type" : "object",
         "properties" : {
           "items" : {
             "type" : "array",
             "items" : {
-              "$ref" : "Juegos"
+              "$ref" : "Avance"
             }
           }
         }
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.updateJuegos" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance" : {
         "request" : {
-          "$ref" : "Juegos"
+          "$ref" : "Avance"
         },
         "response" : {
-          "$ref" : "Juegos"
+          "$ref" : "Avance"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.removeJuegos" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance" : {
+        "response" : {
+          "$ref" : "Avance"
+        }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.insertJuegos" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.removeAvance" : {
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance" : {
         "request" : {
-          "$ref" : "Juegos"
+          "$ref" : "Avance"
         },
         "response" : {
-          "$ref" : "Juegos"
+          "$ref" : "Avance"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.listJuegos" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance" : {
         "response" : {
-          "$ref" : "JuegosCollection"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint.getJuegos" : {
-        "response" : {
-          "$ref" : "Juegos"
+          "$ref" : "AvanceCollection"
         }
       }
     }

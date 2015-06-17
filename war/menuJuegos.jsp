@@ -58,10 +58,10 @@
 				<div class="col-xs-4 col-md-3">
 				
 					<c:if test="${element.iconJuego == relImg || element.iconJuego == relPal}">
-					<a href="matchimagen?juego=${element.idJuegos}&next=">
+					<a href="matchimagen?juego=${element.idJuegos}&semantico=${semantico}&inicio=inicio">
 					</c:if>
 					<c:if test="${element.iconJuego == compPal}">
-					<a href="matchpalabra?juego=${element.idJuegos}&next=">
+					<a href="matchpalabra?juego=${element.idJuegos}&semantico=${semantico}&inicio=inicio">
 					</c:if>
 					
 						<div class="cover overlay cover-image-full img-circle"

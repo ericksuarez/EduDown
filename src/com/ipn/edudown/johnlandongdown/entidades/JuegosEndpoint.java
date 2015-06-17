@@ -24,102 +24,94 @@ import javax.jdo.Query;
 public class JuegosEndpoint {
 
 	/**
-	 * This method lists all the entities inserted in datastore.
-	 * It uses HTTP GET method and paging support.
-	 *
+	 * This method lists all the entities inserted in datastore. It uses HTTP
+	 * GET method and paging support.
+	 * 
 	 * @return A CollectionResponse class containing the list of all entities
-	 * persisted and a cursor to the next page.
+	 *         persisted and a cursor to the next page.
 	 */
 	@SuppressWarnings({ "unchecked", "unused" })
 	@ApiMethod(name = "listJuegos")
-	public List<Juegos> listJuegos(
-			@Nullable @Named("limit") Integer limit) {
+	public List<Juegos> listJuegos(@Nullable @Named("limit") Integer limit) {
 
 		PersistenceManager mgr = null;
 		List<Juegos> execute = null;
 
-			mgr = getPersistenceManager();
-			Query query = mgr.newQuery(Juegos.class);
-			if (limit != null) {
-				query.setRange(0, limit);
-			}
-			execute = (List<Juegos>) query.execute();
+		mgr = getPersistenceManager();
+		Query query = mgr.newQuery(Juegos.class);
+		if (limit != null) {
+			query.setRange(0, limit);
+		}
+		execute = (List<Juegos>) query.execute();
 
 		return execute;
 	}
 
 	/**
-	 * This method gets the entity having primary key id. It uses HTTP GET method.
-	 *
-	 * @param id the primary key of the java bean.
+	 * This method gets the entity having primary key id. It uses HTTP GET
+	 * method.
+	 * 
+	 * @param id
+	 *            the primary key of the java bean.
 	 * @return The entity with primary key id.
 	 */
 	@ApiMethod(name = "getJuegos")
 	public Juegos getJuegos(@Named("id") Long id) {
 		PersistenceManager mgr = getPersistenceManager();
 		Juegos juegos = null;
-		try {
-			juegos = mgr.getObjectById(Juegos.class, id);
-		} finally {
-			mgr.close();
-		}
+
+		juegos = mgr.getObjectById(Juegos.class, id);
+
 		return juegos;
 	}
 
 	/**
-	 * This inserts a new entity into App Engine datastore. If the entity already
-	 * exists in the datastore, an exception is thrown.
-	 * It uses HTTP POST method.
-	 *
-	 * @param juegos the entity to be inserted.
+	 * This inserts a new entity into App Engine datastore. If the entity
+	 * already exists in the datastore, an exception is thrown. It uses HTTP
+	 * POST method.
+	 * 
+	 * @param juegos
+	 *            the entity to be inserted.
 	 * @return The inserted entity.
 	 */
 	@ApiMethod(name = "insertJuegos")
 	public Juegos insertJuegos(Juegos juegos) {
-		
+
 		Key k = KeyFactory.createKey(Juegos.class.getSimpleName(),
 				juegos.hashCode());
 		juegos.setIdJuegos(k);
-		
+
 		PersistenceManager mgr = getPersistenceManager();
-		try {
-			if (containsJuegos(juegos)) {
-				throw new EntityExistsException("El juego ya existe.");
-			}
-			mgr.makePersistent(juegos);
-		} finally {
-			mgr.close();
-		}
+
+		mgr.makePersistent(juegos);
+
 		return juegos;
 	}
 
 	/**
-	 * This method is used for updating an existing entity. If the entity does not
-	 * exist in the datastore, an exception is thrown.
-	 * It uses HTTP PUT method.
-	 *
-	 * @param juegos the entity to be updated.
+	 * This method is used for updating an existing entity. If the entity does
+	 * not exist in the datastore, an exception is thrown. It uses HTTP PUT
+	 * method.
+	 * 
+	 * @param juegos
+	 *            the entity to be updated.
 	 * @return The updated entity.
 	 */
 	@ApiMethod(name = "updateJuegos")
 	public Juegos updateJuegos(Juegos juegos) {
 		PersistenceManager mgr = getPersistenceManager();
-		try {
-			if (!containsJuegos(juegos)) {
-				throw new EntityNotFoundException("El juego no existe.");
-			}
-			mgr.makePersistent(juegos);
-		} finally {
-			mgr.close();
-		}
+
+		mgr.makePersistent(juegos);
+
 		return juegos;
 	}
 
 	/**
-	 * This method removes the entity with primary key id.
-	 * It uses HTTP DELETE method.
-	 *
-	 * @param id the primary key of the entity to be deleted.
+	 * This method removes the entity with primary key id. It uses HTTP DELETE
+	 * method.
+	 * 
+	 * @param id
+	 *            the primary key of the entity to be deleted.
 	 */
 	@ApiMethod(name = "removeJuegos")
 	public void removeJuegos(@Named("id") Long id) {

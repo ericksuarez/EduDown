@@ -6,6 +6,7 @@
 
 <!-- Parametros -->
 
+
 <!-- Seccion del Juego Area del canvas -->
 <div class="row">
 	<div class="col-xs-1 col-md-1"></div>
@@ -17,11 +18,8 @@
 
 <!-- Fin Seccion del Juego Area del canvas -->
 
-<input type="hidden" value="${juego.idJuegos}" id="idJuego">
-
 <!-- Script necesarios para el Juego -->
 <script src="js/cloud-endpoints/AvanceEndpoint.js"></script>
-<script src="js/cloud-endpoints/JuegosEndpoint.js"></script>
 
 <script src="js/juegos/GameObject.js"></script>
 <script src="js/juegos/MatchGame.js"></script>

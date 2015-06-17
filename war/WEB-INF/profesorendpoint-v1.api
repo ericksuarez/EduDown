@@ -48,6 +48,38 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "profesorendpoint.insertProfesor" : {
+      "path" : "profesor",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "profesorendpoint.updateProfesor" : {
+      "path" : "profesor",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.updateProfesor",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "profesorendpoint.removeProfesor" : {
       "path" : "profesor/{id}",
       "httpMethod" : "DELETE",
@@ -69,22 +101,6 @@
         "body" : "empty"
       }
     },
-    "profesorendpoint.updateProfesor" : {
-      "path" : "profesor",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.updateProfesor",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "profesorendpoint.listProfesor" : {
       "path" : "profesor",
       "httpMethod" : "GET",
@@ -101,22 +117,6 @@
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "profesorendpoint.insertProfesor" : {
-      "path" : "profesor",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -209,6 +209,9 @@
             "type" : "string",
             "format" : "int64"
           },
+          "date" : {
+            "type" : "integer"
+          },
           "month" : {
             "type" : "integer"
           },
@@ -219,9 +222,6 @@
             "type" : "integer"
           },
           "timezoneOffset" : {
-            "type" : "integer"
-          },
-          "date" : {
             "type" : "integer"
           }
         }
@@ -275,7 +275,13 @@
           "$ref" : "Profesor"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.removeProfesor" : {
+      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor" : {
+        "request" : {
+          "$ref" : "Profesor"
+        },
+        "response" : {
+          "$ref" : "Profesor"
+        }
       },
       "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.updateProfesor" : {
         "request" : {
@@ -285,17 +291,11 @@
           "$ref" : "Profesor"
         }
       },
+      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.removeProfesor" : {
+      },
       "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.listProfesor" : {
         "response" : {
           "$ref" : "ProfesorCollection"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor" : {
-        "request" : {
-          "$ref" : "Profesor"
-        },
-        "response" : {
-          "$ref" : "Profesor"
         }
       }
     }

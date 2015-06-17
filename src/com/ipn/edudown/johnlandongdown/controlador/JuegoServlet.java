@@ -40,6 +40,7 @@ public class JuegoServlet extends HttpServlet {
 					tmp.add(j);
 				}
 			}
+			req.setAttribute("semantico", semantico);
 			req.setAttribute("juegos", tmp);
 			req.getRequestDispatcher("menuJuegos.jsp").forward(req, resp);
 		}

@@ -8,8 +8,8 @@ function init() {
 function insertAvance(timer, term, error, score) {
 
 	var requestData = {};
-	requestData.idJuegos = '${juego}';
-	requestData.idAlumno = '${sesionAlumno}';
+	requestData.idJuegos = $('#juego').val();
+	requestData.idAlumno = $('#alumno').val();
 	requestData.errores = error;
 	requestData.fecha = "2015-06-14";
 	requestData.puntuacion = score;
@@ -24,27 +24,10 @@ function insertAvance(timer, term, error, score) {
 							+ resp.terminado);
 				}
 			});
+	
+	window.location = $('#siguiente').val();
 }
 
-function updateAvance(timer, term, error, score) {
-
-	var requestData = {};
-	requestData.idAvance = $('#idJuego').attr('id');
-	requestData.idJuegos = '${juego.idJuegos}';
-	requestData.idAlumno = '${sesionAlumno}';
-	requestData.fecha = "2015-06-14";
-	requestData.tiempo = timer;
-	requestData.terminado = term;
-	requestData.errores = error;
-	requestData.puntuacion = score;
-	gapi.client.avanceendpoint.updateAvance(requestData).execute(
-			function(resp) {
-				if (!resp.code) {
-					console.log(resp.puntuacion + ":" + resp.fecha + ":"
-							+ resp.terminado);
-				}
-			});
-}
 
 /**
  * @author Erick
