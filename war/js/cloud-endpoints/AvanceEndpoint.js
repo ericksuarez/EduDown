@@ -13,7 +13,7 @@ function insertAvance(timer, term, error, score) {
 	requestData.errores = error;
 	requestData.fecha = "2015-06-14";
 	requestData.puntuacion = score;
-	requestData.terminado = term;
+	requestData.terminado = "true";
 	requestData.tiempoTerminado = timer;
 	
 	

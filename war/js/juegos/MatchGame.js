@@ -53,7 +53,7 @@ function MatchGame (canvas, images) {//se declaran las variables
                     $('#error').modal('show');
                     self.initObjects();
                     
-                    this.error++;
+                    self.error++;
                     
                 }                
             } else if (self.objetos[2].collide (self.jugador)){
@@ -63,7 +63,7 @@ function MatchGame (canvas, images) {//se declaran las variables
                     $('#error').modal('show');
                     self.initObjects();
                     
-                    this.error++;
+                    self.error++;
                     
                 }
             }
@@ -173,7 +173,7 @@ function MatchGame (canvas, images) {//se declaran las variables
     this.guardar = function(){
 
             insertAvance(self.hours + " : " + self.min + " : " + self.time
-            			,self.terminado,self.error,self.score);
+            			,true,self.error,self.score);
 
         
     };
