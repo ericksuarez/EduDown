@@ -8,6 +8,9 @@ $(document).ready(function() {
 
     $.each( list, function( key, value ) {
       imagenes[key] = jQuery.parseJSON(value);
+      alert(imagenes[key].id);
+      alert(imagenes[key].silaba);
+      alert(imagenes[key].url);
     });
     
     juego = new MatchGame (canvas, imagenes);

@@ -1,17 +1,13 @@
 package com.ipn.edudown.johnlandongdown.controlador.juegos;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.datanucleus.jta.JOnASTransactionManagerLocator;
 import org.json.*;
 
 import com.ipn.edudown.johnlandongdown.entidades.Alumno;
@@ -22,6 +18,7 @@ import com.ipn.edudown.johnlandongdown.entidades.Imagenes;
 import com.ipn.edudown.johnlandongdown.entidades.Juegos;
 import com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint;
 import com.ipn.edudown.johnlandongdown.entidades.Palabras;
+import com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint;
 import com.ipn.edudown.johnlandongdown.helper.Helper;
 
 @SuppressWarnings("serial")
@@ -29,6 +26,7 @@ public class MatchImagenServlet extends HttpServlet {
 
 	JuegosEndpoint jep = new JuegosEndpoint();
 	AvanceEndpoint aep = new AvanceEndpoint();
+	PalabrasEndpoint pep = new PalabrasEndpoint();
 	Helper helper = new Helper();
 
 	@Override
@@ -53,14 +51,16 @@ public class MatchImagenServlet extends HttpServlet {
 
 		
 		String idjuego = req.getParameter("juego");
-		Juegos actual = jep.getJuegos(helper.limpiaID("Juegos", idjuego));
 		String avance = req.getParameter("avance");
+		Juegos actual = new Juegos();
+		actual = jep.getJuegos(helper.limpiaID("Juegos", idjuego));
 		
 		if (!avance.isEmpty()) {
 			Alumno alu = (Alumno) req.getSession().getAttribute("sesionAlumno");
-			Avance avanc = aep.getAvance(helper.limpiaID("Avance", avance));
-			avanc.setAlumno_idAlumno(alu);
-			//avanc.setJuegos_idJuegos(actual);
+			Avance avanc = new Avance();
+			avanc = aep.getAvance(helper.limpiaID("Avance", avance));
+			avanc.setAlumno_idAlumno(String.valueOf(alu.getIdAlumno()));
+			avanc.setJuegos_idJuegos("Juegos("+idjuego+")");
 			aep.updateAvance(avanc);
 		}
 		
@@ -73,7 +73,7 @@ public class MatchImagenServlet extends HttpServlet {
 										  helper.jsonWord(p.getCorrecta(),2).toString() + ";" +
 										  helper.jsonWord(p.getErronea(),3).toString());
 		} catch (NullPointerException e) {
-		/*	String jsons = "";
+			String jsons = "";
 			int i = 0;
 			Juegos jc = buscaJuego(req,actual);
 			List<Imagenes> img = jc.getImagenes_idImagenes();
@@ -81,8 +81,8 @@ public class MatchImagenServlet extends HttpServlet {
 				i++;
 				JSONObject jsonImg = helper.jsonImg(im, i); 
 				jsons += jsonImg.toString() + ";";
-			}*/
-			req.setAttribute("jsonMedia", j);
+			}
+			req.setAttribute("jsonMedia", jsons);
 		}
 
 		JSONObject jsonAlumno = new JSONObject(al);
@@ -104,8 +104,10 @@ public class MatchImagenServlet extends HttpServlet {
 		for (Juegos ju : juegos) {
 			CampoSemantico cs = ju.getCampoSemantico_idCampoSemantico();
 			if (cs.getSemantico().equals(semantico)) {
-				if(ju.getIdJuegos() != actual.getIdJuegos()){
+				if(ju.getIdJuegos() != actual.getIdJuegos() && ju.getPalabras_idPalabras().getEsRelacion() == true){
 					j = ju;
+				}else{
+					j = actual;
 				}
 			}
 			

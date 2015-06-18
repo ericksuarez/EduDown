@@ -27,27 +27,6 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "imagenesendpoint.listImagenes" : {
-      "path" : "imagenes",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.listImagenes",
-      "request" : {
-        "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "imagenesendpoint.getImagenes" : {
       "path" : "imagenes/{id}",
       "httpMethod" : "GET",
@@ -85,22 +64,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "imagenesendpoint.updateImagenes" : {
-      "path" : "imagenes",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "imagenesendpoint.removeImagenes" : {
       "path" : "imagenes/{id}",
       "httpMethod" : "DELETE",
@@ -120,6 +83,43 @@
       },
       "response" : {
         "body" : "empty"
+      }
+    },
+    "imagenesendpoint.listImagenes" : {
+      "path" : "imagenes",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.listImagenes",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "imagenesendpoint.updateImagenes" : {
+      "path" : "imagenes",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
       }
     }
   },
@@ -179,11 +179,6 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.listImagenes" : {
-        "response" : {
-          "$ref" : "ImagenesCollection"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.getImagenes" : {
         "response" : {
           "$ref" : "Imagenes"
@@ -197,6 +192,13 @@
           "$ref" : "Imagenes"
         }
       },
+      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.removeImagenes" : {
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.listImagenes" : {
+        "response" : {
+          "$ref" : "ImagenesCollection"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes" : {
         "request" : {
           "$ref" : "Imagenes"
@@ -204,8 +206,6 @@
         "response" : {
           "$ref" : "Imagenes"
         }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.removeImagenes" : {
       }
     }
   }

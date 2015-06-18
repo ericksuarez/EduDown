@@ -6,8 +6,8 @@
 
 <!-- Parametros -->
 <input type="hidden" id="media" value='${jsonMedia}'> 
-<input type="hidden" id="alumno" value='${alumno}'> 
-<input type="hidden" id="juego" value='${juego}'> 
+<!--<input type="hidden" id="alumno" value='${alumno}'> 
+<input type="hidden" id="juego" value='${juego}'>--> 
 <input type="hidden" id="semantico" value="${semantico}"> 
 <input type="hidden" id="idjuego" value=""> 
 <input type="hidden" id="idAvance" value=""> 

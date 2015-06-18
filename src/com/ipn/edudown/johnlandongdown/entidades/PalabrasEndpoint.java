@@ -24,41 +24,39 @@ import javax.jdo.Query;
 public class PalabrasEndpoint {
 
 	/**
-	 * This method lists all the entities inserted in datastore.
-	 * It uses HTTP GET method and paging support.
-	 *
+	 * This method lists all the entities inserted in datastore. It uses HTTP
+	 * GET method and paging support.
+	 * 
 	 * @return A CollectionResponse class containing the list of all entities
-	 * persisted and a cursor to the next page.
+	 *         persisted and a cursor to the next page.
 	 */
-	@SuppressWarnings({ "unchecked", "unused" })
+	@SuppressWarnings({ "unchecked" })
 	@ApiMethod(name = "listPalabras")
-	public List<Palabras> listPalabras(
-			@Nullable @Named("limit") Integer limit) {
+	public List<Palabras> listPalabras(@Nullable @Named("limit") Integer limit) {
 
 		PersistenceManager mgr = null;
 		List<Palabras> execute = null;
 
-		try {
-			mgr = getPersistenceManager();
-			Query query = mgr.newQuery(Palabras.class);
+		mgr = getPersistenceManager();
+		Query query = mgr.newQuery(Palabras.class);
 
-			if (limit != null) {
-				query.setRange(0, limit);
-			}
-
-			execute = (List<Palabras>) query.execute();
-
-		} finally {
-			mgr.close();
+		if (limit != null) {
+			query.setRange(0, limit);
 		}
+
+		execute = (List<Palabras>) query.execute();
+
+		mgr.close();
 
 		return execute;
 	}
 
 	/**
-	 * This method gets the entity having primary key id. It uses HTTP GET method.
-	 *
-	 * @param id the primary key of the java bean.
+	 * This method gets the entity having primary key id. It uses HTTP GET
+	 * method.
+	 * 
+	 * @param id
+	 *            the primary key of the java bean.
 	 * @return The entity with primary key id.
 	 */
 	@ApiMethod(name = "getPalabras")
@@ -74,20 +72,21 @@ public class PalabrasEndpoint {
 	}
 
 	/**
-	 * This inserts a new entity into App Engine datastore. If the entity already
-	 * exists in the datastore, an exception is thrown.
-	 * It uses HTTP POST method.
-	 *
-	 * @param palabras the entity to be inserted.
+	 * This inserts a new entity into App Engine datastore. If the entity
+	 * already exists in the datastore, an exception is thrown. It uses HTTP
+	 * POST method.
+	 * 
+	 * @param palabras
+	 *            the entity to be inserted.
 	 * @return The inserted entity.
 	 */
 	@ApiMethod(name = "insertPalabras")
 	public Palabras insertPalabras(Palabras palabras) {
-		
+
 		Key k = KeyFactory.createKey(Palabras.class.getSimpleName(),
 				palabras.hashCode());
 		palabras.setIdPalabras(k);
-		
+
 		PersistenceManager mgr = getPersistenceManager();
 		try {
 			if (containsPalabras(palabras)) {
@@ -101,32 +100,31 @@ public class PalabrasEndpoint {
 	}
 
 	/**
-	 * This method is used for updating an existing entity. If the entity does not
-	 * exist in the datastore, an exception is thrown.
-	 * It uses HTTP PUT method.
-	 *
-	 * @param palabras the entity to be updated.
+	 * This method is used for updating an existing entity. If the entity does
+	 * not exist in the datastore, an exception is thrown. It uses HTTP PUT
+	 * method.
+	 * 
+	 * @param palabras
+	 *            the entity to be updated.
 	 * @return The updated entity.
 	 */
 	@ApiMethod(name = "updatePalabras")
 	public Palabras updatePalabras(Palabras palabras) {
 		PersistenceManager mgr = getPersistenceManager();
-		try {
-			if (!containsPalabras(palabras)) {
-				throw new EntityNotFoundException("La palabra no existe.");
-			}
-			mgr.makePersistent(palabras);
-		} finally {
-			mgr.close();
-		}
+
+		mgr.makePersistent(palabras);
+
+		mgr.close();
+
 		return palabras;
 	}
 
 	/**
-	 * This method removes the entity with primary key id.
-	 * It uses HTTP DELETE method.
-	 *
-	 * @param id the primary key of the entity to be deleted.
+	 * This method removes the entity with primary key id. It uses HTTP DELETE
+	 * method.
+	 * 
+	 * @param id
+	 *            the primary key of the entity to be deleted.
 	 */
 	@ApiMethod(name = "removePalabras")
 	public void removePalabras(@Named("id") Long id) {

@@ -4,13 +4,9 @@ import com.ipn.edudown.johnlandongdown.entidades.PMF;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-import com.google.api.server.spi.response.CollectionResponse;
-import com.google.appengine.api.datastore.Cursor;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.datanucleus.query.JDOCursorHelper;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Nullable;

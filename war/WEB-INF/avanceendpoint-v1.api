@@ -64,6 +64,27 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "avanceendpoint.getAvance" : {
+      "path" : "avance/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "avanceendpoint.updateAvance" : {
       "path" : "avance",
       "httpMethod" : "PUT",
@@ -100,27 +121,6 @@
       "response" : {
         "body" : "empty"
       }
-    },
-    "avanceendpoint.getAvance" : {
-      "path" : "avance/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
     }
   },
   "descriptor" : {
@@ -133,7 +133,7 @@
             "$ref" : "Key"
           },
           "fecha" : {
-            "$ref" : "Date"
+            "type" : "string"
           },
           "tiempoTerminado" : {
             "type" : "string"
@@ -144,14 +144,11 @@
           "puntuacion" : {
             "type" : "integer"
           },
-          "termiando" : {
-            "type" : "boolean"
-          },
           "juegos_idJuegos" : {
-            "$ref" : "Juegos"
+            "type" : "string"
           },
           "alumno_idAlumno" : {
-            "$ref" : "Alumno"
+            "type" : "string"
           }
         }
       },
@@ -183,172 +180,6 @@
           }
         }
       },
-      "Date" : {
-        "id" : "Date",
-        "type" : "object",
-        "properties" : {
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "hours" : {
-            "type" : "integer"
-          },
-          "minutes" : {
-            "type" : "integer"
-          },
-          "seconds" : {
-            "type" : "integer"
-          },
-          "date" : {
-            "type" : "integer"
-          },
-          "year" : {
-            "type" : "integer"
-          },
-          "month" : {
-            "type" : "integer"
-          },
-          "day" : {
-            "type" : "integer"
-          },
-          "timezoneOffset" : {
-            "type" : "integer"
-          }
-        }
-      },
-      "Juegos" : {
-        "id" : "Juegos",
-        "type" : "object",
-        "properties" : {
-          "idJuegos" : {
-            "$ref" : "Key"
-          },
-          "nombre" : {
-            "type" : "string"
-          },
-          "tiempo" : {
-            "type" : "string"
-          },
-          "iconJuego" : {
-            "type" : "string"
-          },
-          "tipoJuego" : {
-            "type" : "string"
-          },
-          "campoSemantico_idCampoSemantico" : {
-            "$ref" : "CampoSemantico"
-          },
-          "palabras_idPalabras" : {
-            "$ref" : "Palabras"
-          },
-          "imagenes_idImagenes" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Imagenes"
-            }
-          }
-        }
-      },
-      "CampoSemantico" : {
-        "id" : "CampoSemantico",
-        "type" : "object",
-        "properties" : {
-          "idCampo" : {
-            "$ref" : "Key"
-          },
-          "semantico" : {
-            "type" : "string"
-          },
-          "imagenIcono" : {
-            "type" : "string"
-          },
-          "sonido" : {
-            "type" : "string"
-          }
-        }
-      },
-      "Palabras" : {
-        "id" : "Palabras",
-        "type" : "object",
-        "properties" : {
-          "idPalabras" : {
-            "$ref" : "Key"
-          },
-          "esSilabas" : {
-            "type" : "boolean"
-          },
-          "esRelacion" : {
-            "type" : "boolean"
-          },
-          "principal" : {
-            "type" : "string"
-          },
-          "correcta" : {
-            "type" : "string"
-          },
-          "erronea" : {
-            "type" : "string"
-          },
-          "erronea_2" : {
-            "type" : "string"
-          }
-        }
-      },
-      "Imagenes" : {
-        "id" : "Imagenes",
-        "type" : "object",
-        "properties" : {
-          "idImagenes" : {
-            "$ref" : "Key"
-          },
-          "nombre" : {
-            "type" : "string"
-          }
-        }
-      },
-      "Alumno" : {
-        "id" : "Alumno",
-        "type" : "object",
-        "properties" : {
-          "idAlumno" : {
-            "$ref" : "Key"
-          },
-          "nombre" : {
-            "type" : "string"
-          },
-          "apaterno" : {
-            "type" : "string"
-          },
-          "amaterno" : {
-            "type" : "string"
-          },
-          "usuario" : {
-            "type" : "string"
-          },
-          "fecha_alta" : {
-            "$ref" : "Date"
-          },
-          "grado_idGrado" : {
-            "$ref" : "Grado"
-          }
-        }
-      },
-      "Grado" : {
-        "id" : "Grado",
-        "type" : "object",
-        "properties" : {
-          "idGrado" : {
-            "$ref" : "Key"
-          },
-          "grado" : {
-            "type" : "string"
-          },
-          "grupo" : {
-            "type" : "string"
-          }
-        }
-      },
       "AvanceCollection" : {
         "id" : "AvanceCollection",
         "type" : "object",
@@ -376,6 +207,11 @@
           "$ref" : "Avance"
         }
       },
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance" : {
+        "response" : {
+          "$ref" : "Avance"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance" : {
         "request" : {
           "$ref" : "Avance"
@@ -385,11 +221,6 @@
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.removeAvance" : {
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance" : {
-        "response" : {
-          "$ref" : "Avance"
-        }
       }
     }
   }

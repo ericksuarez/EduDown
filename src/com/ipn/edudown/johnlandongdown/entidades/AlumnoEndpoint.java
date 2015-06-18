@@ -26,26 +26,22 @@ public class AlumnoEndpoint {
 	 * @return A CollectionResponse class containing the list of all entities
 	 *         persisted and a cursor to the next page.
 	 */
-	@SuppressWarnings({ "unchecked", "unused" })
+	@SuppressWarnings({ "unchecked" })
 	@ApiMethod(name = "listAlumno")
 	public List<Alumno> listAlumno(@Nullable @Named("limit") Integer limit) {
 
 		PersistenceManager mgr = null;
 		List<Alumno> execute = null;
 
-		try {
-			mgr = getPersistenceManager();
-			Query query = mgr.newQuery(Alumno.class);
+		mgr = getPersistenceManager();
+		Query query = mgr.newQuery(Alumno.class);
 
-			if (limit != null) {
-				query.setRange(0, limit);
-			}
-
-			execute = (List<Alumno>) query.execute();
-
-		} finally {
-			mgr.close();
+		if (limit != null) {
+			query.setRange(0, limit);
 		}
+
+		execute = (List<Alumno>) query.execute();
+		mgr.close();
 
 		return execute;
 	}
@@ -85,14 +81,11 @@ public class AlumnoEndpoint {
 		alumno.setIdAlumno(k);
 
 		PersistenceManager mgr = getPersistenceManager();
-		try {
-			if (containsAlumno(alumno)) {
-				throw new EntityExistsException("EL alumno ya existe.");
-			}
-			mgr.makePersistent(alumno);
-		} finally {
-			mgr.close();
-		}
+
+		mgr.makePersistent(alumno);
+
+		mgr.close();
+
 		return alumno;
 	}
 
@@ -108,14 +101,10 @@ public class AlumnoEndpoint {
 	@ApiMethod(name = "updateAlumno")
 	public Alumno updateAlumno(Alumno alumno) {
 		PersistenceManager mgr = getPersistenceManager();
-		try {
-			if (!containsAlumno(alumno)) {
-				throw new EntityNotFoundException("El alumno no existe.");
-			}
-			mgr.makePersistent(alumno);
-		} finally {
-			mgr.close();
-		}
+
+		mgr.makePersistent(alumno);
+		mgr.close();
+
 		return alumno;
 	}
 

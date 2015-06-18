@@ -24,10 +24,10 @@ public class Avance {
 	Integer puntuacion;
 	@Persistent
 	@Unowned
-	Juegos Juegos_idJuegos;
+	String Juegos_idJuegos;
 	@Persistent
 	@Unowned
-	Alumno Alumno_idAlumno;
+	String Alumno_idAlumno;
 
 	public Key getIdAvance() {
 		return idAvance;
@@ -61,19 +61,19 @@ public class Avance {
 		this.errores = errores;
 	}
 
-	public Juegos getJuegos_idJuegos() {
+	public String getJuegos_idJuegos() {
 		return Juegos_idJuegos;
 	}
 
-	public void setJuegos_idJuegos(Juegos juegos_idJuegos) {
+	public void setJuegos_idJuegos(String juegos_idJuegos) {
 		Juegos_idJuegos = juegos_idJuegos;
 	}
 
-	public Alumno getAlumno_idAlumno() {
+	public String getAlumno_idAlumno() {
 		return Alumno_idAlumno;
 	}
 
-	public void setAlumno_idAlumno(Alumno alumno_idAlumno) {
+	public void setAlumno_idAlumno(String alumno_idAlumno) {
 		Alumno_idAlumno = alumno_idAlumno;
 	}
 

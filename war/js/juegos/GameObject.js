@@ -18,11 +18,11 @@ function GameObject (object, x, y, width, height) {
     this.draw = function(ctx) {
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         
-        if(this.silaba != "undefined"){ //Para verificar si es un juego con imagenes o palabras
+        /*if(this.silaba != "undefined"){ //Para verificar si es un juego con imagenes o palabras
         	ctx.font = "40px Arial";
             ctx.fillStyle = "black";
             ctx.fillText(this.silaba, (this.x+this.width*1/5), (this.y+this.height/2) );
-        }
+        }*/
     };
 
     this.click = function(evento) {

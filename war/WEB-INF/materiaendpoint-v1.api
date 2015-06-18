@@ -27,6 +27,64 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
+    "materiaendpoint.listMateria" : {
+      "path" : "materia",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "materiaendpoint.removeMateria" : {
+      "path" : "materia/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.removeMateria",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "materiaendpoint.updateMateria" : {
+      "path" : "materia",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.updateMateria",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "materiaendpoint.getMateria" : {
       "path" : "materia/{id}",
       "httpMethod" : "GET",
@@ -59,64 +117,6 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "materiaendpoint.updateMateria" : {
-      "path" : "materia",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.updateMateria",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "materiaendpoint.removeMateria" : {
-      "path" : "materia/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.removeMateria",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
-    "materiaendpoint.listMateria" : {
-      "path" : "materia",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria",
-      "request" : {
-        "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -182,6 +182,21 @@
       }
     },
     "methods" : {
+      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria" : {
+        "response" : {
+          "$ref" : "MateriaCollection"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.removeMateria" : {
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.updateMateria" : {
+        "request" : {
+          "$ref" : "Materia"
+        },
+        "response" : {
+          "$ref" : "Materia"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.getMateria" : {
         "response" : {
           "$ref" : "Materia"
@@ -193,21 +208,6 @@
         },
         "response" : {
           "$ref" : "Materia"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.updateMateria" : {
-        "request" : {
-          "$ref" : "Materia"
-        },
-        "response" : {
-          "$ref" : "Materia"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.removeMateria" : {
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint.listMateria" : {
-        "response" : {
-          "$ref" : "MateriaCollection"
         }
       }
     }
