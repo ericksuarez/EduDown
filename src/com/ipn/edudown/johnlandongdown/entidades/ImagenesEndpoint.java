@@ -30,7 +30,7 @@ public class ImagenesEndpoint {
 	 * @return A CollectionResponse class containing the list of all entities
 	 * persisted and a cursor to the next page.
 	 */
-	@SuppressWarnings({ "unchecked", "unused" })
+	@SuppressWarnings({ "unchecked"})
 	@ApiMethod(name = "listImagenes")
 	public List<Imagenes> listImagenes(
 			@Nullable @Named("limit") Integer limit) {
@@ -38,7 +38,6 @@ public class ImagenesEndpoint {
 		PersistenceManager mgr = null;
 		List<Imagenes> execute = null;
 
-		try {
 			mgr = getPersistenceManager();
 			Query query = mgr.newQuery(Imagenes.class);
 
@@ -46,11 +45,7 @@ public class ImagenesEndpoint {
 				query.setRange(0, limit);
 			}
 
-			execute = (List<Imagenes>) query.execute();
-
-		} finally {
 			mgr.close();
-		}
 
 		return execute;
 	}
@@ -65,11 +60,11 @@ public class ImagenesEndpoint {
 	public Imagenes getImagenes(@Named("id") Long id) {
 		PersistenceManager mgr = getPersistenceManager();
 		Imagenes imagenes = null;
-		try {
+
 			imagenes = mgr.getObjectById(Imagenes.class, id);
-		} finally {
+
 			mgr.close();
-		}
+
 		return imagenes;
 	}
 

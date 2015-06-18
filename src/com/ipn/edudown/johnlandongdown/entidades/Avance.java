@@ -1,8 +1,5 @@
 package com.ipn.edudown.johnlandongdown.entidades;
 
-import java.sql.Date;
-import java.util.Set;
-
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
@@ -18,11 +15,9 @@ public class Avance {
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	Key idAvance;
 	@Persistent
-	Date fecha;
+	String fecha;
 	@Persistent
 	String tiempoTerminado;
-	@Persistent
-	boolean terminado;
 	@Persistent
 	Integer errores;
 	@Persistent
@@ -42,11 +37,11 @@ public class Avance {
 		this.idAvance = idAvance;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
@@ -56,14 +51,6 @@ public class Avance {
 
 	public void setTiempoTerminado(String tiempoTerminado) {
 		this.tiempoTerminado = tiempoTerminado;
-	}
-
-	public boolean getTermiando() {
-		return terminado;
-	}
-
-	public void setTermiando(boolean termiando) {
-		this.terminado = termiando;
 	}
 
 	public Integer getErrores() {

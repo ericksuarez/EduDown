@@ -1,7 +1,7 @@
 package com.ipn.edudown.johnlandongdown.entidades;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
@@ -33,7 +33,7 @@ public class Juegos implements Serializable{
 	Palabras Palabras_idPalabras;
 	@Persistent
 	@Unowned
-	Set<Imagenes> Imagenes_idImagenes;
+	List<Imagenes> Imagenes_idImagenes;
 
 	public Key getIdJuegos() {
 		return idJuegos;
@@ -92,11 +92,11 @@ public class Juegos implements Serializable{
 		Palabras_idPalabras = palabras_idPalabras;
 	}
 
-	public Set<Imagenes> getImagenes_idImagenes() {
+	public List<Imagenes> getImagenes_idImagenes() {
 		return Imagenes_idImagenes;
 	}
 
-	public void setImagenes_idImagenes(Set<Imagenes> imagenes_idImagenes) {
+	public void setImagenes_idImagenes(List<Imagenes> imagenes_idImagenes) {
 		Imagenes_idImagenes = imagenes_idImagenes;
 	}
 

@@ -1,7 +1,6 @@
 package com.ipn.edudown.johnlandongdown.controlador;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,15 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipn.edudown.johnlandongdown.config.Form_validation;
-import com.ipn.edudown.johnlandongdown.entidades.Alumno;
 import com.ipn.edudown.johnlandongdown.entidades.CampoSemantico;
 import com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint;
 import com.ipn.edudown.johnlandongdown.entidades.Juegos;
 import com.ipn.edudown.johnlandongdown.entidades.JuegosEndpoint;
-import com.ipn.edudown.johnlandongdown.entidades.Materia;
 import com.ipn.edudown.johnlandongdown.entidades.MateriaEndpoint;
 import com.ipn.edudown.johnlandongdown.entidades.Palabras;
-import com.ipn.edudown.johnlandongdown.entidades.Profesor;
 import com.ipn.edudown.johnlandongdown.helper.Helper;
 
 @SuppressWarnings("serial")

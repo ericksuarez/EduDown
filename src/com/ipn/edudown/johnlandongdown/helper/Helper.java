@@ -52,22 +52,13 @@ public class Helper {
 		return json;
 	}
 
-	public String jsonImg(Juegos j) throws JSONException {
-
-		Set<Imagenes> imgs = j.getImagenes_idImagenes();
-		int cnt = 1;
-		String jsons = "";
-		
-		for (Imagenes img : imgs) {
+	public JSONObject jsonImg(Imagenes img, int i) throws JSONException {
 			
 			JSONObject json = new JSONObject();
-			json.put("id", cnt++);
+			json.put("id", i);
 			json.put("silaba", "");
 			json.put("url", "images/" + img.getNombre());
-			
-			jsons += json.toString();
-		}
 
-		return jsons;
+		return json;
 	}
 }
