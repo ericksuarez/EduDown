@@ -7,21 +7,28 @@ function init() {
 
 function insertAvance(timer, term, error, score) {
 
+    var textAl = $('#alumno').val();
+    var textJu = $('#juego').val();
+    
+    var alumno = jQuery.parseJSON(textAl);
+    var juego = jQuery.parseJSON(textJu);
+    
+    $('#idjuego').val(juego.idJuegos.id);
+    
 	var requestData = {};
-	requestData.idJuegos = $('#juego').val();
-	requestData.idAlumno = $('#alumno').val();
+	requestData.Juegos_idJuegos = juego;
+	requestData.Alumno_idAlumno = alumno;
 	requestData.errores = error;
-	requestData.fecha = "2015-06-14";
+	requestData.fecha = new Date().toISOString();
 	requestData.puntuacion = score;
-	requestData.terminado = "true";
 	requestData.tiempoTerminado = timer;
 	
 	
 	gapi.client.avanceendpoint.insertAvance(requestData).execute(
 			function(resp) {
 				if (!resp.code) {
-					console.log(resp.puntuacion + ":" + resp.fecha + ":"
-							+ resp.terminado);
+					console.log(resp.idAvance.id);
+					$('#idAvance').val(resp.idAvance.id);
 				}
 			});
 
