@@ -1,90 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<jsp:include page="common/header_Juego.jsp" />
 
+<!-- Parametros -->
+<input type="hidden" id="media" value='${jsonMedia}'> 
+<!--<input type="hidden" id="alumno" value='${alumno}'> --> 
+<input type="hidden" id="juego" value='${juego}'>
+<input type="hidden" id="semantico" value="${semantico}"> 
+<input type="hidden" id="idjuego" value=""> 
+<input type="hidden" id="idAvance" value=""> 
 
-<%--
- % Example for using the Webservice http://captchas.net 
- % Replace the required parameters 'demo' and 'secret' with the
- % values you receive upon http://captchas.net/registration/ .
- % 
- % Optional Parameters and Defaults:
- % 
- % alphabet: abcdefghkmnopqrstuvwxyz (Used characters in captcha)
- % We recommend alphabet without mistakable ijl
- % 
- % letters: 6 (Number of characters in captcha)
- % 
- % width: 240 (image width)
- % height: 80 (image height)
- % 
- % Don't forget the same settings in check.jsp
- --%>
+<!-- Seccion del Juego Area del canvas -->
+<div class="row">
+	<div class="col-xs-1 col-md-1"></div>
+	<div class="col-xs-10 col-md-10">
+		<canvas id="canvas"> </canvas>
+	</div>
+	<div class="col-xs-1 col-md-1"></div>
+</div>
 
-<%@ page language="java" import="captchas.CaptchasDotNet" %>
+<!-- Fin Seccion del Juego Area del canvas -->
 
-<html>
-  <head>
-    <title>Sample JSP CAPTCHA Query</title>
-  </head>
-  <h1>Sample JSP CAPTCHA Query</h1>
-<%
-// Construct the captchas object (Default Values)
-CaptchasDotNet captchas = new captchas.CaptchasDotNet(
-  request.getSession(true),     // Ensure session
-  "demo",                       // client
-  "secret"                      // secret
-  );
-// Construct the captchas object (Extended example)
-// CaptchasDotNet captchas = new captchas.CaptchasDotNet(
-//  request.getSession(true),     // Ensure session
-//  "demo",                       // client
-//  "secret",                     // secret
-//  "01",                         // alphabet
-//  16,                           // letters
-//  500,                          // width
-//  80                            // height
-//  );
-%>
-  <%-- 
-   % encodeUrl produces jsessionid=xyz in case of disabled cookies
-   % Please test your implementation also with disabled cookies
-   --%>
-  <form method="get" action="<%=response.encodeUrl("check.jsp")%>">
-    <table>
-      <tr>
-        <td>
-          Your message:</td><td><input name="message" size="60" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          The CAPTCHA password:
-        </td>
-        <td>
-          <input name="password" size="16" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-        </td>
-        <td>
-          <%-- 
-           % it's possible to set a random in captchas.image("xyz"),
-           % captchas.imageUrl("xyz") and captchas.audioUrl("xyz").
-           % This is only needed at the first request
-           --%>
-          <%= captchas.image() %><br>
-          <a href="<%= captchas.audioUrl() %>">Phonetic spelling (mp3)</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-        </td>
-        <td>
-          <input type="submit" value="Submit" />
-        </td>
-      </tr>
-    </table>
-  </form>
-</html>
+<!-- Script necesarios para el Juego -->
+<script src="js/cloud-endpoints/AvanceEndpoint.js"></script>
+
+<script src="js/juegos/GameObject.js"></script>
+<script src="js/juegos/MatchWord.js"></script>
+<script src="js/juegos/gameCompletar.js"></script>
+
+<!-- Script necesarios para el Juego -->
+
+<jsp:include page="common/footer_Juego.jsp" />

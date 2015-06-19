@@ -1,12 +1,9 @@
 package com.ipn.edudown.johnlandongdown.helper;
 
-import java.util.Set;
-
 import org.json.*;
 
 import com.ipn.edudown.johnlandongdown.entidades.Imagenes;
-import com.ipn.edudown.johnlandongdown.entidades.Juegos;
-import com.ipn.edudown.johnlandongdown.entidades.Palabras;
+
 
 public class Helper {
 

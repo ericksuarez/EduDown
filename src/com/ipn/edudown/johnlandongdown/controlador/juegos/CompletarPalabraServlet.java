@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.ipn.edudown.johnlandongdown.entidades.Alumno;
 import com.ipn.edudown.johnlandongdown.entidades.Avance;
@@ -23,8 +24,7 @@ import com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint;
 import com.ipn.edudown.johnlandongdown.helper.Helper;
 
 @SuppressWarnings("serial")
-public class MatchImagenServlet extends HttpServlet {
-
+public class CompletarPalabraServlet extends HttpServlet {
 	private String tipoJuego = "";
 	JuegosEndpoint jep = new JuegosEndpoint();
 	AvanceEndpoint aep = new AvanceEndpoint();
@@ -45,7 +45,7 @@ public class MatchImagenServlet extends HttpServlet {
 			}
 		}
 
-		req.getRequestDispatcher("matchImg.jsp").forward(req, resp);
+		req.getRequestDispatcher("matchWord.jsp").forward(req, resp);
 	}
 
 	public void startJuego(HttpServletRequest req, HttpServletResponse resp)
@@ -65,28 +65,15 @@ public class MatchImagenServlet extends HttpServlet {
 			avanc.setJuegos_idJuegos("Juegos(" + idjuego + ")");
 			aep.updateAvance(avanc);
 		}
-		tipoJuego = "Relacionar palabra";
-		j = buscaJuego(req, actual);
+		tipoJuego = "Completar palabra";
+		j = (!avance.isEmpty()) ? buscaJuego(req, actual) : actual;
 		Alumno al = (Alumno) req.getSession().getAttribute("sesionAlumno");
 
-		try {
-			Palabras p = j.getPalabras_idPalabras();
-			req.setAttribute("jsonMedia", helper.jsonWord(p.getPrincipal(), 1).toString() + ";"
+		Palabras p = j.getPalabras_idPalabras();
+		req.setAttribute("jsonMedia", helper.jsonWord(p.getPrincipal(), 1).toString() + ";"
 									+ helper.jsonWord(p.getCorrecta(), 2).toString() + ";"
-									+ helper.jsonWord(p.getErronea(), 3).toString());
-		} catch (NullPointerException e) {
-			String jsons = "";
-			int i = 0;
-			tipoJuego = "Relacionar imagen";
-			j = buscaJuego(req, actual);
-			List<Imagenes> img = j.getImagenes_idImagenes();
-			for (Imagenes im : img) {
-				i++;
-				JSONObject jsonImg = helper.jsonImg(im, i);
-				jsons += jsonImg.toString() + ";";
-			}
-			req.setAttribute("jsonMedia", jsons);
-		}
+									+ helper.jsonWord(p.getErronea(), 3).toString() + ";"
+									+ helper.jsonWord(p.getErronea_2(), 4).toString());
 
 		JSONObject jsonAlumno = new JSONObject(al);
 		req.setAttribute("alumno", jsonAlumno.toString());

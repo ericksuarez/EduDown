@@ -61,7 +61,7 @@
 					<a href="matchimagen?juego=${element.idJuegos}&semantico=${semantico}&inicio=inicio&avance=">
 					</c:if>
 					<c:if test="${element.iconJuego == compPal}">
-					<a href="matchpalabra?juego=${element.idJuegos}&semantico=${semantico}&inicio=inicio&avance=">
+					<a href="completarpalabra?juego=${element.idJuegos}&semantico=${semantico}&inicio=inicio&avance=">
 					</c:if>
 					
 						<div class="cover overlay cover-image-full img-circle"

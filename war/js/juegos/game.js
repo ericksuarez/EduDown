@@ -3,14 +3,17 @@ $(document).ready(function() {
     var canvas = $("#canvas")[0];
     
     var text = $('#media').val();
+    
+    if(text.substring(text.length - 1) == ";"){
+    	text = text.slice(0,-1)
+    }
+    
     var list = text.split(';');
     var imagenes = [];
 
     $.each( list, function( key, value ) {
       imagenes[key] = jQuery.parseJSON(value);
-      alert(imagenes[key].id);
-      alert(imagenes[key].silaba);
-      alert(imagenes[key].url);
+      console.log(imagenes[key].id + imagenes[key].silaba + imagenes[key].url);
     });
     
     juego = new MatchGame (canvas, imagenes);

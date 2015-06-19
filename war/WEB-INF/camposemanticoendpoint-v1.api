@@ -27,22 +27,6 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "camposemanticoendpoint.updateCampoSemantico" : {
-      "path" : "camposemantico",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.updateCampoSemantico",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "camposemanticoendpoint.removeCampoSemantico" : {
       "path" : "camposemantico/{id}",
       "httpMethod" : "DELETE",
@@ -80,22 +64,17 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "camposemanticoendpoint.getCampoSemantico" : {
-      "path" : "camposemantico/{id}",
-      "httpMethod" : "GET",
+    "camposemanticoendpoint.updateCampoSemantico" : {
+      "path" : "camposemantico",
+      "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.getCampoSemantico",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.updateCampoSemantico",
       "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -114,6 +93,27 @@
           "limit" : {
             "type" : "int32",
             "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "camposemanticoendpoint.getCampoSemantico" : {
+      "path" : "camposemantico/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.getCampoSemantico",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
           }
         },
         "body" : "empty"
@@ -185,14 +185,6 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.updateCampoSemantico" : {
-        "request" : {
-          "$ref" : "CampoSemantico"
-        },
-        "response" : {
-          "$ref" : "CampoSemantico"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.removeCampoSemantico" : {
       },
       "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.insertCampoSemantico" : {
@@ -203,7 +195,10 @@
           "$ref" : "CampoSemantico"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.getCampoSemantico" : {
+      "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.updateCampoSemantico" : {
+        "request" : {
+          "$ref" : "CampoSemantico"
+        },
         "response" : {
           "$ref" : "CampoSemantico"
         }
@@ -211,6 +206,11 @@
       "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.listCampoSemantico" : {
         "response" : {
           "$ref" : "CampoSemanticoCollection"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.CampoSemanticoEndpoint.getCampoSemantico" : {
+        "response" : {
+          "$ref" : "CampoSemantico"
         }
       }
     }

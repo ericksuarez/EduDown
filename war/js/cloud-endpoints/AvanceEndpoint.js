@@ -7,17 +7,18 @@ function init() {
 
 function insertAvance(timer, term, error, score) {
 
-    /*var textAl = $('#alumno').val();
+    //var textAl = $('#alumno').val(); 
+    //var alumno = jQuery.parseJSON(textAl);
+	
     var textJu = $('#juego').val();
-    
-    var alumno = jQuery.parseJSON(textAl);
-    var juego = jQuery.parseJSON(textJu);*/
+    var juego = jQuery.parseJSON(textJu);
     
     $('#idjuego').val(juego.idJuegos.id);
+    console.log("idJuego" + juego.idJuegos.id);
     
 	var requestData = {};
-	/*requestData.Juegos_idJuegos = juego;
-	requestData.Alumno_idAlumno = alumno;*/
+	//requestData.Juegos_idJuegos = juego.idJuegos.id;
+	//requestData.Alumno_idAlumno = alumno;
 	requestData.errores = error;
 	requestData.fecha = new Date().toISOString();
 	requestData.puntuacion = score;

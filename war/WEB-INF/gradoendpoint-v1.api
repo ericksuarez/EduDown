@@ -27,6 +27,27 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
+    "gradoendpoint.listGrado" : {
+      "path" : "grado",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "gradoendpoint.getGrado" : {
       "path" : "grado/{id}",
       "httpMethod" : "GET",
@@ -43,6 +64,22 @@
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "gradoendpoint.insertGrado" : {
+      "path" : "grado",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.insertGrado",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -80,43 +117,6 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "gradoendpoint.insertGrado" : {
-      "path" : "grado",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.insertGrado",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "gradoendpoint.listGrado" : {
-      "path" : "grado",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado",
-      "request" : {
-        "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -182,17 +182,12 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.getGrado" : {
+      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado" : {
         "response" : {
-          "$ref" : "Grado"
+          "$ref" : "GradoCollection"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado" : {
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.updateGrado" : {
-        "request" : {
-          "$ref" : "Grado"
-        },
+      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.getGrado" : {
         "response" : {
           "$ref" : "Grado"
         }
@@ -205,9 +200,14 @@
           "$ref" : "Grado"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado" : {
+      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado" : {
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.updateGrado" : {
+        "request" : {
+          "$ref" : "Grado"
+        },
         "response" : {
-          "$ref" : "GradoCollection"
+          "$ref" : "Grado"
         }
       }
     }

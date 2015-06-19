@@ -81,8 +81,16 @@
 		<servlet-name>ActualizarJuego</servlet-name>
 		<url-pattern>/actualizarjuego</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>AltaImagenes</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.AltaImagenesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AltaImagenes</servlet-name>
+		<url-pattern>/altaimagenes</url-pattern>
+	</servlet-mapping>
 //Paquete Controlador Juegos
-<servlet>
+    <servlet>
 		<servlet-name>MatchImagen</servlet-name>
 		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.juegos.MatchImagenServlet</servlet-class>
 	</servlet>
@@ -90,8 +98,32 @@
 		<servlet-name>MatchImagen</servlet-name>
 		<url-pattern>/matchimagen</url-pattern>
 	</servlet-mapping> 
+	<servlet>
+		<servlet-name>CompletarPalabra</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.juegos.CompletarPalabraServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CompletarPalabra</servlet-name>
+		<url-pattern>/completarpalabra</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RelacionLineas</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.juegos.RelacionLineasServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RelacionLineas</servlet-name>
+		<url-pattern>/relacionlineas</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Memorama</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.juegos.MemoramaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Memorama</servlet-name>
+		<url-pattern>/memorama</url-pattern>
+	</servlet-mapping>
 
-<security-constraint>
+<security-constraint> 
    <user-data-constraint>
       <transport-guarantee>CONFIDENTIAL</transport-guarantee>
    </user-data-constraint>
