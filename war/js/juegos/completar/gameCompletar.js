@@ -23,7 +23,7 @@ $(document).ready(function() {
     	var semantico = $('#semantico').val();
     	var idjuego = $('#idjuego').val();
     	var avance = $('#idAvance').val();
-    	window.location ="/completarpalabra?juego=" + idjuego + "&semantico=" + semantico + "&inicio=inicio&avance=" + avance;
+    	window.location ="/completarpalabra?juego=" + idjuego + "&semantico=" + semantico + "&inicio=siguiente&avance=" + avance;
     });
     
 });

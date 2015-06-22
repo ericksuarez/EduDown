@@ -15,7 +15,6 @@
 				<th>Nombre(s)</th>
 				<th>A.Paterno</th>
 				<th>A.Materno</th>
-				<th>Avance</th>
 				<th>Evaluar</th>
 				<th>Estadistica</th>
 			</tr>
@@ -26,8 +25,7 @@
 					<td>${element.nombre}</td>
 					<td>${element.apaterno}</td>
 					<td>${element.amaterno}</td>
-					
-					<td>61%</td>
+
 					<td><a href="evaluar?alumno=${element.idAlumno}"
 						class="btn btn-info btn-stroke btn-circle"> <i
 							class="fa fa-eye"></i>

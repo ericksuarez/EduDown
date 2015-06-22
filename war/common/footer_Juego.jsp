@@ -66,6 +66,34 @@
 	</div>
 </div>
 
+<!-- Modal continuar -->
+<div class="modal fade" id="continuar" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-2 col-md-2"></div>
+					<div class="col-xs-8 col-md-8">
+						<div class="row">
+							<h2 class="text-center"
+								style="color: rgb(255, 255, 255); font-weight: 800 ! important;">¡Bien, continua jugando!</h2>
+							<div class="col-xs-2 col-md-2"></div>
+							<div class="col-xs-8 col-md-8">
+								<img src="images/regresar.png" class="img-response">
+							</div>
+							<div class="col-xs-2 col-md-2"></div>
+						</div>
+						<button type="button" class="btn btn-primary btn-lg btn-block " data-dismiss="modal" aria-label="Close">
+							<i class="fa fa-repeat fa-4x"></i>
+						</button>
+					</div>
+					<div class="col-xs-2 col-md-2"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <!-- Inline Script for colors and config objects; used by various external scripts; -->
 <script>

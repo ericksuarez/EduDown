@@ -15,7 +15,7 @@
 <link href="css/default.min.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="font-awesome/css/font-awesome.min.css">
-<!-- Script Jquery necesario-->
+<!-- Script Jquery necesario -->
 <script	src="js/jquery.min.js"></script>
 
 </head>

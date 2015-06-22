@@ -26,9 +26,9 @@
 <!-- Script necesarios para el Juego -->
 <script src="js/cloud-endpoints/AvanceEndpoint.js"></script>
 
-<script src="js/juegos/GameObject.js"></script>
-<script src="js/juegos/MatchWord.js"></script>
-<script src="js/juegos/gameCompletar.js"></script>
+<script src="js/juegos/completar/GameObject.js"></script>
+<script src="js/juegos/completar/MatchWord.js"></script>
+<script src="js/juegos/completar/gameCompletar.js"></script>
 
 <!-- Script necesarios para el Juego -->
 

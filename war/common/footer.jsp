@@ -41,6 +41,5 @@
 </script>
 <script src="js/vendor-bundle-all.min.js"></script>
 <script src="js/module-bundle-main.min.js"></script>
-<script src="js/jquery.js"></script>
 </body>
 </html>

@@ -39,6 +39,7 @@ function MatchWord (canvas, images) {//se declaran las variables
             self.objetos[2].unclick (event);
             
             if (self.jugador.collide (self.objetos[0])){
+            	self.score += 10;
             	$('#acierto').modal({
                     keyboard: true,
                     show: true,
@@ -46,10 +47,12 @@ function MatchWord (canvas, images) {//se declaran las variables
                 });
             	self.guardar();
             } else if (self.jugador.collide (self.objetos[1])){
+            	self.score -= 3;
             	$('#error').modal('show');
                 self.initObjects();
                 self.error++;
             } else if (self.jugador.collide (self.objetos[2])){
+            	self.score -= 3;
             	$('#error').modal('show');
                 self.initObjects();
                 self.error++;
