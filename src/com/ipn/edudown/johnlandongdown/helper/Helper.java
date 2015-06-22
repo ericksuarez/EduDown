@@ -89,4 +89,5 @@ public class Helper {
 		time = Integer.valueOf(reloj[pos].trim());
 		return time;
 	}
+
 }

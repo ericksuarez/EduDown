@@ -27,27 +27,6 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "palabrasendpoint.getPalabras" : {
-      "path" : "palabras/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.getPalabras",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "palabrasendpoint.insertPalabras" : {
       "path" : "palabras",
       "httpMethod" : "POST",
@@ -56,6 +35,22 @@
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
       "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.insertPalabras",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "palabrasendpoint.updatePalabras" : {
+      "path" : "palabras",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.updatePalabras",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -85,17 +80,22 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "palabrasendpoint.updatePalabras" : {
-      "path" : "palabras",
-      "httpMethod" : "PUT",
+    "palabrasendpoint.getPalabras" : {
+      "path" : "palabras/{id}",
+      "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.updatePalabras",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.getPalabras",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -194,12 +194,15 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.getPalabras" : {
+      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.insertPalabras" : {
+        "request" : {
+          "$ref" : "Palabras"
+        },
         "response" : {
           "$ref" : "Palabras"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.insertPalabras" : {
+      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.updatePalabras" : {
         "request" : {
           "$ref" : "Palabras"
         },
@@ -212,10 +215,7 @@
           "$ref" : "PalabrasCollection"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.updatePalabras" : {
-        "request" : {
-          "$ref" : "Palabras"
-        },
+      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.getPalabras" : {
         "response" : {
           "$ref" : "Palabras"
         }

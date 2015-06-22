@@ -48,22 +48,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "gradoendpoint.insertGrado" : {
-      "path" : "grado",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.insertGrado",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "gradoendpoint.updateGrado" : {
       "path" : "grado",
       "httpMethod" : "PUT",
@@ -117,6 +101,22 @@
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "gradoendpoint.insertGrado" : {
+      "path" : "grado",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.insertGrado",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -187,14 +187,6 @@
           "$ref" : "Grado"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.insertGrado" : {
-        "request" : {
-          "$ref" : "Grado"
-        },
-        "response" : {
-          "$ref" : "Grado"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.updateGrado" : {
         "request" : {
           "$ref" : "Grado"
@@ -208,6 +200,14 @@
       "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado" : {
         "response" : {
           "$ref" : "GradoCollection"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.insertGrado" : {
+        "request" : {
+          "$ref" : "Grado"
+        },
+        "response" : {
+          "$ref" : "Grado"
         }
       }
     }
