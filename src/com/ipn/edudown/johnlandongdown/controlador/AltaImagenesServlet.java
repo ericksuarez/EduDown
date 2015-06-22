@@ -1,6 +1,5 @@
 package com.ipn.edudown.johnlandongdown.controlador;
 
-import java.awt.color.CMMException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +31,15 @@ public class AltaImagenesServlet extends HttpServlet {
 		CampoSemantico cs = csep.getCampoSemantico(helper.limpiaID("CampoSemantico", semantico));
 		
 		String[] imagenes = {
-				"mono.jpg",
-				"jirafa.jpg",
-				"leon.jpg"
+				"caballo.png",  
+				"perro.png",  
+				"chivo.png",  
+				"gallo.png",  
+				"pollito.png",  
+				"burro.png",        
+				"conejo.png",  
+				"pato.png",  
+				"puerco.png"  
 		};
 		
 		List<Imagenes> list = new ArrayList<Imagenes>();
@@ -45,9 +50,9 @@ public class AltaImagenesServlet extends HttpServlet {
 		}
 		
 		Juegos juego =new Juegos();
-		juego.setNombre("Relaciona las imagenes de " + cs.getSemantico());
-		juego.setTipoJuego("Relacionar imagen");
-		juego.setIconJuego("iconRI.png");
+		juego.setNombre("Relacionar las imagenes con lineas de " + cs.getSemantico());
+		juego.setTipoJuego("Relacion Lineas");
+		juego.setIconJuego("iconLI.png");
 		juego.setTiempo("1:30");
 		juego.setCampoSemantico_idCampoSemantico(cs);
 		juego.setImagenes_idImagenes(list);

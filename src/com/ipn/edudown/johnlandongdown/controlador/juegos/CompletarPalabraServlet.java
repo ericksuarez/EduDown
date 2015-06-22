@@ -25,7 +25,6 @@ import com.ipn.edudown.johnlandongdown.helper.Helper;
 
 @SuppressWarnings("serial")
 public class CompletarPalabraServlet extends HttpServlet {
-	private String tipoJuego = "";
 	JuegosEndpoint jep = new JuegosEndpoint();
 	AvanceEndpoint aep = new AvanceEndpoint();
 	PalabrasEndpoint pep = new PalabrasEndpoint();
@@ -43,6 +42,12 @@ public class CompletarPalabraServlet extends HttpServlet {
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
+		}else{
+			try {
+				siguienteJuego(req, resp);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
 		}
 
 		req.getRequestDispatcher("matchWord.jsp").forward(req, resp);
@@ -51,65 +56,52 @@ public class CompletarPalabraServlet extends HttpServlet {
 	public void startJuego(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException, JSONException {
 
+		MatchImagenServlet matchimg = new MatchImagenServlet();
+		
 		String idjuego = req.getParameter("juego");
-		String avance = req.getParameter("avance");
-		Juegos actual = new Juegos();
-		Juegos j = null;
-		actual = jep.getJuegos(helper.limpiaID("Juegos", idjuego));
-
-		if (!avance.isEmpty()) {
-			Alumno alu = (Alumno) req.getSession().getAttribute("sesionAlumno");
-			Avance avanc = new Avance();
-			avanc = aep.getAvance(helper.limpiaID("Avance", avance));
-			avanc.setAlumno_idAlumno(String.valueOf(alu.getIdAlumno()));
-			avanc.setJuegos_idJuegos("Juegos(" + idjuego + ")");
-			aep.updateAvance(avanc);
-		}
-		tipoJuego = "Completar palabra";
-		j = (!avance.isEmpty()) ? buscaJuego(req, actual) : actual;
-		Alumno al = (Alumno) req.getSession().getAttribute("sesionAlumno");
-
-		Palabras p = j.getPalabras_idPalabras();
-		req.setAttribute("jsonMedia", helper.jsonWord(p.getPrincipal(), 1).toString() + ";"
-									+ helper.jsonWord(p.getCorrecta(), 2).toString() + ";"
-									+ helper.jsonWord(p.getErronea(), 3).toString() + ";"
-									+ helper.jsonWord(p.getErronea_2(), 4).toString());
-
-		JSONObject jsonAlumno = new JSONObject(al);
-		req.setAttribute("alumno", jsonAlumno.toString());
-
-		JSONObject juego = new JSONObject(j);
-		req.setAttribute("juego", juego.toString());
-
-	}
-
-	public Juegos buscaJuego(HttpServletRequest req, Juegos actual) {
-
 		String semantico = req.getParameter("semantico");
 		req.setAttribute("semantico", semantico);
 
-		Juegos j = new Juegos();
-		List<Juegos> juegos = jep.listJuegos(null);
-		List<Juegos> tmp = new ArrayList<Juegos>();
+		Juegos actual = null;
+		actual = jep.getJuegos(helper.limpiaID("Juegos", idjuego));
 
-		for (Juegos ju : juegos) {
-			CampoSemantico cs = ju.getCampoSemantico_idCampoSemantico();
-			if (cs.getSemantico().equals(semantico)) {
-				tmp.add(ju);
-			}
-		}
+		matchimg.actualizaAvance(req);
+		Alumno al = (Alumno) req.getSession().getAttribute("sesionAlumno");
 
-		for (Juegos ju : tmp) {
-			if (tipoJuego.equals(ju.getTipoJuego())) {
-				if (ju.getIdJuegos() != actual.getIdJuegos()) {
-					j = ju;
-					break;
-				} else {
-					j = actual;
-				}
-			}
-		}
+		addjsonPalabra(req,actual);
 
-		return j;
+		matchimg.addjsonAlumnoJuego(req,al,actual);
+
+	}
+	
+	public void siguienteJuego(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException, JSONException {
+		
+		MatchImagenServlet matchimg = new MatchImagenServlet();
+		
+		String idjuego = req.getParameter("juego");
+		String semantico = req.getParameter("semantico");
+		req.setAttribute("semantico", semantico);
+		
+		Juegos actual = new Juegos();
+		Juegos j = null;
+		actual = jep.getJuegos(helper.limpiaID("Juegos", idjuego));
+		
+		matchimg.actualizaAvance(req);
+		Alumno al = (Alumno) req.getSession().getAttribute("sesionAlumno");
+
+		j = matchimg.buscaJuego(req,actual,"Completar palabra");
+		addjsonPalabra(req,j);
+
+		matchimg.addjsonAlumnoJuego(req,al,j);
+			
+	}
+	
+	public void addjsonPalabra(HttpServletRequest req, Juegos j){
+		Palabras p = j.getPalabras_idPalabras();
+		req.setAttribute("jsonMedia", helper.jsonWord(p.getPrincipal(), 1).toString() + ";"
+								+ helper.jsonWord(p.getCorrecta(), 2).toString() + ";"
+								+ helper.jsonWord(p.getCorrecta(), 3).toString() + ";"
+								+ helper.jsonWord(p.getErronea_2(), 4).toString());
 	}
 }

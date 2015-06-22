@@ -1,6 +1,7 @@
 package com.ipn.edudown.johnlandongdown.entidades;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -27,10 +28,10 @@ public class RegistroEvaluacion {
 	String intentosPromedio;
 	@Persistent
 	@Unowned
-	Set<Alumno> Alumno_idAlumno;
+	String Alumno_idAlumno;
 	@Persistent
 	@Unowned
-	Set<Juegos> Juegos_idJuegos;
+	List<String> Juegos_idJuegos;
 
 	public Key getIdRegistroEvaluacion() {
 		return idRegistroEvaluacion;
@@ -72,19 +73,19 @@ public class RegistroEvaluacion {
 		this.intentosPromedio = intentosPromedio;
 	}
 
-	public Set<Alumno> getAlumno_idAlumno() {
+	public String getAlumno_idAlumno() {
 		return Alumno_idAlumno;
 	}
 
-	public void setAlumno_idAlumno(Set<Alumno> alumno_idAlumno) {
+	public void setAlumno_idAlumno(String alumno_idAlumno) {
 		Alumno_idAlumno = alumno_idAlumno;
 	}
 
-	public Set<Juegos> getJuegos_idJuegos() {
+	public List<String> getJuegos_idJuegos() {
 		return Juegos_idJuegos;
 	}
 
-	public void setJuegos_idJuegos(Set<Juegos> juegos_idJuegos) {
+	public void setJuegos_idJuegos(List<String> juegos_idJuegos) {
 		Juegos_idJuegos = juegos_idJuegos;
 	}
 

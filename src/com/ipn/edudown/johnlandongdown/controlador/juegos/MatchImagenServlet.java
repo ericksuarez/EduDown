@@ -25,7 +25,6 @@ import com.ipn.edudown.johnlandongdown.helper.Helper;
 @SuppressWarnings("serial")
 public class MatchImagenServlet extends HttpServlet {
 
-	private String tipoJuego = "";
 	JuegosEndpoint jep = new JuegosEndpoint();
 	AvanceEndpoint aep = new AvanceEndpoint();
 	PalabrasEndpoint pep = new PalabrasEndpoint();
@@ -43,6 +42,12 @@ public class MatchImagenServlet extends HttpServlet {
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
+		}else{
+			try {
+				siguienteJuego(req, resp);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
 		}
 
 		req.getRequestDispatcher("matchImg.jsp").forward(req, resp);
@@ -52,51 +57,52 @@ public class MatchImagenServlet extends HttpServlet {
 			throws ServletException, IOException, JSONException {
 
 		String idjuego = req.getParameter("juego");
-		String avance = req.getParameter("avance");
-		Juegos actual = new Juegos();
-		Juegos j = null;
+		String semantico = req.getParameter("semantico");
+		req.setAttribute("semantico", semantico);
+
+		Juegos actual = null;
 		actual = jep.getJuegos(helper.limpiaID("Juegos", idjuego));
 
-		if (!avance.isEmpty()) {
-			Alumno alu = (Alumno) req.getSession().getAttribute("sesionAlumno");
-			Avance avanc = new Avance();
-			avanc = aep.getAvance(helper.limpiaID("Avance", avance));
-			avanc.setAlumno_idAlumno(String.valueOf(alu.getIdAlumno()));
-			avanc.setJuegos_idJuegos("Juegos(" + idjuego + ")");
-			aep.updateAvance(avanc);
-		}
-		tipoJuego = "Relacionar palabra";
-		j = buscaJuego(req, actual);
+		actualizaAvance(req);
 		Alumno al = (Alumno) req.getSession().getAttribute("sesionAlumno");
 
 		try {
-			Palabras p = j.getPalabras_idPalabras();
-			req.setAttribute("jsonMedia", helper.jsonWord(p.getPrincipal(), 1).toString() + ";"
-									+ helper.jsonWord(p.getCorrecta(), 2).toString() + ";"
-									+ helper.jsonWord(p.getErronea(), 3).toString());
+			addjsonPalabra(req,actual);
 		} catch (NullPointerException e) {
-			String jsons = "";
-			int i = 0;
-			tipoJuego = "Relacionar imagen";
-			j = buscaJuego(req, actual);
-			List<Imagenes> img = j.getImagenes_idImagenes();
-			for (Imagenes im : img) {
-				i++;
-				JSONObject jsonImg = helper.jsonImg(im, i);
-				jsons += jsonImg.toString() + ";";
-			}
-			req.setAttribute("jsonMedia", jsons);
+			addjsonImagenes(req,actual);
 		}
 
-		JSONObject jsonAlumno = new JSONObject(al);
-		req.setAttribute("alumno", jsonAlumno.toString());
-
-		JSONObject juego = new JSONObject(j);
-		req.setAttribute("juego", juego.toString());
+		addjsonAlumnoJuego(req,al,actual);
 
 	}
+	
+	public void siguienteJuego(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException, JSONException {
+		
+		String idjuego = req.getParameter("juego");
+		String semantico = req.getParameter("semantico");
+		req.setAttribute("semantico", semantico);
+		
+		Juegos actual = new Juegos();
+		Juegos j = null;
+		actual = jep.getJuegos(helper.limpiaID("Juegos", idjuego));
+		
+		actualizaAvance(req);
+		Alumno al = (Alumno) req.getSession().getAttribute("sesionAlumno");
 
-	public Juegos buscaJuego(HttpServletRequest req, Juegos actual) {
+		try {
+			j = buscaJuego(req,actual,"Relacionar palabra");
+			addjsonPalabra(req,j);
+		} catch (NullPointerException e) {
+			j = buscaJuego(req,actual,"Relacionar imagen");
+			addjsonImagenes(req,j);
+		}
+
+		addjsonAlumnoJuego(req,al,j);
+			
+	}
+
+	public Juegos buscaJuego(HttpServletRequest req,Juegos actual, String tipoJuego) throws IOException {
 
 		String semantico = req.getParameter("semantico");
 		req.setAttribute("semantico", semantico);
@@ -107,16 +113,15 @@ public class MatchImagenServlet extends HttpServlet {
 
 		for (Juegos ju : juegos) {
 			CampoSemantico cs = ju.getCampoSemantico_idCampoSemantico();
-			if (cs.getSemantico().equals(semantico)) {
+			if (semantico.equals(cs.getSemantico())) {
 				tmp.add(ju);
 			}
 		}
-
+		
 		for (Juegos ju : tmp) {
 			if (tipoJuego.equals(ju.getTipoJuego())) {
 				if (ju.getIdJuegos() != actual.getIdJuegos()) {
 					j = ju;
-					break;
 				} else {
 					j = actual;
 				}
@@ -124,5 +129,48 @@ public class MatchImagenServlet extends HttpServlet {
 		}
 
 		return j;
+	}
+	
+	public void actualizaAvance(HttpServletRequest req){
+		String idjuego = req.getParameter("juego");
+		String avance = req.getParameter("avance");
+		
+		if (!avance.isEmpty()) {
+			Alumno alu = (Alumno) req.getSession().getAttribute("sesionAlumno");
+			Avance avanc = new Avance();
+			avanc = aep.getAvance(helper.limpiaID("Avance", avance));
+			avanc.setAlumno_idAlumno(String.valueOf(alu.getIdAlumno()));
+			avanc.setJuegos_idJuegos("Juegos(" + idjuego + ")");
+			aep.updateAvance(avanc);
+		}
+	}
+	
+	public void addjsonPalabra(HttpServletRequest req, Juegos j){
+		Palabras p = j.getPalabras_idPalabras();
+		req.setAttribute("jsonMedia", helper.jsonWord(p.getPrincipal(), 1).toString() + ";"
+								+ helper.jsonWord(p.getCorrecta(), 2).toString() + ";"
+								+ helper.jsonWord(p.getErronea(), 3).toString());
+	}
+	
+	public void addjsonImagenes(HttpServletRequest req, Juegos actual){
+		String jsons = "";
+		int i = 0;
+		Juegos j = null;
+		j = actual;
+		List<Imagenes> img = j.getImagenes_idImagenes();
+		for (Imagenes im : img) {
+			i++;
+			JSONObject jsonImg = helper.jsonImg(im, i);
+			jsons += jsonImg.toString() + ";";
+		}
+		req.setAttribute("jsonMedia", jsons);
+	}
+	
+	public void addjsonAlumnoJuego(HttpServletRequest req,Alumno al, Juegos j){
+		JSONObject jsonAlumno = new JSONObject(al);
+		req.setAttribute("alumno", jsonAlumno.toString());
+
+		JSONObject juego = new JSONObject(j);
+		req.setAttribute("juego", juego.toString());
 	}
 }
