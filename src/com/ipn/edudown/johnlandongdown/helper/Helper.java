@@ -59,14 +59,13 @@ public class Helper {
 		return json;
 	}
 	
-	public JSONObject jsonWordLine(String s, int i)
-			throws JSONException {
+	public JSONObject jsonWordLine(String s, int i) throws JSONException {
+		
 		JSONObject json = new JSONObject();
 		
-		String x = null;
 		json.put("id", i);
 		json.put("silaba", s);
-		json.put("linea", x);
+		json.put("linea", "null");
 		json.put("url", "images/" + "fondo-letra.png");
 		
 		return json;
@@ -74,9 +73,10 @@ public class Helper {
 
 	public JSONObject jsonImgLine(Imagenes img, int i) throws JSONException {
 			
-			String s = null;
 			JSONObject json = new JSONObject();
+			
 			json.put("id", i);
+			json.put("silaba", "");
 			json.put("linea", "null");
 			json.put("url", "images/" + img.getNombre());
 

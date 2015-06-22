@@ -3,7 +3,6 @@ package com.ipn.edudown.johnlandongdown.controlador.juegos;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.ipn.edudown.johnlandongdown.entidades.Alumno;
-import com.ipn.edudown.johnlandongdown.entidades.Avance;
 import com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint;
 import com.ipn.edudown.johnlandongdown.entidades.CampoSemantico;
 import com.ipn.edudown.johnlandongdown.entidades.Imagenes;
@@ -26,6 +24,7 @@ import com.ipn.edudown.johnlandongdown.helper.Helper;
 
 @SuppressWarnings("serial")
 public class RelacionLineasServlet extends HttpServlet {
+	
 	JuegosEndpoint jep = new JuegosEndpoint();
 	AvanceEndpoint aep = new AvanceEndpoint();
 	PalabrasEndpoint pep = new PalabrasEndpoint();

@@ -7,7 +7,7 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
     this.escenario;    
     this.rectW;
     this.rectH; 
-    this.objetos = [];
+    this.objetos = new Array();
     this.lines = [];
     this.jugador;
     this.espacio;
@@ -29,9 +29,12 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
     this.registerEvents = function (){//aqui van los eventos que se van a utilizar
         this.canvas.onmousedown = function(event) {
             console.log ("OnMouseDown");
-        if(self.objetos[0].click(event)||self.objetos[1].click(event)||self.objetos[2].click(event)){    
-
-
+            console.log(self.objetos[0].id);
+            
+ for( i = 0; i<this.objetos.length; i++){
+	 
+       if (this.objetos[i].click(event)) {   
+    	   console.log('entro al if');
             if (self.linea == null){
                 for ( i = 0; i<self.objetos.length; i++){
                     if (self.objetos[i].clickInside (event.clientX, event.clientY)){
@@ -91,9 +94,9 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
                 self.linea = null;
             }
         }else{
-        	console.log('No entro al if');
+        	console.log('No entro al if el obj: ' + self.objetos[i].id + self.objetos[i].url );
         }
-
+ 	  }
     };
 
     this.canvas.onmousemove = function(event) {
@@ -128,6 +131,8 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
         x = this.espacioTop;
         y = this.espacioTop;
         
+        console.log("Draw");
+        console.log(this.images[0].id);
         this.objetos[0] = new GameObject(this.images[0], this.espacio, x, this.rectW, this.rectH);
         x += this.rectW+this.alto;
         
