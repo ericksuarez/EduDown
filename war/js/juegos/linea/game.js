@@ -9,7 +9,7 @@ $(document).ready(function() {
     }
     
     var list = text.split(';');
-    alert(list.toString());
+    //alert(list.toString());
     var imagenes = [];
 
     $.each( list, function( key, value ) {
@@ -17,7 +17,7 @@ $(document).ready(function() {
       imagenes[key].linea = null;
       console.log(imagenes[key].id + imagenes[key].linea + imagenes[key].url);
     });
-alert(imagenes[0].id + imagenes[0].linea + imagenes[0].url);
+//alert(imagenes[0].id + imagenes[0].linea + imagenes[0].url);
     lineas = [];    
     juego = new MatchGame (canvas, imagenes, lineas);
     juego.init ();

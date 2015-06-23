@@ -26,21 +26,27 @@ public class ImagenesEndpoint {
 	 * @return A CollectionResponse class containing the list of all entities
 	 *         persisted and a cursor to the next page.
 	 */
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "unchecked", "unused" })
 	@ApiMethod(name = "listImagenes")
-	public List<Imagenes> listImagenes(@Nullable @Named("limit") Integer limit) {
+	public List<Imagenes> listImagenes(
+			@Nullable @Named("limit") Integer limit) {
 
 		PersistenceManager mgr = null;
 		List<Imagenes> execute = null;
 
-		mgr = getPersistenceManager();
-		Query query = mgr.newQuery(Imagenes.class);
+		try {
+			mgr = getPersistenceManager();
+			Query query = mgr.newQuery(Imagenes.class);
 
-		if (limit != null) {
-			query.setRange(0, limit);
+			if (limit != null) {
+				query.setRange(0, limit);
+			}
+
+			execute = (List<Imagenes>) query.execute();
+			
+		} finally {
+			mgr.close();
 		}
-
-		mgr.close();
 
 		return execute;
 	}

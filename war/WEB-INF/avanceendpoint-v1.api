@@ -27,20 +27,25 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "avanceendpoint.updateAvance" : {
-      "path" : "avance",
-      "httpMethod" : "PUT",
+    "avanceendpoint.removeAvance" : {
+      "path" : "avance/{id}",
+      "httpMethod" : "DELETE",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.removeAvance",
       "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
       },
       "response" : {
-        "body" : "autoTemplate(backendResponse)"
+        "body" : "empty"
       }
     },
     "avanceendpoint.getAvance" : {
@@ -59,6 +64,38 @@
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "avanceendpoint.updateAvance" : {
+      "path" : "avance",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "avanceendpoint.insertAvance" : {
+      "path" : "avance",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -84,43 +121,6 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
-    },
-    "avanceendpoint.insertAvance" : {
-      "path" : "avance",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "avanceendpoint.removeAvance" : {
-      "path" : "avance/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.removeAvance",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
     }
   },
   "descriptor" : {
@@ -144,10 +144,10 @@
           "puntuacion" : {
             "type" : "integer"
           },
-          "alumno_idAlumno" : {
+          "juegos_idJuegos" : {
             "type" : "string"
           },
-          "juegos_idJuegos" : {
+          "alumno_idAlumno" : {
             "type" : "string"
           }
         }
@@ -194,22 +194,19 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance" : {
-        "request" : {
-          "$ref" : "Avance"
-        },
-        "response" : {
-          "$ref" : "Avance"
-        }
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.removeAvance" : {
       },
       "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance" : {
         "response" : {
           "$ref" : "Avance"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance" : {
+        "request" : {
+          "$ref" : "Avance"
+        },
         "response" : {
-          "$ref" : "AvanceCollection"
+          "$ref" : "Avance"
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance" : {
@@ -220,7 +217,10 @@
           "$ref" : "Avance"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.removeAvance" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance" : {
+        "response" : {
+          "$ref" : "AvanceCollection"
+        }
       }
     }
   }

@@ -30,8 +30,6 @@
 					<li><a href="perfiles?alta=profesor"><i
 							class="fa fa-circle-o"></i> Alta de Profesores</a></li>
 				</ul></li>
-				<li class="active"><a href="altajuego?accion=alta"><i
-					class="fa fa-columns"></i> <span>Alta Palabras Juegos</span></a></li>
 			<li class="hasSubmenu"><a href="#submenu4"><i
 					class="fa fa-chevron-circle-down"></i> <span>Actualizar</span></a>
 				<ul id="submenu4">
@@ -41,6 +39,14 @@
 							class="fa fa-circle-o"></i> Profesores</a></li>
 					<li><a href="actualizarjuego?accion=actualizar"><i class="fa fa-circle-o"></i>
 							Palabras Juegos</a></li>
+				</ul></li>
+				<li class="hasSubmenu"><a href="#submenu5"><i
+					class="fa fa-chevron-circle-down"></i> <span>Alta Juegos</span></a>
+				<ul id="submenu5">
+					<li class="active"><a href="altajuego?accion=alta"><i
+					class="fa fa-columns"></i> <span>Con Palabras</span></a></li>
+					<li class="active"><a href="altaimagenes"><i
+					class="fa fa-columns"></i> <span>Con Imagenes</span></a></li>
 				</ul></li>
 		</ul>
 	</div>

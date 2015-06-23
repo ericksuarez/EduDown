@@ -7,6 +7,7 @@
 <c:set var="relPal" scope="session" value="iconRP.png"/> <!-- URL a matchImg.jsp -->
 <c:set var="compPal" scope="session" value="iconCP.png"/> <!-- URL a matchWord.jsp -->
 <c:set var="relLine" scope="session" value="iconLI.png"/> <!-- URL a relacionlineas.jsp -->
+<c:set var="memo" scope="session" value="iconMI.png"/> <!-- URL a memorama.jsp -->
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -67,6 +68,12 @@
 					<c:if test="${element.iconJuego == relLine}">
 					<a href="relacionlineas?juego=${element.idJuegos}&semantico=${semantico}&inicio=inicio&avance=">
 					</c:if>
+					<c:if test="${element.iconJuego == relLine && element.iconJuego == relPal}">
+					<a href="relacionlineas?juego=&semantico=${semantico}&inicio=palabras&avance=">
+					</c:if>
+					<c:if test="${element.iconJuego == memo}">
+					<a href="memorama?juego=${element.idJuegos}&semantico=${semantico}&inicio=inicio&avance=">
+					</c:if>
 					
 						<div class="cover overlay cover-image-full img-circle"
 							style="height: 293px; text-align: center;">
@@ -87,20 +94,6 @@
 				</div>
 			</c:forEach>
 
-				<div class="col-xs-4 col-md-3">
-					<a href="relacionlineas?juego=${element.idJuegos}&semantico=${semantico}&inicio=palabras&avance=">
-						<div class="cover overlay cover-image-full img-circle"
-							style="height: 293px; text-align: center;">
-							<img src="images/lock-1.jpg" alt="cover">
-							<div class="overlay overlay-full"
-								style="height: 293px; text-align: center;">
-								<i class="fa fa-star-o fa-4x estrella"></i> <i
-									class="fa fa-star-o fa-4x estrella"></i> <i
-									class="fa fa-star-o fa-4x estrella"></i>
-							</div>
-						</div>
-					</a>
-				</div>
 				<!--  
 				<div class="col-xs-4 col-md-3">
 					<a href="matchWord.jsp">
