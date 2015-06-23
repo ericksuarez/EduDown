@@ -27,22 +27,6 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "alumnoendpoint.updateAlumno" : {
-      "path" : "alumno",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.updateAlumno",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "alumnoendpoint.insertAlumno" : {
       "path" : "alumno",
       "httpMethod" : "POST",
@@ -59,22 +43,17 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "alumnoendpoint.getAlumno" : {
-      "path" : "alumno/{id}",
-      "httpMethod" : "GET",
+    "alumnoendpoint.updateAlumno" : {
+      "path" : "alumno",
+      "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.updateAlumno",
       "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -114,6 +93,27 @@
           "limit" : {
             "type" : "int32",
             "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "alumnoendpoint.getAlumno" : {
+      "path" : "alumno/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
           }
         },
         "body" : "empty"
@@ -184,6 +184,10 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
           "hours" : {
             "type" : "integer"
           },
@@ -193,23 +197,19 @@
           "seconds" : {
             "type" : "integer"
           },
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
-          "month" : {
+          "date" : {
             "type" : "integer"
           },
           "year" : {
+            "type" : "integer"
+          },
+          "month" : {
             "type" : "integer"
           },
           "day" : {
             "type" : "integer"
           },
           "timezoneOffset" : {
-            "type" : "integer"
-          },
-          "date" : {
             "type" : "integer"
           }
         }
@@ -243,14 +243,6 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.updateAlumno" : {
-        "request" : {
-          "$ref" : "Alumno"
-        },
-        "response" : {
-          "$ref" : "Alumno"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.insertAlumno" : {
         "request" : {
           "$ref" : "Alumno"
@@ -259,7 +251,10 @@
           "$ref" : "Alumno"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.updateAlumno" : {
+        "request" : {
+          "$ref" : "Alumno"
+        },
         "response" : {
           "$ref" : "Alumno"
         }
@@ -269,6 +264,11 @@
       "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.listAlumno" : {
         "response" : {
           "$ref" : "AlumnoCollection"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.AlumnoEndpoint.getAlumno" : {
+        "response" : {
+          "$ref" : "Alumno"
         }
       }
     }

@@ -64,6 +64,27 @@
         "body" : "empty"
       }
     },
+    "palabrasendpoint.listPalabras" : {
+      "path" : "palabras",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.listPalabras",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "palabrasendpoint.getPalabras" : {
       "path" : "palabras/{id}",
       "httpMethod" : "GET",
@@ -96,27 +117,6 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "palabrasendpoint.listPalabras" : {
-      "path" : "palabras",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.listPalabras",
-      "request" : {
-        "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -204,6 +204,11 @@
       },
       "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.removePalabras" : {
       },
+      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.listPalabras" : {
+        "response" : {
+          "$ref" : "PalabrasCollection"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.getPalabras" : {
         "response" : {
           "$ref" : "Palabras"
@@ -215,11 +220,6 @@
         },
         "response" : {
           "$ref" : "Palabras"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.listPalabras" : {
-        "response" : {
-          "$ref" : "PalabrasCollection"
         }
       }
     }

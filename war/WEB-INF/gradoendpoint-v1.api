@@ -27,27 +27,6 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "gradoendpoint.removeGrado" : {
-      "path" : "grado/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
     "gradoendpoint.listGrado" : {
       "path" : "grado",
       "httpMethod" : "GET",
@@ -121,6 +100,27 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "gradoendpoint.removeGrado" : {
+      "path" : "grado/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
     }
   },
   "descriptor" : {
@@ -182,8 +182,6 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado" : {
-      },
       "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado" : {
         "response" : {
           "$ref" : "GradoCollection"
@@ -209,6 +207,8 @@
         "response" : {
           "$ref" : "Grado"
         }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado" : {
       }
     }
   }

@@ -45,6 +45,7 @@
 			<div class="row">
 				<c:forEach items="${campossemanticos}" var="element">
 					<div class="col-xs-3 col-md-3">
+					<strong><p class="text-center">${element.semantico}</p></strong>  
 						<a href="juego?seccion=menu&semantico=${element.semantico}">
 							<div style="height: 245px;"
 								class="cover overlay cover-image-full img-circle">

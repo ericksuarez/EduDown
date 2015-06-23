@@ -16,7 +16,9 @@ import javax.persistence.EntityNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-@Api(name = "camposemanticoendpoint", namespace = @ApiNamespace(ownerDomain = "ipn.com", ownerName = "ipn.com", packagePath = "edudown.johnlandongdown.entidades"))
+@Api(name = "camposemanticoendpoint", 
+namespace = @ApiNamespace(ownerDomain = "ipn.com", ownerName = "ipn.com", 
+packagePath = "edudown.johnlandongdown.entidades"))
 public class CampoSemanticoEndpoint {
 
 	/**
