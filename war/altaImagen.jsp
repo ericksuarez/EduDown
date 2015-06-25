@@ -44,7 +44,9 @@
 			<label class="col-sm-3 control-label">Imagen 1</label>
 			<div class="col-sm-9" id="contenido-grado">
 				<div id="contenido-grado-html">
-					<select name="image[]" class="form-control">
+					<select name="image[]" class="selectpicker" data-style="btn-white"
+			title="Seleccione una opción..." data-live-search="true"
+			data-size="5" style="display: none;">
 						<option value="">Selecciona una imagen</option>
 						<c:forEach items="${imagenes}" var="element">
 							<option value="${element.idImagenes}">${element.nombre}</option>
@@ -58,7 +60,9 @@
 			<label class="col-sm-3 control-label">Imagen 2</label>
 			<div class="col-sm-9" id="contenido-grado">
 				<div id="contenido-grado-html">
-					<select name="image[]" class="form-control">
+					<select name="image[]" class="selectpicker" data-style="btn-white"
+			title="Seleccione una opción..." data-live-search="true"
+			data-size="5" style="display: none;">
 						<option value="">Selecciona una imagen</option>
 						<c:forEach items="${imagenes}" var="element">
 							<option value="${element.idImagenes}">${element.nombre}</option>
@@ -72,7 +76,9 @@
 			<label class="col-sm-3 control-label">Imagen 3</label>
 			<div class="col-sm-9" id="contenido-grado">
 				<div id="contenido-grado-html">
-					<select name="image[]" class="form-control">
+					<select name="image[]" class="selectpicker" data-style="btn-white"
+			title="Seleccione una opción..." data-live-search="true"
+			data-size="5" style="display: none;">
 						<option value="">Selecciona una imagen</option>
 						<c:forEach items="${imagenes}" var="element">
 							<option value="${element.idImagenes}">${element.nombre}</option>

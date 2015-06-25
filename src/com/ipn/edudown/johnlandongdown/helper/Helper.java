@@ -89,5 +89,17 @@ public class Helper {
 		time = Integer.valueOf(reloj[pos].trim());
 		return time;
 	}
+	
+	public JSONObject jsonEstadistica(String semantico, Integer scoreideal, Integer scoreavacne) throws JSONException {
+		
+		JSONObject json = new JSONObject();
+		
+		json.put("semantico", semantico);
+		json.put("ideal", scoreideal);
+		json.put("avance", scoreavacne);
+
+	return json;
+}
+	
 
 }

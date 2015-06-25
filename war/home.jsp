@@ -30,7 +30,7 @@
 						class="btn btn-info btn-stroke btn-circle"> <i
 							class="fa fa-eye"></i>
 					</a></td>
-					<td><a href="estadistica.jsp"
+					<td><a href="reportes?alumno=${element.idAlumno}"
 						class="btn btn-success btn-stroke btn-circle"> <i
 							class="fa fa-line-chart"></i>
 					</a></td>

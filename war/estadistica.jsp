@@ -1,58 +1,122 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+	pageEncoding="UTF-8"%>
+
 <jsp:include page="common/header.jsp" />
 
-<h4 class="panel-title">Estadistica de ${alumno}</h4>
+<h4 class="panel-title">Estadistica del alumno ${alumno.nombre}
+	${alumno.apaterno} ${alumno.amaterno}</h4>
 </div>
 <div class="panel-body">
 
-<!-- Estadistica -->
- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <div id="grafico" style="width: 700px; height: 600px"><div>
-  
-  <script type="text/javascript">
-  google.load('visualization', '1', {packages: ['corechart', 'line']});
-  google.setOnLoadCallback(drawCurveTypes);
+	<input id="semanticos" value='${semanticos}'>
 
-  function drawCurveTypes() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('number', 'X');
-        data.addColumn('number', 'Dogs');
-        data.addColumn('number', 'Cats');
+	<!-- Estadistica -->
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<div id="grafico" style="width: 900px; height: 600px">
+		<i class="fa fa-spinner fa-pulse"></i> Creando grafico por favor
+		espere.
+		<div>
 
-        data.addRows([
-          [0, 0, 0],    [1, 10, 5],   [2, 23, 15],  [3, 17, 9],   [4, 18, 10],  [5, 9, 5],
-          [6, 11, 3],   [7, 27, 19],  [8, 33, 25],  [9, 40, 32],  [10, 32, 24], [11, 35, 27],
-          [12, 30, 22], [13, 40, 32], [14, 42, 34], [15, 47, 39], [16, 44, 36], [17, 48, 40],
-          [18, 52, 44], [19, 54, 46], [20, 42, 34], [21, 55, 47], [22, 56, 48], [23, 57, 49],
-          [24, 60, 52], [25, 50, 42], [26, 52, 44], [27, 51, 43], [28, 49, 41], [29, 53, 45],
-          [30, 55, 47], [31, 60, 52], [32, 61, 53], [33, 59, 51], [34, 62, 54], [35, 65, 57],
-          [36, 62, 54], [37, 58, 50], [38, 55, 47], [39, 61, 53], [40, 64, 56], [41, 65, 57],
-          [42, 63, 55], [43, 66, 58], [44, 67, 59], [45, 69, 61], [46, 69, 61], [47, 70, 62],
-          [48, 72, 64], [49, 68, 60], [50, 66, 58], [51, 65, 57], [52, 67, 59], [53, 70, 62],
-          [54, 71, 63], [55, 72, 64], [56, 73, 65], [57, 75, 67], [58, 70, 62], [59, 68, 60],
-          [60, 64, 56], [61, 60, 52], [62, 65, 57], [63, 67, 59], [64, 68, 60], [65, 69, 61],
-          [66, 70, 62], [67, 72, 64], [68, 75, 67], [69, 80, 72]
-        ]);
+			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+			<script type="text/javascript">
+				var text = $('#semanticos').val();
 
-        var options = {
-          hAxis: {
-            title: 'Time'
-          },
-          vAxis: {
-            title: 'Popularity'
-          },
-          series: {
-            1: {curveType: 'function'}
-          }
-        };
+				if (text.substring(text.length - 1) == ";") {
+					text = text.slice(0, -1)
+				}
 
-        var chart = new google.visualization.LineChart(document.getElementById('grafico'));
-        chart.draw(data, options);
-      }
-  </script>
-<!-- Fin Estadistica -->
+				var list = text.split(';');
+				var info = [];
+				var tables = [];
+				var datos = [];
+				var index = 0;
+				tables[index] = [ 'Juego', 'Avance Ideal','Alcanzado por el alumno' ];
 
-</div>
-<jsp:include page="common/footer.jsp" />
+				$.each(list, function(key, value) {
+					info[key] = jQuery.parseJSON(value);
+					tables[++index] = [ info[key].semantico, info[key].ideal,info[key].avance ];
+					console.log(tables[index]);
+
+				});
+
+				google.load("visualization", "1", {
+					packages : [ "corechart" ]
+				});
+				google.setOnLoadCallback(drawChart);
+				function drawChart() {
+					var data = google.visualization.arrayToDataTable(tables);
+					// 					var data = google.visualization.arrayToDataTable([
+					// 							[ 'Juego', 'Avance Ideal','Alcanzado por el alumno' ],
+					// 							//semantico - avance ideal - avacne por alumno
+					// 							[ 'Alimentos y bebidas', 0, 3 ],
+					// 							[ 'Animales Acuatiocos', 2, 5 ],
+					// 							[ 'Aniamles de la granja', 5, 4 ],
+					// 							[ 'Animales del zoologico', 5, 3 ],
+					// 							[ 'Colores', 6, 5 ],
+					// 							[ 'Medios de Trasporte', 0, 10 ],
+					// 							[ 'Partes del Cuerpo', 2, 7 ],
+					// 							[ 'Prendas de Vestir', 2, 7 ]
+
+					// 					]);
+
+					var options = {
+						title : 'Evolución del alumno.',
+						curveType : 'function',
+						hAxis : {
+							title : 'Campo Semantico',
+							titleTextStyle : {
+								color : '#333'
+							}
+						},
+						vAxis : {
+							title : 'Puntuaciónn alcanzada en las actividades',
+							minValue : 0,
+							maxValue : 11,
+							direction : 1,
+							ticks : [ {
+								v : 0,
+								f : "0"
+							}, {
+								v : 1,
+								f : "1"
+							}, {
+								v : 2,
+								f : "2"
+							}, {
+								v : 3,
+								f : "3"
+							}, {
+								v : 4,
+								f : "4"
+							}, {
+								v : 5,
+								f : "5"
+							}, {
+								v : 6,
+								f : "6"
+							}, {
+								v : 7,
+								f : "7"
+							}, {
+								v : 8,
+								f : "8"
+							}, {
+								v : 9,
+								f : "9"
+							}, {
+								v : 10,
+								f : "10"
+							}, ]
+						},
+						pointSize : 5,
+					};
+
+					var chart = new google.visualization.LineChart(document
+							.getElementById('grafico'));
+					chart.draw(data, options);
+				}
+			</script>
+			<!-- Fin Estadistica -->
+
+		</div>
+		<jsp:include page="common/footer.jsp" />

@@ -27,6 +27,22 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
+    "avanceendpoint.insertAvance" : {
+      "path" : "avance",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "avanceendpoint.listAvance" : {
       "path" : "avance",
       "httpMethod" : "GET",
@@ -64,22 +80,6 @@
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "avanceendpoint.insertAvance" : {
-      "path" : "avance",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -194,20 +194,20 @@
       }
     },
     "methods" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance" : {
+        "request" : {
+          "$ref" : "Avance"
+        },
+        "response" : {
+          "$ref" : "Avance"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance" : {
         "response" : {
           "$ref" : "AvanceCollection"
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance" : {
-        "response" : {
-          "$ref" : "Avance"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance" : {
-        "request" : {
-          "$ref" : "Avance"
-        },
         "response" : {
           "$ref" : "Avance"
         }

@@ -27,27 +27,6 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "gradoendpoint.listGrado" : {
-      "path" : "grado",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado",
-      "request" : {
-        "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "gradoendpoint.getGrado" : {
       "path" : "grado/{id}",
       "httpMethod" : "GET",
@@ -121,6 +100,27 @@
       "response" : {
         "body" : "empty"
       }
+    },
+    "gradoendpoint.listGrado" : {
+      "path" : "grado",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
@@ -182,11 +182,6 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado" : {
-        "response" : {
-          "$ref" : "GradoCollection"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.getGrado" : {
         "response" : {
           "$ref" : "Grado"
@@ -209,6 +204,11 @@
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.removeGrado" : {
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.GradoEndpoint.listGrado" : {
+        "response" : {
+          "$ref" : "GradoCollection"
+        }
       }
     }
   }

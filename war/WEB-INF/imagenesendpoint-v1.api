@@ -48,27 +48,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "imagenesendpoint.getImagenes" : {
-      "path" : "imagenes/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.getImagenes",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "imagenesendpoint.insertImagenes" : {
       "path" : "imagenes",
       "httpMethod" : "POST",
@@ -77,22 +56,6 @@
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
       "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.insertImagenes",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "imagenesendpoint.updateImagenes" : {
-      "path" : "imagenes",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -120,6 +83,43 @@
       },
       "response" : {
         "body" : "empty"
+      }
+    },
+    "imagenesendpoint.updateImagenes" : {
+      "path" : "imagenes",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "imagenesendpoint.getImagenes" : {
+      "path" : "imagenes/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.getImagenes",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
       }
     }
   },
@@ -184,11 +184,6 @@
           "$ref" : "ImagenesCollection"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.getImagenes" : {
-        "response" : {
-          "$ref" : "Imagenes"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.insertImagenes" : {
         "request" : {
           "$ref" : "Imagenes"
@@ -196,6 +191,8 @@
         "response" : {
           "$ref" : "Imagenes"
         }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.removeImagenes" : {
       },
       "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes" : {
         "request" : {
@@ -205,7 +202,10 @@
           "$ref" : "Imagenes"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.removeImagenes" : {
+      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.getImagenes" : {
+        "response" : {
+          "$ref" : "Imagenes"
+        }
       }
     }
   }
