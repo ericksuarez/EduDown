@@ -58,6 +58,14 @@
 		<url-pattern>/reportes</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>ReporteGeneral</servlet-name>
+		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.ReporteGeneralServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReporteGeneral</servlet-name>
+		<url-pattern>/reportegeneral</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>Actualizar</servlet-name>
 		<servlet-class>com.ipn.edudown.johnlandongdown.controlador.ActualizarServlet</servlet-class>
 	</servlet>
