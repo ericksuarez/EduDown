@@ -27,22 +27,6 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "profesorendpoint.insertProfesor" : {
-      "path" : "profesor",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "profesorendpoint.updateProfesor" : {
       "path" : "profesor",
       "httpMethod" : "PUT",
@@ -96,6 +80,22 @@
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "profesorendpoint.insertProfesor" : {
+      "path" : "profesor",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -196,10 +196,6 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
           "hours" : {
             "type" : "integer"
           },
@@ -209,19 +205,23 @@
           "seconds" : {
             "type" : "integer"
           },
-          "date" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "month" : {
             "type" : "integer"
           },
           "year" : {
-            "type" : "integer"
-          },
-          "month" : {
             "type" : "integer"
           },
           "day" : {
             "type" : "integer"
           },
           "timezoneOffset" : {
+            "type" : "integer"
+          },
+          "date" : {
             "type" : "integer"
           }
         }
@@ -270,14 +270,6 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor" : {
-        "request" : {
-          "$ref" : "Profesor"
-        },
-        "response" : {
-          "$ref" : "Profesor"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.updateProfesor" : {
         "request" : {
           "$ref" : "Profesor"
@@ -289,6 +281,14 @@
       "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.removeProfesor" : {
       },
       "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.getProfesor" : {
+        "response" : {
+          "$ref" : "Profesor"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.ProfesorEndpoint.insertProfesor" : {
+        "request" : {
+          "$ref" : "Profesor"
+        },
         "response" : {
           "$ref" : "Profesor"
         }

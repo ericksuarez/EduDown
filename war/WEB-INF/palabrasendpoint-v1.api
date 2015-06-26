@@ -27,35 +27,14 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
-    "palabrasendpoint.listPalabras" : {
+    "palabrasendpoint.updatePalabras" : {
       "path" : "palabras",
-      "httpMethod" : "GET",
+      "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.listPalabras",
-      "request" : {
-        "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "palabrasendpoint.insertPalabras" : {
-      "path" : "palabras",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.insertPalabras",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.updatePalabras",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -85,6 +64,27 @@
         "body" : "empty"
       }
     },
+    "palabrasendpoint.listPalabras" : {
+      "path" : "palabras",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.listPalabras",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "palabrasendpoint.getPalabras" : {
       "path" : "palabras/{id}",
       "httpMethod" : "GET",
@@ -106,14 +106,14 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "palabrasendpoint.updatePalabras" : {
+    "palabrasendpoint.insertPalabras" : {
       "path" : "palabras",
-      "httpMethod" : "PUT",
+      "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.updatePalabras",
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.insertPalabras",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -194,12 +194,7 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.listPalabras" : {
-        "response" : {
-          "$ref" : "PalabrasCollection"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.insertPalabras" : {
+      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.updatePalabras" : {
         "request" : {
           "$ref" : "Palabras"
         },
@@ -209,12 +204,17 @@
       },
       "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.removePalabras" : {
       },
+      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.listPalabras" : {
+        "response" : {
+          "$ref" : "PalabrasCollection"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.getPalabras" : {
         "response" : {
           "$ref" : "Palabras"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.updatePalabras" : {
+      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.insertPalabras" : {
         "request" : {
           "$ref" : "Palabras"
         },

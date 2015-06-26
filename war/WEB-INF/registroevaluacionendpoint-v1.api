@@ -27,6 +27,31 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
+    "registroevaluacionendpoint.listRegistroEvaluacion" : {
+      "path" : "registroevaluacion",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.RegistroEvaluacionEndpoint.listRegistroEvaluacion",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "registroevaluacionendpoint.getRegistroEvaluacion" : {
       "path" : "registroevaluacion/{id}",
       "httpMethod" : "GET",
@@ -43,6 +68,22 @@
           }
         },
         "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "registroevaluacionendpoint.insertRegistroEvaluacion" : {
+      "path" : "registroevaluacion",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.RegistroEvaluacionEndpoint.insertRegistroEvaluacion",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -84,51 +125,25 @@
       "response" : {
         "body" : "empty"
       }
-    },
-    "registroevaluacionendpoint.insertRegistroEvaluacion" : {
-      "path" : "registroevaluacion",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.RegistroEvaluacionEndpoint.insertRegistroEvaluacion",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "registroevaluacionendpoint.listRegistroEvaluacion" : {
-      "path" : "registroevaluacion",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.RegistroEvaluacionEndpoint.listRegistroEvaluacion",
-      "request" : {
-        "parameters" : {
-          "cursor" : {
-            "type" : "string",
-            "required" : false
-          },
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
     }
   },
   "descriptor" : {
     "schemas" : {
+      "CollectionResponse_RegistroEvaluacion" : {
+        "id" : "CollectionResponse_RegistroEvaluacion",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "RegistroEvaluacion"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
       "RegistroEvaluacion" : {
         "id" : "RegistroEvaluacion",
         "type" : "object",
@@ -191,10 +206,6 @@
         "id" : "Date",
         "type" : "object",
         "properties" : {
-          "time" : {
-            "type" : "string",
-            "format" : "int64"
-          },
           "hours" : {
             "type" : "integer"
           },
@@ -204,13 +215,14 @@
           "seconds" : {
             "type" : "integer"
           },
-          "date" : {
+          "time" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "month" : {
             "type" : "integer"
           },
           "year" : {
-            "type" : "integer"
-          },
-          "month" : {
             "type" : "integer"
           },
           "day" : {
@@ -218,27 +230,28 @@
           },
           "timezoneOffset" : {
             "type" : "integer"
-          }
-        }
-      },
-      "CollectionResponse_RegistroEvaluacion" : {
-        "id" : "CollectionResponse_RegistroEvaluacion",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "RegistroEvaluacion"
-            }
           },
-          "nextPageToken" : {
-            "type" : "string"
+          "date" : {
+            "type" : "integer"
           }
         }
       }
     },
     "methods" : {
+      "com.ipn.edudown.johnlandongdown.entidades.RegistroEvaluacionEndpoint.listRegistroEvaluacion" : {
+        "response" : {
+          "$ref" : "CollectionResponse_RegistroEvaluacion"
+        }
+      },
       "com.ipn.edudown.johnlandongdown.entidades.RegistroEvaluacionEndpoint.getRegistroEvaluacion" : {
+        "response" : {
+          "$ref" : "RegistroEvaluacion"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.RegistroEvaluacionEndpoint.insertRegistroEvaluacion" : {
+        "request" : {
+          "$ref" : "RegistroEvaluacion"
+        },
         "response" : {
           "$ref" : "RegistroEvaluacion"
         }
@@ -252,19 +265,6 @@
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.RegistroEvaluacionEndpoint.removeRegistroEvaluacion" : {
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.RegistroEvaluacionEndpoint.insertRegistroEvaluacion" : {
-        "request" : {
-          "$ref" : "RegistroEvaluacion"
-        },
-        "response" : {
-          "$ref" : "RegistroEvaluacion"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.RegistroEvaluacionEndpoint.listRegistroEvaluacion" : {
-        "response" : {
-          "$ref" : "CollectionResponse_RegistroEvaluacion"
-        }
       }
     }
   }
