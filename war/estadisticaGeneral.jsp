@@ -3,7 +3,7 @@
 
 <jsp:include page="common/header.jsp" />
 
-<h4 class="panel-title">Estadistica general de alumnos</h4>
+<h4 class="panel-title">Estadistica general de alumnos.</h4>
 </div>
 <div class="panel-body">
 
@@ -11,7 +11,7 @@
 <input type="hidden" id="max" value='${max}'>
 	
 	<!-- EstadisticaGral -->
-	<div id="grafico" style="width: 700px; height: 600px">
+	<div id="grafico" style="width: 900px; height: 600px">
 		<i class="fa fa-spinner fa-pulse"></i> Creando grafico por favor
 		espere.
 		<div>
@@ -29,8 +29,8 @@
 				var tables = [];
 				var max = $('#max').val();
 				var index = 0;
-				tables[index] = [ 'Juego', 'Avance Ideal',
-						'Alcanzado por el alumno' ];
+				tables[index] = [ 'Juego', 'Avance Ideal por los alumnos',
+						'Alcanzado por los alumnos' ];
 
 				$.each(list, function(key, value) {
 					info[key] = jQuery.parseJSON(value);
@@ -47,7 +47,7 @@
 				function drawChart() {
 					var data = google.visualization.arrayToDataTable(tables);
 					var options = {
-						title : 'Evolución del alumno.',
+						title : 'Evolución de los alumnos.',
 						curveType : 'function',
 						hAxis : {
 							title : 'Campo Semantico',

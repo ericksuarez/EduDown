@@ -19,7 +19,7 @@
 			<li class="hasSubmenu"><a href="#submenu2"><i
 					class="fa fa-chevron-circle-down"></i> <span>Estadistica</span></a>
 				<ul id="submenu2">
-					<li><a href="estadisticaGeneral.jsp"><i
+					<li><a href="/reportegeneral"><i
 							class="fa fa-circle-o"></i> General Alumnos</a></li>
 				</ul></li>
 			<li class="hasSubmenu"><a href="#submenu3"><i

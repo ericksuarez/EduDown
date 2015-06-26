@@ -93,10 +93,12 @@ public class ReportesServlet extends HttpServlet {
 
 		List<Avance> avances = avep.listAvance(null);
 		for (Avance av : avances) {
-			for (Juegos game : tmp) {
-				Juegos j = jep.getJuegos(helper.limpiaID("Juegos", av.getJuegos_idJuegos()));
-				if (j.getIdJuegos() == game.getIdJuegos()) {
-					score += av.getPuntuacion();
+			if(alu.equals(av.getAlumno_idAlumno())){
+				for (Juegos game : tmp) {
+					Juegos j = jep.getJuegos(helper.limpiaID("Juegos", av.getJuegos_idJuegos()));
+					if (j.getIdJuegos() == game.getIdJuegos()) {
+						score += av.getPuntuacion();
+					}
 				}
 			}
 		}
