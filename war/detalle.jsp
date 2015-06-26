@@ -29,7 +29,7 @@ cursor: context-menu;
 									class="media-object" style="max-height: 50px; max-width: 50px !important;"></a>
 							</div>
 							<div class="media-body">
-								<a>Campo semantico</a> <span>${element.semantico}</span>
+								<a><b>${element.semantico}</b></a> <span>Campo semantico</span>
 							</div>
 						</div>
 					</div>

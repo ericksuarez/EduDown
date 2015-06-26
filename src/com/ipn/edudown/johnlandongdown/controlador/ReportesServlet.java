@@ -26,7 +26,8 @@ public class ReportesServlet extends HttpServlet {
 	CampoSemanticoEndpoint csep = new CampoSemanticoEndpoint();
 	JuegosEndpoint jep = new JuegosEndpoint();
 	Helper helper = new Helper();
-
+	private int max = 0;
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -34,20 +35,16 @@ public class ReportesServlet extends HttpServlet {
 		String json = "";
 		String alu = req.getParameter("alumno");
 
-		Alumno alumno = new AlumnoEndpoint().getAlumno(helper.limpiaID(
-				"Alumno", alu));
-
-		String[] semanticos = etiquetasSemanticos();
-
-		req.setAttribute("alumno", alumno);
+		Alumno alumno = new AlumnoEndpoint().getAlumno(helper.limpiaID("Alumno", alu));
+		String[] semanticos = etiquetasSemanticos();	
 
 		for (int i = 0; i < semanticos.length; i++) {
-			json += helper.jsonEstadistica(semanticos[i],
-					scoreIdeal(semanticos[i]), scoreAlumno(alu))
-					+ ";";
+			json += helper.jsonEstadistica(semanticos[i],scoreIdeal(semanticos[i]), scoreAlumno(semanticos[i], alu)) + ";";
 			req.setAttribute("semanticos", json);
 		}
-		// req.setAttribute("ideal", ideal);
+		
+		req.setAttribute("alumno", alumno);
+		req.setAttribute("max", max);
 		req.getRequestDispatcher("estadistica.jsp").forward(req, resp);
 	}
 
@@ -75,33 +72,39 @@ public class ReportesServlet extends HttpServlet {
 				score++;
 			}
 		}
-		return score;
+		
+		if((score * 10) > max){
+			max = score * 10;
+		}
+		
+		return score * 10;
 	}
 
-	public Integer scoreAlumno(String alu) {
+	public Integer scoreAlumno(String semantico, String alu) {
 		Integer score = 0;
-		List<CampoSemantico> semanticos = csep.listCampoSemantico(null);
 		List<Juegos> games = jep.listJuegos(null);
-
 		List<Juegos> tmp = new ArrayList<Juegos>();
 		
-		for (CampoSemantico campo : semanticos) {
 			for (Juegos ju : games) {
-				if (ju.getCampoSemantico_idCampoSemantico().getIdCampo() == campo.getIdCampo()) {
+				if (ju.getCampoSemantico_idCampoSemantico().getSemantico().equals(semantico)) {
 					tmp.add(ju);
 				}
 			}
-		}
 
 		List<Avance> avances = avep.listAvance(null);
 		for (Avance av : avances) {
 			for (Juegos game : tmp) {
-				if (av.getJuegos_idJuegos().equals(game.getIdJuegos())) {
+				Juegos j = jep.getJuegos(helper.limpiaID("Juegos", av.getJuegos_idJuegos()));
+				if (j.getIdJuegos() == game.getIdJuegos()) {
 					score += av.getPuntuacion();
 				}
 			}
 		}
 
+		if(score > max){
+			max = score;
+		}
+		
 		return score;
 	}
 

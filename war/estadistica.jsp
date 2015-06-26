@@ -3,12 +3,13 @@
 
 <jsp:include page="common/header.jsp" />
 
-<h4 class="panel-title">Estadistica del alumno ${alumno.nombre}
-	${alumno.apaterno} ${alumno.amaterno}</h4>
+<h4 class="panel-title">Estadistica del alumno <strong>${alumno.nombre}
+	${alumno.apaterno} ${alumno.amaterno}</strong></h4>
 </div>
 <div class="panel-body">
 
-	<input id="semanticos" value='${semanticos}'>
+	<input type="hidden" id="semanticos" value='${semanticos}'>
+	<input type="hidden" id="max" value='${max}'>
 
 	<!-- Estadistica -->
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -28,7 +29,7 @@
 				var list = text.split(';');
 				var info = [];
 				var tables = [];
-				var datos = [];
+				var max = $('#max').val();
 				var index = 0;
 				tables[index] = [ 'Juego', 'Avance Ideal','Alcanzado por el alumno' ];
 
@@ -45,20 +46,6 @@
 				google.setOnLoadCallback(drawChart);
 				function drawChart() {
 					var data = google.visualization.arrayToDataTable(tables);
-					// 					var data = google.visualization.arrayToDataTable([
-					// 							[ 'Juego', 'Avance Ideal','Alcanzado por el alumno' ],
-					// 							//semantico - avance ideal - avacne por alumno
-					// 							[ 'Alimentos y bebidas', 0, 3 ],
-					// 							[ 'Animales Acuatiocos', 2, 5 ],
-					// 							[ 'Aniamles de la granja', 5, 4 ],
-					// 							[ 'Animales del zoologico', 5, 3 ],
-					// 							[ 'Colores', 6, 5 ],
-					// 							[ 'Medios de Trasporte', 0, 10 ],
-					// 							[ 'Partes del Cuerpo', 2, 7 ],
-					// 							[ 'Prendas de Vestir', 2, 7 ]
-
-					// 					]);
-
 					var options = {
 						title : 'Evolución del alumno.',
 						curveType : 'function',
@@ -71,42 +58,8 @@
 						vAxis : {
 							title : 'Puntuaciónn alcanzada en las actividades',
 							minValue : 0,
-							maxValue : 11,
-							direction : 1,
-							ticks : [ {
-								v : 0,
-								f : "0"
-							}, {
-								v : 1,
-								f : "1"
-							}, {
-								v : 2,
-								f : "2"
-							}, {
-								v : 3,
-								f : "3"
-							}, {
-								v : 4,
-								f : "4"
-							}, {
-								v : 5,
-								f : "5"
-							}, {
-								v : 6,
-								f : "6"
-							}, {
-								v : 7,
-								f : "7"
-							}, {
-								v : 8,
-								f : "8"
-							}, {
-								v : 9,
-								f : "9"
-							}, {
-								v : 10,
-								f : "10"
-							}, ]
+							maxValue : max,
+							direction : 1
 						},
 						pointSize : 5,
 					};
