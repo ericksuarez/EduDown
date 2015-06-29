@@ -1,4 +1,4 @@
-function GameObject (object, x, y, width, height) {
+function GameObject (object, x, y, width, height, bajo) {
 
     this.image = new Image ();
     this.image.src = object.url;
@@ -15,13 +15,15 @@ function GameObject (object, x, y, width, height) {
     var clickFlag = false;
     var xoffset;
     var yoffset;
+    this.abajo = bajo;
     this.draw = function(ctx) {
+    	console.log("Abajo: " + this.abajo);
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         
         if(this.silaba != "undefined" || this.silaba != ""){ //Para verificar si es un juego con imagenes o palabras
         	ctx.font = "40px Arial";
             ctx.fillStyle = "black";
-            ctx.fillText(this.silaba, (this.x+this.width*1/5), (this.y+this.height/2) );
+            ctx.fillText(this.silaba, (this.x+this.width*1/5), (this.y+this.height/this.abajo) );           
         }
     };
 

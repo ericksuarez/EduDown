@@ -147,9 +147,9 @@ public class MatchImagenServlet extends HttpServlet {
 	
 	public void addjsonPalabra(HttpServletRequest req, Juegos j){
 		Palabras p = j.getPalabras_idPalabras();
-		req.setAttribute("jsonMedia", helper.jsonWord(p.getPrincipal(), 1).toString() + ";"
-								+ helper.jsonWord(p.getCorrecta(), 2).toString() + ";"
-								+ helper.jsonWord(p.getErronea(), 3).toString());
+		req.setAttribute("jsonMedia", helper.jsonWord(p.getPrincipal(), 1, "fondo-letra.png").toString() + ";"
+								+ helper.jsonWord(p.getCorrecta(), 2, "fondo-letra.png").toString() + ";"
+								+ helper.jsonWord(p.getErronea(), 3, "fondo-letra.png").toString());
 	}
 	
 	public void addjsonImagenes(HttpServletRequest req, Juegos actual){

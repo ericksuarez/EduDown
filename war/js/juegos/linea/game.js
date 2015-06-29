@@ -27,7 +27,7 @@ $(document).ready(function() {
     	var idjuego = $('#idjuego').val();
     	var avance = $('#idAvance').val();
     	var GET = getGET();
-    	window.location ="/matchimagen?juego=" + idjuego + "&semantico=" + semantico + "&inicio=" + GET['inicio'] + "&avance=" + avance;
+    	window.location ="/relacionlineas?juego=" + idjuego + "&semantico=" + semantico + "&inicio=" + GET['inicio'] + "&avance=" + avance;
     });
 
     function getGET(){
@@ -45,5 +45,7 @@ $(document).ready(function() {
 
 
 });
+
+	
 
 	

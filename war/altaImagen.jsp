@@ -45,8 +45,8 @@
 			<div class="col-sm-9" id="contenido-grado">
 				<div id="contenido-grado-html">
 					<select name="image[]" class="selectpicker" data-style="btn-white"
-			title="Seleccione una opción..." data-live-search="true"
-			data-size="5" style="display: none;">
+						title="Seleccione una opción..." data-live-search="true"
+						data-size="5" style="display: none;">
 						<option value="">Selecciona una imagen</option>
 						<c:forEach items="${imagenes}" var="element">
 							<option value="${element.idImagenes}">${element.nombre}</option>
@@ -61,8 +61,8 @@
 			<div class="col-sm-9" id="contenido-grado">
 				<div id="contenido-grado-html">
 					<select name="image[]" class="selectpicker" data-style="btn-white"
-			title="Seleccione una opción..." data-live-search="true"
-			data-size="5" style="display: none;">
+						title="Seleccione una opción..." data-live-search="true"
+						data-size="5" style="display: none;">
 						<option value="">Selecciona una imagen</option>
 						<c:forEach items="${imagenes}" var="element">
 							<option value="${element.idImagenes}">${element.nombre}</option>
@@ -77,8 +77,8 @@
 			<div class="col-sm-9" id="contenido-grado">
 				<div id="contenido-grado-html">
 					<select name="image[]" class="selectpicker" data-style="btn-white"
-			title="Seleccione una opción..." data-live-search="true"
-			data-size="5" style="display: none;">
+						title="Seleccione una opción..." data-live-search="true"
+						data-size="5" style="display: none;">
 						<option value="">Selecciona una imagen</option>
 						<c:forEach items="${imagenes}" var="element">
 							<option value="${element.idImagenes}">${element.nombre}</option>
@@ -96,7 +96,9 @@
 			<label class="col-sm-3 control-label">Imagen <%=i%></label>
 			<div class="col-sm-9" id="contenido-grado">
 				<div id="contenido-grado-html">
-					<select name="image[]" class="form-control">
+					<select name="image[]" class="selectpicker" data-style="btn-white"
+						title="Seleccione una opción..." data-live-search="true"
+						data-size="5" style="display: none;">
 						<option value="">Selecciona una imagen</option>
 						<c:forEach items="${imagenes}" var="element">
 							<option value="${element.idImagenes}">${element.nombre}</option>

@@ -163,14 +163,14 @@
           "intentosPromedio" : {
             "type" : "string"
           },
+          "alumno_idAlumno" : {
+            "type" : "string"
+          },
           "juegos_idJuegos" : {
             "type" : "array",
             "items" : {
               "type" : "string"
             }
-          },
-          "alumno_idAlumno" : {
-            "type" : "string"
           }
         }
       },

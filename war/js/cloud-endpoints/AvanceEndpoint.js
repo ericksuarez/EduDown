@@ -14,7 +14,7 @@ function insertAvance(timer, term, error, score) {
     var juego = jQuery.parseJSON(textJu);
     
     $('#idjuego').val(juego.idJuegos.id);
-    console.log("idJuego" + juego.idJuegos.id);
+    console.log("idJuego " + juego.idJuegos.id);
     
 	var requestData = {};
 	//requestData.Juegos_idJuegos = juego.idJuegos.id;

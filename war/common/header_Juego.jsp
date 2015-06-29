@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html
-	class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l2"
+	
 	lang="en">
 <head>
 <meta charset="utf-8">
@@ -13,10 +13,7 @@
 <title>EduDown 1.0</title>
 
 <link href="css/default.min.css" rel="stylesheet">
-<link rel="stylesheet"
-	href="font-awesome/css/font-awesome.min.css">
-<!-- Script Jquery necesario -->
-<script	src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -25,40 +22,16 @@
 	<div class="st-container">
 		<!-- Fixed navbar -->
 		<div class="navbar navbar-main navbar-fixed-top" role="navigation">
+			<ul class="nav navbar-nav navbar-right">
+				<li><button class="btn btn-primary" data-toggle="modal"
+						data-target="#instrucciones">
+						<i class="fa fa-question-circle fa-3x"></i>
+					</button></li>
+			</ul>
 			<div class="navbar-header">
-				<a href="#st-effect-11" data-toggle="sidebar-menu"
-					data-effect="st-effect-11" class="btn btn-primary"> <i
-					class="fa fa-pause fa-4x"></i>
-				</a>
-			</div>
-		</div>
-
-		<!-- Sidebar component with st-effect-11 (set on the toggle button) -->
-		<div
-			class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-skin-dark"
-			data-type=dropdown id=st-effect-11>
-			<div class="split-vertical">
-				<div class="split-vertical-body">
-					<div class="split-vertical-cell">
-						<div data-scrollable>
-							<p class="text-center">
-									<br> <br> <a href="juego?seccion=semanticos" style="color: #fff">
-									<i class="fa fa-align-justify fa-4x"></i>
-								</a>
-								<br> <br>
-								<button class="btn btn-link" style="color: #fff">
-									<i class="fa fa-repeat fa-4x"></i>
-								</button>
-								<br> <br>
-								<button class="btn btn-link" style="color: #fff">
-									<i class="fa fa-play fa-4x"></i>
-								</button>
-								<br> <br> <a href="index.html" style="color: #fff">
-									<i class="fa fa-home fa-4x"></i>
-								</a><br>
-							</p>
-						</div>
-					</div>
-				</div>
+				<button class="btn btn-primary" data-toggle="modal"
+					data-target="#menu" data-backdrop="true" data-keyboard="true">
+					<i class="fa fa-pause fa-3x"></i>
+				</button>
 			</div>
 		</div>

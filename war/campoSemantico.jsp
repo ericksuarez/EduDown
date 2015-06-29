@@ -36,7 +36,7 @@
 		<div class="navbar navbar-main navbar-fixed-top" role="navigation">
 			<div class="navbar-header">
 				<a href="index.html" data-effect="st-effect-11"
-					class="btn btn-primary"> <i class="fa fa-reply-all fa-4x"></i>
+					class="btn btn-primary"> <i class="fa fa-reply-all fa-3x"></i>
 				</a>
 			</div>
 		</div>

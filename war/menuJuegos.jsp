@@ -48,7 +48,7 @@
 		<div class="navbar navbar-main navbar-fixed-top" role="navigation">
 			<div class="navbar-header">
 				<a href="juego?seccion=semanticos" data-effect="st-effect-11"
-					class="btn btn-primary"> <i class="fa fa-reply-all fa-4x"></i>
+					class="btn btn-primary"> <i class="fa fa-reply-all fa-3x"></i>
 				</a>
 			</div>
 		</div>
@@ -68,13 +68,12 @@
 					<c:if test="${element.iconJuego == relLine}">
 					<a href="relacionlineas?juego=${element.idJuegos}&semantico=${semantico}&inicio=inicio&avance=">
 					</c:if>
-					<c:if test="${element.iconJuego == relLine && element.iconJuego == relPal}">
-					<a href="relacionlineas?juego=&semantico=${semantico}&inicio=palabras&avance=">
-					</c:if>
 					<c:if test="${element.iconJuego == memo}">
 					<a href="memorama?juego=${element.idJuegos}&semantico=${semantico}&inicio=inicio&avance=">
 					</c:if>
-					
+<%-- 					<c:if test="${element.iconJuego == memo}"> <!-- Memorama de palabras --> --%>
+<%-- 					<a href="memorama?juego=${element.idJuegos}&semantico=${semantico}&inicio=palabras&avance="> --%>
+<%-- 					</c:if> --%>
 						<div class="cover overlay cover-image-full img-circle"
 							style="height: 293px; text-align: center;">
 							<img src="images/${element.iconJuego}" alt="cover">
@@ -94,6 +93,20 @@
 				</div>
 			</c:forEach>
 
+				<div class="col-xs-4 col-md-3">
+					<a href="relacionlineas?juego=&semantico=${semantico}&inicio=palabras&avance=">
+						<div class="cover overlay cover-image-full img-circle"
+							style="height: 293px; text-align: center;">
+							<img src="images/iconLP.png" alt="cover">
+							<div class="overlay overlay-full"
+								style="height: 293px; text-align: center;">
+								<i class="fa fa-star-o fa-4x estrella"></i> <i
+									class="fa fa-star-o fa-4x estrella"></i> <i
+									class="fa fa-star-o fa-4x estrella"></i>
+							</div>
+						</div>
+					</a>
+				</div>
 				<!--  
 				<div class="col-xs-4 col-md-3">
 					<a href="matchWord.jsp">

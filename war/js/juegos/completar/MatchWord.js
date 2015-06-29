@@ -63,7 +63,7 @@ function MatchWord (canvas, images) {//se declaran las variables
     this.resize = function() {// funcion para hacer responsivo el canvas 
         this.escenario = document.getElementById("canvas");        
         this.escenario.width = window.innerWidth * 0.8;
-        this.escenario.height = window.innerHeight * 0.8;
+        this.escenario.height = window.innerHeight * 1;
         this.cWidth = this.escenario.width;
         this.cHeight = this.escenario.height;
         this.rectW = this.cWidth * 0.25;//estas dos variables son para el ancho y alto de las imagenes
@@ -75,15 +75,15 @@ function MatchWord (canvas, images) {//se declaran las variables
     this.initObjects = function(){
         x = this.espacio;
         
-        this.jugador = new GameObject (this.images[0], this.rectW+2*(this.espacio), 10, this.rectW, this.rectH);
+        this.jugador = new GameObject (this.images[0], this.rectW+2*(this.espacio), 10, this.rectW, this.rectH,1);
         
-        this.objetos[0] = new GameObject(this.images[1], x, this.rectH+20, this.rectW, this.rectH);
+        this.objetos[0] = new GameObject(this.images[1], x, this.rectH+100, this.rectW, this.rectH-50,2);
         x += this.rectW+this.espacio;
         
-        this.objetos[1] = new GameObject(this.images[2], x, this.rectH+20, this.rectW, this.rectH);
+        this.objetos[1] = new GameObject(this.images[2], x, this.rectH+100, this.rectW, this.rectH-50,2);
         x += this.rectW+this.espacio;
         
-        this.objetos[2] = new GameObject(this.images[3], x, this.rectH+20, this.rectW, this.rectH);
+        this.objetos[2] = new GameObject(this.images[3], x, this.rectH+100, this.rectW, this.rectH-50,2);
         x -= this.rectW+this.espacio;          
     };
 

@@ -99,9 +99,10 @@ public class CompletarPalabraServlet extends HttpServlet {
 	
 	public void addjsonPalabra(HttpServletRequest req, Juegos j){
 		Palabras p = j.getPalabras_idPalabras();
-		req.setAttribute("jsonMedia", helper.jsonWord(p.getPrincipal(), 1).toString() + ";"
-								+ helper.jsonWord(p.getCorrecta(), 2).toString() + ";"
-								+ helper.jsonWord(p.getCorrecta(), 3).toString() + ";"
-								+ helper.jsonWord(p.getErronea_2(), 4).toString());
+		req.setAttribute("jsonMedia", 
+			  helper.jsonWord(helper.sinvocal(p.getPrincipal()), 1, helper.completaWord(p.getPrincipal())).toString() + ";"
+			+ helper.jsonWord(p.getCorrecta(), 2, "fondo-letra.png").toString() + ";"
+			+ helper.jsonWord(p.getErronea(), 3, "fondo-letra.png").toString() + ";"
+			+ helper.jsonWord(p.getErronea_2(), 4, "fondo-letra.png").toString());
 	}
 }

@@ -7,7 +7,7 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
     this.escenario;    
     this.rectW;
     this.rectH; 
-    this.objetos = new Array();
+    this.objetos = [];
     this.lines = [];
     this.jugador;
     this.espacio;
@@ -29,12 +29,9 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
     this.registerEvents = function (){//aqui van los eventos que se van a utilizar
         this.canvas.onmousedown = function(event) {
             console.log ("OnMouseDown");
-            console.log(self.objetos[0].id);
-            
- for( i = 0; i<this.objetos.length; i++){
-	 
-       if (this.objetos[i].click(event)) {   
-    	   console.log('entro al if');
+        if(self.objetos[0].click(event)||self.objetos[1].click(event)||self.objetos[2].click(event)||self.objetos[3].click(event)||self.objetos[4].click(event)||self.objetos[5].click(event)){    
+
+
             if (self.linea == null){
                 for ( i = 0; i<self.objetos.length; i++){
                     if (self.objetos[i].clickInside (event.clientX, event.clientY)){
@@ -62,6 +59,7 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
                                 
                                 self.aciertos++;
                                 if(self.aciertos == 3){
+                                	self.guardar();
                                 	$('#acierto').modal({
                                         keyboard: true,
                                         show: true,
@@ -70,11 +68,10 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
                                 }else{
                                 	$('#continuar').modal('show');	
                                 }
-                                
                             }else {        
 
                                 self.score -= 3;
-                                $('#error').modal('show');      
+                                $('#error').modal('show');     
                                 self.error++;
                                 //self.initObjects();  
                                 self.lines.splice(self.lines.length-1);                    
@@ -93,10 +90,8 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
                 } 
                 self.linea = null;
             }
-        }else{
-        	console.log('No entro al if el obj: ' + self.objetos[i].id + self.objetos[i].url );
         }
- 	  }
+
     };
 
     this.canvas.onmousemove = function(event) {
@@ -114,14 +109,15 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
     
     this.resize = function() {// funcion para hacer responsivo el canvas 
         this.escenario = document.getElementById("canvas");        
-        this.escenario.width = window.innerWidth * 0.8;
-        this.escenario.height = window.innerHeight * 0.9;
+        this.escenario.width = window.innerWidth * 1;
+        this.escenario.height = window.innerHeight * 1;
         this.cWidth = this.escenario.width;
         this.cHeight = this.escenario.height;
         this.rectW = this.cWidth * 0.15;//estas dos variables son para el ancho y alto de las imagenes
         this.rectH = this.cWidth * 0.15;
-        this.espacio = this.cWidth * 0.0700;
-        this.espacioTop = this.cWidth * 0.0325;
+        //this.espacio = this.cWidth * 0.0700;
+        this.espacio = this.cWidth * 0.1;
+        this.espacioTop = this.cWidth * 0.05;
         this.alto   = this.cHeight * 0.0325;
         this.espacioMedio = this.rectW * 5;
     };
@@ -131,8 +127,6 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
         x = this.espacioTop;
         y = this.espacioTop;
         
-        console.log("Draw");
-        console.log(this.images[0].id);
         this.objetos[0] = new GameObject(this.images[0], this.espacio, x, this.rectW, this.rectH);
         x += this.rectW+this.alto;
         
@@ -254,6 +248,5 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
     
     };
 }
-
 
 

@@ -27,6 +27,64 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
+    "avanceendpoint.listAvance" : {
+      "path" : "avance",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "avanceendpoint.getAvance" : {
+      "path" : "avance/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "avanceendpoint.insertAvance" : {
+      "path" : "avance",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "avanceendpoint.updateAvance" : {
       "path" : "avance",
       "httpMethod" : "PUT",
@@ -63,64 +121,6 @@
       "response" : {
         "body" : "empty"
       }
-    },
-    "avanceendpoint.listAvance" : {
-      "path" : "avance",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance",
-      "request" : {
-        "parameters" : {
-          "limit" : {
-            "type" : "int32",
-            "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "avanceendpoint.insertAvance" : {
-      "path" : "avance",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "avanceendpoint.getAvance" : {
-      "path" : "avance/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
     }
   },
   "descriptor" : {
@@ -144,10 +144,10 @@
           "puntuacion" : {
             "type" : "integer"
           },
-          "juegos_idJuegos" : {
+          "alumno_idAlumno" : {
             "type" : "string"
           },
-          "alumno_idAlumno" : {
+          "juegos_idJuegos" : {
             "type" : "string"
           }
         }
@@ -194,19 +194,14 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance" : {
-        "request" : {
-          "$ref" : "Avance"
-        },
-        "response" : {
-          "$ref" : "Avance"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.removeAvance" : {
-      },
       "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.listAvance" : {
         "response" : {
           "$ref" : "AvanceCollection"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance" : {
+        "response" : {
+          "$ref" : "Avance"
         }
       },
       "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.insertAvance" : {
@@ -217,10 +212,15 @@
           "$ref" : "Avance"
         }
       },
-      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.getAvance" : {
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.updateAvance" : {
+        "request" : {
+          "$ref" : "Avance"
+        },
         "response" : {
           "$ref" : "Avance"
         }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint.removeAvance" : {
       }
     }
   }
