@@ -4,6 +4,10 @@
 <%@ page isELIgnored="false"%>
 <c:set var="count" value="0" scope="page" />
 
+<c:set var="relPal" scope="session" value="iconRP.png"/> <!-- URL a matchImg.jsp -->
+<c:set var="compPal" scope="session" value="iconCP.png"/> <!-- URL a matchWord.jsp -->
+
+
 <jsp:include page="common/header.jsp" />
 
 <h4 class="panel-title">Editar palabras de juegos</h4>
@@ -13,6 +17,7 @@
 	aria-multiselectable="true">
 	
 <c:forEach items="${juegos}" var="element">
+<c:if test="${element.iconJuego == relImg || element.iconJuego == relPal}">
 <c:set var="count" value="${count + 1}" scope="page"/>	
 
 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -154,7 +159,7 @@
 			</div>
 		</div>
 	</div>
-	
+	</c:if>
 </c:forEach>
 	
 </div>

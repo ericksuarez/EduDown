@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://landong-down.appspot.com/_ah/api",
+  "root" : "https://edu-down.appspot.com/_ah/api",
   "name" : "imagenesendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://landong-down.appspot.com/_ah/spi",
+    "bns" : "https://edu-down.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -27,6 +27,43 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
+    "imagenesendpoint.updateImagenes" : {
+      "path" : "imagenes",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "imagenesendpoint.removeImagenes" : {
+      "path" : "imagenes/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.removeImagenes",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
     "imagenesendpoint.listImagenes" : {
       "path" : "imagenes",
       "httpMethod" : "GET",
@@ -83,43 +120,6 @@
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "imagenesendpoint.updateImagenes" : {
-      "path" : "imagenes",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "imagenesendpoint.removeImagenes" : {
-      "path" : "imagenes/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.removeImagenes",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
       }
     }
   },
@@ -179,6 +179,16 @@
       }
     },
     "methods" : {
+      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes" : {
+        "request" : {
+          "$ref" : "Imagenes"
+        },
+        "response" : {
+          "$ref" : "Imagenes"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.removeImagenes" : {
+      },
       "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.listImagenes" : {
         "response" : {
           "$ref" : "ImagenesCollection"
@@ -196,16 +206,6 @@
         "response" : {
           "$ref" : "Imagenes"
         }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.updateImagenes" : {
-        "request" : {
-          "$ref" : "Imagenes"
-        },
-        "response" : {
-          "$ref" : "Imagenes"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.ImagenesEndpoint.removeImagenes" : {
       }
     }
   }

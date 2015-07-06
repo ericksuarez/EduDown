@@ -1,8 +1,7 @@
 function init() {
 	console.log("Avance");
-	gapi.client.load('avanceendpoint', 'v1', null,
-			'http://localhost:8888/_ah/api');
-	
+	gapi.client.load('avanceendpoint', 'v1', null,'http://localhost:8888/_ah/api'); 
+//	gapi.client.load('avanceendpoint', 'v1', null,'https://edu-down.appspot.com/_ah/api/');
 }
 
 function insertAvance(timer, term, error, score) {

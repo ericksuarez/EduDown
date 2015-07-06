@@ -90,7 +90,7 @@
 
 		<!-- inicio memorama -->
 		<%
-			for (int i = 4; i < 19; i++) {
+			for (int i = 4; i <= 30 ; i++) {
 		%>
 		<div class="form-group memo">
 			<label class="col-sm-3 control-label">Imagen <%=i%></label>

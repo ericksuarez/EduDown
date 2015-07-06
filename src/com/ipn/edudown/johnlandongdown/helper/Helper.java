@@ -128,5 +128,26 @@ public class Helper {
 		}
 		return complete;
 	}
+	
+	public String formatoTime(Integer hora, Integer min, Integer seg){
+		String time = "";
+		int Minmas = 0;
+		int Horamas = 0;
+		
+		if(seg > 60){
+			Minmas = Math.round(seg / 60);
+			seg = seg % 60;
+			min += Minmas;
+		}
+		if(min > 60){
+			Horamas = Math.round(min / 60);
+			min = min % 60;
+			hora += Horamas;
+		}
+
+		time = String.valueOf(hora) + ":" + String.valueOf(min) + ":" + String.valueOf(seg);
+		
+		return time;
+	}
 
 }

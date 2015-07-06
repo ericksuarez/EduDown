@@ -5,9 +5,10 @@
 
 <h4 class="panel-title">Estadistica del alumno <strong>${alumno.nombre}
 	${alumno.apaterno} ${alumno.amaterno}</strong></h4>
+	
 </div>
 <div class="panel-body">
-
+<!-- <button class="btn btn-success pull-right"> <i class="fa fa-file-text"></i> Visualizar Evaluaciones</button> -->
 	<input type="hidden" id="semanticos" value='${semanticos}'>
 	<input type="hidden" id="max" value='${max}'>
 

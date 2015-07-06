@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.ipn.edudown.johnlandongdown.entidades.Alumno;
 import com.ipn.edudown.johnlandongdown.entidades.AvanceEndpoint;
 import com.ipn.edudown.johnlandongdown.entidades.CampoSemantico;
@@ -88,7 +90,11 @@ public class RelacionLineasServlet extends HttpServlet {
 
 		addjsonPalabra(req);
 
-		matImg.addjsonAlumnoJuego(req,al,new Juegos());
+		Key k = KeyFactory.createKey(Juegos.class.getSimpleName(),	100000); // Para reconocer que es juego de union de lineas
+		Juegos tmpGame = new Juegos();
+		tmpGame.setIdJuegos(k);
+		
+		matImg.addjsonAlumnoJuego(req,al,tmpGame);
 
 	}
 	

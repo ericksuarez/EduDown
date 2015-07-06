@@ -23,7 +23,7 @@
 <!-- Fin Seccion del Juego Area del canvas -->
 
 <!-- Script necesarios para el Juego -->
-<script src="js/cloud-endpoints/AvanceEndpoint.js"></script>
+<!-- <script src="js/cloud-endpoints/AvanceEndpoint.js"></script> -->
 <script src="js/juegos/linea/GameObject.js"></script>
 <script src="js/juegos/linea/MatchGame.js"></script>
 <script src="js/juegos/linea/game.js"></script>

@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://landong-down.appspot.com/_ah/api",
+  "root" : "https://edu-down.appspot.com/_ah/api",
   "name" : "materiaendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://landong-down.appspot.com/_ah/spi",
+    "bns" : "https://edu-down.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },

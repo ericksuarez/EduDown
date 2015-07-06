@@ -60,11 +60,7 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
                                 self.aciertos++;
                                 if(self.aciertos == 3){
                                 	self.guardar();
-                                	$('#acierto').modal({
-                                        keyboard: true,
-                                        show: true,
-                                        backdrop: 'static'
-                                    });
+                                	$('#acierto').modal('show');
                                 }else{
                                 	$('#continuar').modal('show');	
                                 }
@@ -242,8 +238,7 @@ function MatchGame (canvas, images, lineas) {//se declaran las variables
     
     this.guardar = function(){
 
-        insertAvance(self.hours + " : " + self.min + " : " + self.time
-        			,true,self.error,self.score);
+        //insertAvance(self.hours + " : " + self.min + " : " + self.time,true,self.error,self.score);
 
     
     };

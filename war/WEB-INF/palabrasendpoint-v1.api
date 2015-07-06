@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://landong-down.appspot.com/_ah/api",
+  "root" : "https://edu-down.appspot.com/_ah/api",
   "name" : "palabrasendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://landong-down.appspot.com/_ah/spi",
+    "bns" : "https://edu-down.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -27,6 +27,38 @@
   "ownerName" : "ipn.com",
   "packagePath" : "edudown.johnlandongdown.entidades",
   "methods" : {
+    "palabrasendpoint.insertPalabras" : {
+      "path" : "palabras",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.insertPalabras",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "palabrasendpoint.updatePalabras" : {
+      "path" : "palabras",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.updatePalabras",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "palabrasendpoint.listPalabras" : {
       "path" : "palabras",
       "httpMethod" : "GET",
@@ -64,38 +96,6 @@
           }
         },
         "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "palabrasendpoint.insertPalabras" : {
-      "path" : "palabras",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.insertPalabras",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "palabrasendpoint.updatePalabras" : {
-      "path" : "palabras",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.updatePalabras",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -194,16 +194,6 @@
       }
     },
     "methods" : {
-      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.listPalabras" : {
-        "response" : {
-          "$ref" : "PalabrasCollection"
-        }
-      },
-      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.getPalabras" : {
-        "response" : {
-          "$ref" : "Palabras"
-        }
-      },
       "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.insertPalabras" : {
         "request" : {
           "$ref" : "Palabras"
@@ -216,6 +206,16 @@
         "request" : {
           "$ref" : "Palabras"
         },
+        "response" : {
+          "$ref" : "Palabras"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.listPalabras" : {
+        "response" : {
+          "$ref" : "PalabrasCollection"
+        }
+      },
+      "com.ipn.edudown.johnlandongdown.entidades.PalabrasEndpoint.getPalabras" : {
         "response" : {
           "$ref" : "Palabras"
         }

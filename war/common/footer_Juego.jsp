@@ -107,7 +107,7 @@
 			<div class="split-vertical-body">
 				<div class="split-vertical-cell">
 						<p class="text-center">
-							<br> <br> <a href="juego?seccion=semanticos"
+							<br> <br> <a href="juego?seccion=semanticos" target="" 
 								style="color: #fff"> <i class="fa fa-align-justify fa-3x"></i>
 							</a> <br> <br>
 							<button class="btn btn-link" style="color: #fff" id="repeat">

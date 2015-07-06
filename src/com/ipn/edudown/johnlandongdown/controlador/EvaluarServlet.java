@@ -80,7 +80,8 @@ public class EvaluarServlet extends HttpServlet {
 				
 				for(Avance av : avances){
 					
-					Juegos jtmp = jep.getJuegos(helper.limpiaID("Juegos", av.getJuegos_idJuegos()));
+					//if(!av.getJuegos_idJuegos().equals("Juegos(100000)")){
+						Juegos jtmp = jep.getJuegos(helper.limpiaID("Juegos", av.getJuegos_idJuegos()));
 					
 					if(tipo.equals(jtmp.getIconJuego()) && jtmp.getIdJuegos() == ju.getIdJuegos()){
 						hora += helper.tiempo(av.getTiempoTerminado(),0);
@@ -89,13 +90,14 @@ public class EvaluarServlet extends HttpServlet {
 						vecesjugado++;
 						errores += av.getErrores();
 						regGame += ju.getIdJuegos() + ",";
-					}
+						}
+					//}
 				}	
 			}
 		}
 		
 		aciertos = vecesjugado - errores;
-		tiempopromedio = String.valueOf(hora) + ":" + String.valueOf(min) + ":" + String.valueOf(seg);
+		tiempopromedio = helper.formatoTime(hora, min, seg);
 		
 		String html = innerHTML(tiempopromedio,aciertos,vecesjugado,regGame,alumno);
 		resp.getWriter().print(html);

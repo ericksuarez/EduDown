@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://landong-down.appspot.com/_ah/api",
+  "root" : "https://edu-down.appspot.com/_ah/api",
   "name" : "juegosendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://landong-down.appspot.com/_ah/spi",
+    "bns" : "https://edu-down.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -147,14 +147,14 @@
           "campoSemantico_idCampoSemantico" : {
             "$ref" : "CampoSemantico"
           },
+          "palabras_idPalabras" : {
+            "$ref" : "Palabras"
+          },
           "imagenes_idImagenes" : {
             "type" : "array",
             "items" : {
               "$ref" : "Imagenes"
             }
-          },
-          "palabras_idPalabras" : {
-            "$ref" : "Palabras"
           }
         }
       },
@@ -204,18 +204,6 @@
           }
         }
       },
-      "Imagenes" : {
-        "id" : "Imagenes",
-        "type" : "object",
-        "properties" : {
-          "idImagenes" : {
-            "$ref" : "Key"
-          },
-          "nombre" : {
-            "type" : "string"
-          }
-        }
-      },
       "Palabras" : {
         "id" : "Palabras",
         "type" : "object",
@@ -239,6 +227,18 @@
             "type" : "string"
           },
           "erronea_2" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Imagenes" : {
+        "id" : "Imagenes",
+        "type" : "object",
+        "properties" : {
+          "idImagenes" : {
+            "$ref" : "Key"
+          },
+          "nombre" : {
             "type" : "string"
           }
         }
